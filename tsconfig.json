@@ -1,14 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
       "@*": ["/*"],
       "src/*": ["src/*"],
-      "@/components/*": ["components/*"],
-      "@/modules/*": ["modules/*"],
-      "@/services/*": ["services/*"],
-      "@/types/*": ["types/*"],
-      "@/middlewares/*": ["middlewares/*"],
     },
     "target": "es6",
     "lib": [
@@ -43,7 +38,6 @@
   ],
   "exclude": [
     "node_modules",
-    "./src/deprecated/"
   ],
   "jsx": "react"
 }
