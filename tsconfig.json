@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@*": ["/*"],
+      "src/*": ["src/*"],
+      "@/components/*": ["components/*"],
+      "@/modules/*": ["modules/*"],
+      "@/services/*": ["services/*"],
+      "@/types/*": ["types/*"],
+      "@/middlewares/*": ["middlewares/*"],
+    },
+    "target": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "./pages/",
+    "./pages/**/*.ts",
+    "./pages/**/*.tsx",
+    "./src/",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "jest.config.js",
+    "globals.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "./src/deprecated/"
+  ],
+  "jsx": "react"
+}
