@@ -4,6 +4,7 @@
     "paths": {
       "@*": ["/*"],
       "src/*": ["src/*"],
+      "@fire": ["config/fire-config.js"]
     },
     "target": "es6",
     "lib": [
