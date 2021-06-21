@@ -1,9 +1,22 @@
+import fetch from 'src/utils/fetch-middleware'
+
 export function getAllCourses() {}
 
-export function createCourse() {}
+export function createCourse(course: any) {
+  return fetch({
+    collection: 'course',
+    action: 'POST',
+    data: course,
+  })
+}
 
-export async function updateCourse(rewrites: any) {
-  rewrites
+export function updateCourse(rewrites: any) {
+  return fetch({
+    collection: 'course',
+    id: rewrites.id,
+    action: 'POST',
+    data: rewrites,
+  })
 }
 
 export function deleteCourse() {}
