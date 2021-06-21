@@ -2,7 +2,10 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
-const fb = firebase.apps.length
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
+export { googleAuthProvider }
+
+export default firebase.apps.length
   ? firebase.app()
   : firebase.initializeApp({
       apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -13,7 +16,3 @@ const fb = firebase.apps.length
       appId: process.env.NEXT_PUBLIC_APP_ID,
       measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
     })
-
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
-export { googleAuthProvider }
-export default fb

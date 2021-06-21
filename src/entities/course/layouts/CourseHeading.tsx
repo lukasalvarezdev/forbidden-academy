@@ -1,6 +1,7 @@
-import { useEditableInput } from '../services'
+import { useCourses, useEditableInput } from '../services'
 
 const CourseHeading = () => {
+  const { course } = useCourses()
   const handleChange = useEditableInput()
 
   return (
@@ -15,7 +16,11 @@ const CourseHeading = () => {
       </div>
       <div>
         <label htmlFor="xd">Langugage</label>
-        <input type="text" name="language" />
+        <select name="language" value={course?.language || ''}>
+          <option value=""> --Select a language --</option>
+          <option value="spanish">Spanish</option>
+          <option value="english">English</option>
+        </select>
       </div>
     </form>
   )
