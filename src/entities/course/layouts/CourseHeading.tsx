@@ -1,6 +1,10 @@
+import { useEditableInput } from '../services'
+
 const CourseHeading = () => {
+  const handleChange = useEditableInput()
+
   return (
-    <>
+    <form onChange={handleChange}>
       <div>
         <label htmlFor="xd">Title</label>
         <input type="text" name="title" />
@@ -13,7 +17,7 @@ const CourseHeading = () => {
         <label htmlFor="xd">Langugage</label>
         <input type="text" name="language" />
       </div>
-    </>
+    </form>
   )
 }
 

@@ -1,32 +1,23 @@
 import * as React from 'react'
-import fetch from 'src/utils/fetch-middleware'
+import CoursesProvider from '../store/context'
 import CourseHeading from '../layouts/CourseHeading'
 import CourseInfoCard from '../layouts/CourseInfoCard'
 import CourseBody from '../layouts/CourseBody'
 
 const CoursePage = () => {
-  const [state, setstate] = React.useState({
-    name: '',
-    description: '',
-  })
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setstate(course => ({ ...course, [e.target.name]: e.target.value }))
-  }
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    console.log(
-      await fetch({
-        collection: 'course',
-        action: 'POST',
-        data: state,
-      }),
-    )
-  }
+  // async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  //   e.preventDefault()
+  //   console.log(
+  //     await fetch({
+  //       collection: 'course',
+  //       action: 'POST',
+  //       data: state,
+  //     }),
+  //   )
+  // }
 
   return (
-    <>
+    <CoursesProvider>
       <div>
         <CourseHeading />
         <CourseInfoCard />
@@ -53,7 +44,7 @@ const CoursePage = () => {
         <input type="text" onChange={handleChange} name="description" />
         <button>click</button>
       </form> */}
-    </>
+    </CoursesProvider>
   )
 }
 

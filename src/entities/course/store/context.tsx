@@ -12,11 +12,23 @@ export function useCourses() {
 }
 
 const CoursesProvider: React.FC = ({ children }) => {
+  const [course, setCourse] = React.useState({} as Course)
+
   const updateCourse: CourseProvider['updateCourse'] = async rewrites => {
+    setCourse(x => ({ ...x, ...rewrites }))
     await coursesAPI.updateCourse(rewrites)
   }
 
-  return <coursesContext.Provider value={{ updateCourse }}>{children}</coursesContext.Provider>
+  return (
+    <coursesContext.Provider
+      value={{
+        course,
+        updateCourse,
+      }}
+    >
+      {children}
+    </coursesContext.Provider>
+  )
 }
 
 export default CoursesProvider
