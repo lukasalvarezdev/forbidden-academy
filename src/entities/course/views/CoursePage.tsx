@@ -1,5 +1,8 @@
 import * as React from 'react'
 import fetch from 'src/utils/fetch-middleware'
+import CourseHeading from '../layouts/CourseHeading'
+import CourseInfoCard from '../layouts/CourseInfoCard'
+import CourseBody from '../layouts/CourseBody'
 
 const CoursePage = () => {
   const [state, setstate] = React.useState({
@@ -24,7 +27,15 @@ const CoursePage = () => {
 
   return (
     <>
-      <h2>hola mundo</h2>
+      <div>
+        <CourseHeading />
+        <CourseInfoCard />
+      </div>
+
+      <div>
+        <CourseBody />
+      </div>
+      {/* <h2>hola mundo</h2>
       <button
         onClick={async () =>
           console.log(
@@ -41,7 +52,7 @@ const CoursePage = () => {
         <input type="text" onChange={handleChange} name="name" />
         <input type="text" onChange={handleChange} name="description" />
         <button>click</button>
-      </form>
+      </form> */}
     </>
   )
 }
