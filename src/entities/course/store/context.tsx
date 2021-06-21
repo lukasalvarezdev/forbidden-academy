@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useRouter } from 'next/router'
 import { coursesAPI, CourseProvider, Course } from '../services'
 
 const coursesContext = React.createContext<Partial<CourseProvider>>({
@@ -12,11 +13,54 @@ export function useCourses() {
 }
 
 const CoursesProvider: React.FC = ({ children }) => {
+  const [course, setCourse] = React.useState({} as Course)
+  const {
+    query: { id: courseId },
+  } = useRouter()
+
   const updateCourse: CourseProvider['updateCourse'] = async rewrites => {
-    await coursesAPI.updateCourse(rewrites)
+    setCourse(x => ({ ...x, ...rewrites }))
   }
 
-  return <coursesContext.Provider value={{ updateCourse }}>{children}</coursesContext.Provider>
+  const handleSubmit: CourseProvider['handleSubmit'] = async e => {
+    e.preventDefault()
+
+    courseId ? handleSubmitUpdate() : handleCreate()
+  }
+
+  async function handleCreate() {
+    const [createdCourse, error] = await coursesAPI.createCourse(course)
+
+    if (!createdCourse || error) {
+      console.log(error)
+      return
+    }
+
+    console.log(createdCourse.id)
+  }
+
+  async function handleSubmitUpdate() {
+    const [wasUpdated, error] = await coursesAPI.updateCourse(course)
+
+    if (!wasUpdated || error) {
+      console.log(error)
+      return
+    }
+
+    console.log('Updated!')
+  }
+
+  return (
+    <coursesContext.Provider
+      value={{
+        course,
+        updateCourse,
+        handleSubmit,
+      }}
+    >
+      {children}
+    </coursesContext.Provider>
+  )
 }
 
 export default CoursesProvider
