@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { Lesson } from '../services'
 
-export function useLesson() {
+export function useLesson(courseId: string) {
   const [sections, setSections] = React.useState([
-    { name: 'First section', id: '2jdsa', number_of_lessons: 29 },
-    { name: 'First section', id: '2jdsas', number_of_lessons: 29 },
+    { name: 'First section', id: '2jdsa', number_of_lessons: 29, courseId: 'edd' },
+    { name: 'First section', id: '2jdsas', number_of_lessons: 29, courseId: 'edd' },
   ])
 
   const [lessons, setLessons] = React.useState<Lesson[]>([
@@ -27,7 +27,7 @@ export function useLesson() {
   ])
 
   function createSection(name: string) {
-    setSections(sections => [...sections, { name, id: 'das', number_of_lessons: 22 }])
+    setSections(sections => [...sections, { name, id: 'das', number_of_lessons: 22, courseId }])
   }
 
   function updateSection(name: string, index: number) {
