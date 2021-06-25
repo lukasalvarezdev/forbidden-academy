@@ -16,7 +16,7 @@ const CourseHeading = () => {
       </div>
       <div>
         <label htmlFor="xd">Langugage</label>
-        <select name="language" value={course?.language || ''}>
+        <select name="language" defaultValue={course?.language || ''}>
           <option value=""> --Select a language --</option>
           <option value="spanish">Spanish</option>
           <option value="english">English</option>
