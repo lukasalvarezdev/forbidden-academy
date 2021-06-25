@@ -4,34 +4,58 @@ import { useEditableInput } from '../services'
 
 const CourseBody = () => {
   const handleChange = useEditableInput()
-  const { sections, lessons } = useLesson('pepe')
+  const { sections, lessons, createSection, createLesson } = useLesson('pepe')
 
   return (
-    <form onChange={handleChange}>
-      <div>
-        <label htmlFor="xd">Description</label>
-        <input type="text" name="description" />
-      </div>
-
-      <WhatYouWillLearn />
-
-      {sections.map((section, index) => (
-        <div key={index}>
-          <h2>{section.name}</h2>
-          <p>{section.number_of_lessons} Lessons</p>
-
-          {lessons.map((lesson, index) =>
-            lesson.section === section.id ? (
-              <div key={index}>
-                <p>{lesson.name}</p>
-                <p>{lesson.description}</p>
-                <p>{lesson.posted_time}</p>
-              </div>
-            ) : null,
-          )}
+    <>
+      <form onChange={handleChange}>
+        <div>
+          <label htmlFor="xd">Description</label>
+          <input type="text" name="description" />
         </div>
-      ))}
-    </form>
+
+        <WhatYouWillLearn />
+      </form>
+      <div>
+        {sections.map((section, index) => (
+          <div key={index}>
+            <input type="text" defaultValue={section.name} />
+            <p>{section.number_of_lessons} Lessons</p>
+
+            {lessons.map((lesson, index) =>
+              lesson.section === section.id ? (
+                <div key={index}>
+                  <input type="text" defaultValue={lesson.name} />
+                  <input type="text" defaultValue={lesson.description} />
+                  <p>{lesson.posted_time}</p>
+                </div>
+              ) : null,
+            )}
+          </div>
+        ))}
+
+        <button
+          onClick={e => {
+            e.preventDefault()
+            createSection('El pepe 99')
+          }}
+        >
+          Create section
+        </button>
+        <button
+          onClick={e => {
+            e.preventDefault()
+            createLesson({
+              name: 'Class 1',
+              description: 's',
+              section: '2jdsa',
+            })
+          }}
+        >
+          Create lesson
+        </button>
+      </div>
+    </>
   )
 }
 

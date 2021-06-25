@@ -52,8 +52,18 @@ export function useLesson(courseId: string) {
     setSections(sectionsCopy)
   }
 
-  function createLesson(lesson: Lesson) {
-    setLessons(lessons => [...lessons, lesson])
+  function createLesson(lesson: Pick<Lesson, 'description' | 'name' | 'section'>) {
+    setLessons(lessons => [
+      ...lessons,
+      {
+        ...lesson,
+        id: '12',
+        announcements: [],
+        questions: [],
+        posted_time: 's',
+        last_modified_time: '',
+      },
+    ])
   }
 
   function updateLesson(rewrites: Partial<Lesson>, index: number) {
