@@ -24,6 +24,22 @@ export function useLesson(courseId: string) {
       questions: [],
       section: '2jdsa',
     },
+    {
+      name: 'Seconds',
+      description: 'Hello worlddd',
+      id: 'sdads',
+      announcements: [
+        {
+          title: 'pepe',
+          body: 'sd',
+          posted_time: 'sd',
+        },
+      ],
+      last_modified_time: 'sd',
+      posted_time: 'sda',
+      questions: [],
+      section: '2jdsas',
+    },
   ])
 
   function createSection(name: string) {
