@@ -1,0 +1,40 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 1rem == 1px*/
+}
+
+body {
+  box-sizing: inherit;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Set here sizes of <h> tags */

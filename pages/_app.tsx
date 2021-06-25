@@ -1,4 +1,6 @@
 import '../styles/globals.css'
+import '../styles/resets.css'
+import '../styles/lib.css'
 
 interface MyAppProps {
   Component: React.FC
