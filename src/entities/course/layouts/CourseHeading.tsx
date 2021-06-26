@@ -8,14 +8,15 @@ const CourseHeading = () => {
   return (
     <header className="bg-primary-black fc-white">
       <CourseHeadingContainer className="container">
-        <form onChange={handleChange}>
+        <form onInput={handleChange}>
           <div className="mb-20">
             <h1
               contentEditable={true}
               suppressContentEditableWarning={true}
               className="fake-input"
+              title="name"
             >
-              Pepeto
+              {course?.name}
             </h1>
           </div>
           <div>
@@ -23,9 +24,9 @@ const CourseHeading = () => {
               className="mb-20 fake-input"
               contentEditable={true}
               suppressContentEditableWarning={true}
+              title="short_description"
             >
-              Aprende el lenguaje de programación web más popular paso a paso Con Proyectos,
-              inc. Electron React MongoDB Node Express
+              {course?.short_description}
             </p>
           </div>
           <div>
