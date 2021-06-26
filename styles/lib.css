@@ -207,3 +207,11 @@
 .f-nowrap {
   flex-wrap: nowrap;
 }
+
+/* COLORS */
+.bg-primary-black {
+  background-color: var(--primary-black);
+}
+.fc-white {
+  color: white;
+}
