@@ -5,9 +5,9 @@ const CourseHeading = () => {
   const { course } = useCourses()
 
   return (
-    <header className="bg-primary-black fc-white">
+    <header className="bg-primary-black fc-white mb-30">
       <CourseHeadingContainer className="container">
-        <div className="info-65">
+        <div className="info-65" id="course-info">
           <div className="mb-20">
             <h1
               contentEditable={true}

@@ -24,12 +24,13 @@ export const OkIcon: React.FC<IconProps> = ({ className }) => (
   </svg>
 )
 
-export const DropwdownArrowIcon: React.FC<IconProps> = () => (
+export const DropwdownArrowIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="15.313"
     height="9.157"
     viewBox="0 0 15.313 9.157"
+    className={className}
   >
     <path
       id="Path_10"
@@ -42,5 +43,17 @@ export const DropwdownArrowIcon: React.FC<IconProps> = () => (
       strokeLinejoin="round"
       strokeWidth="3"
     />
+  </svg>
+)
+
+export const Circle: React.FC<IconProps> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="4"
+    height="4"
+    viewBox="0 0 4 4"
+    className={className}
+  >
+    <circle id="Ellipse_3" data-name="Ellipse 3" cx="2" cy="2" r="2" fill="#9ba6c5" />
   </svg>
 )

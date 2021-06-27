@@ -3,6 +3,7 @@
 *::before {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -30,6 +31,7 @@ button {
   border: none;
   font-family: inherit;
   font-size: inherit;
+  cursor: pointer;
 }
 
 input,
@@ -39,4 +41,6 @@ select {
   border: none;
 }
 
-/* Set here sizes of <h> tags */
+ul {
+  list-style: none;
+}
