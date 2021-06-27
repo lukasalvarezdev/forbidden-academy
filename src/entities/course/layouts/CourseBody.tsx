@@ -1,22 +1,27 @@
-import { useEditableInput } from '../services'
+import { useCourses } from '../services'
 import WhatYouWillLearn from '../components/WhatYouWillLearn'
 import Sections from './Sections'
+import { CourseBodyContainer } from '../styles'
 
 const CourseBody = () => {
-  const handleChange = useEditableInput()
+  const { course } = useCourses()
 
   return (
-    <>
-      <form onChange={handleChange}>
-        <div>
-          <label htmlFor="xd">Description</label>
-          <input type="text" name="description" />
-        </div>
+    <CourseBodyContainer className="container">
+      <div>
+        <p
+          contentEditable={true}
+          suppressContentEditableWarning={true}
+          title="description"
+          defaultValue={course?.description}
+        >
+          {course?.description}
+        </p>
+      </div>
 
-        <WhatYouWillLearn />
-      </form>
+      <WhatYouWillLearn />
       <Sections />
-    </>
+    </CourseBodyContainer>
   )
 }
 
