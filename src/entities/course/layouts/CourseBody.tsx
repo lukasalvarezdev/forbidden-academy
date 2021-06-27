@@ -8,11 +8,12 @@ const CourseBody = () => {
 
   return (
     <CourseBodyContainer className="container">
-      <div>
+      <div className="info-65 mb-30">
         <p
           contentEditable={true}
           suppressContentEditableWarning={true}
           title="description"
+          className="fake-input"
           defaultValue={course?.description}
         >
           {course?.description}

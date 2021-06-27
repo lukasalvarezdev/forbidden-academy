@@ -5,6 +5,10 @@ export const CourseContainer = styled.div`
     outline: none;
     background-color: transparent;
   }
+
+  .info-65 {
+    max-width: 65%;
+  }
 `
 
 export const CourseHeadingContainer = styled.div`
@@ -12,10 +16,6 @@ export const CourseHeadingContainer = styled.div`
 
   .fake-input {
     color: white;
-  }
-
-  & > form {
-    max-width: 65%;
   }
 
   h1 {
@@ -37,13 +37,16 @@ export const CourseHeadingContainer = styled.div`
   }
 `
 export const CourseBodyContainer = styled.div`
-  & > form {
-    max-width: 65%;
-  }
-
   p {
     line-height: 1.7;
     color: var(--primary-gray);
     font-weight: 300;
+  }
+`
+export const WhatYouWillLearnContainer = styled.div`
+  border-radius: 3px;
+
+  p {
+    text-transform: capitalize;
   }
 `

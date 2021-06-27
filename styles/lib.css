@@ -215,3 +215,10 @@
 .fc-white {
   color: white;
 }
+
+/* SHADOWS */
+.normal-shadow {
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.158);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.158);
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.158);
+}

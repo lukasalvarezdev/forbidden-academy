@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
 import { coursesAPI, CourseProvider, Course } from '../services'
+import defaultCourse from '../utils/course.json'
 
 const coursesContext = React.createContext<Partial<CourseProvider>>({
-  course: {} as Course,
+  course: defaultCourse as Course,
 })
 
 export function useCourses() {
@@ -13,7 +14,7 @@ export function useCourses() {
 }
 
 const CoursesProvider: React.FC = ({ children }) => {
-  const [course, setCourse] = React.useState({} as Course)
+  const [course, setCourse] = React.useState(defaultCourse as Course)
   const {
     query: { id: courseId },
   } = useRouter()
