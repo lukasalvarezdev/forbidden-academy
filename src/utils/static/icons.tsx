@@ -1,8 +1,64 @@
-interface Icon {
+interface IconProps {
   className?: string
 }
 
-export const StarIcon: React.FC<Icon> = ({ className }) => (
+export const OkIcon: React.FC<IconProps> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="9.121"
+    height="6.657"
+    viewBox="0 0 9.121 6.657"
+    className={className}
+  >
+    <path
+      id="Path_23"
+      data-name="Path 23"
+      d="M4437.255,725.151l2.154,2.154,4.846-4.846"
+      transform="translate(-4436.194 -721.398)"
+      fill="none"
+      stroke="#9ba6c5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.5"
+    />
+  </svg>
+)
+
+export const DropwdownArrowIcon: React.FC<IconProps> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="15.313"
+    height="9.157"
+    viewBox="0 0 15.313 9.157"
+    className={className}
+  >
+    <path
+      id="Path_10"
+      data-name="Path 10"
+      d="M5607.152,81.024l5.535,5.535,5.536-5.535"
+      transform="translate(-5605.031 -78.903)"
+      fill="none"
+      stroke="#333"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="3"
+    />
+  </svg>
+)
+
+export const Circle: React.FC<IconProps> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="4"
+    height="4"
+    viewBox="0 0 4 4"
+    className={className}
+  >
+    <circle id="Ellipse_3" data-name="Ellipse 3" cx="2" cy="2" r="2" fill="#9ba6c5" />
+  </svg>
+)
+
+export const StarIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="14.11"
@@ -22,8 +78,8 @@ export const StarIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const HalfStarIcon: React.FC<Icon> = () => <svg></svg>
-export const SearchIcon: React.FC<Icon> = ({ className }) => (
+export const HalfStarIcon: React.FC<IconProps> = () => <svg></svg>
+export const SearchIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="18.047"
@@ -42,7 +98,7 @@ export const SearchIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const CartIcon: React.FC<Icon> = ({ className }) => (
+export const CartIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     id="Group_75"
     data-name="Group 75"
@@ -76,7 +132,7 @@ export const CartIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const CoursesIcon: React.FC<Icon> = ({ className }) => (
+export const CoursesIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="38.548"
@@ -94,7 +150,7 @@ export const CoursesIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const BellIcon: React.FC<Icon> = ({ className }) => (
+export const BellIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="25"
@@ -112,7 +168,7 @@ export const BellIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const VideoIcon: React.FC<Icon> = ({ className }) => (
+export const VideoIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="19"
@@ -138,7 +194,7 @@ export const VideoIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const BorderedArrowIcon: React.FC<Icon> = ({ className }) => (
+export const BorderedArrowIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="9.156"
@@ -160,7 +216,7 @@ export const BorderedArrowIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const FilledArrowIcon: React.FC<Icon> = ({ className }) => (
+export const FilledArrowIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="8"
@@ -182,7 +238,7 @@ export const FilledArrowIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const ClockIcon: React.FC<Icon> = ({ className }) => (
+export const ClockIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="17"
@@ -220,7 +276,7 @@ export const ClockIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const PersonIcon: React.FC<Icon> = ({ className }) => (
+export const PersonIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     id="person_black_24dp"
     xmlns="http://www.w3.org/2000/svg"
@@ -239,7 +295,7 @@ export const PersonIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const GlobalIcon: React.FC<Icon> = ({ className }) => (
+export const GlobalIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     id="language_black_24dp"
     xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +314,7 @@ export const GlobalIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const FavoriteIcon: React.FC<Icon> = ({ className }) => (
+export const FavoriteIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     id="favorite_border_black_24dp"
     xmlns="http://www.w3.org/2000/svg"
@@ -278,7 +334,7 @@ export const FavoriteIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const ShareIcon: React.FC<Icon> = ({ className }) => (
+export const ShareIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     id="share_black_24dp"
     xmlns="http://www.w3.org/2000/svg"
@@ -298,7 +354,7 @@ export const ShareIcon: React.FC<Icon> = ({ className }) => (
   </svg>
 )
 
-export const SectionNumberContainerIcon: React.FC<Icon> = ({ className }) => (
+export const SectionNumberContainerIcon: React.FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="26"

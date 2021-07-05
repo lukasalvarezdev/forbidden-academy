@@ -1,12 +1,11 @@
 import { useCourses } from '../services'
 import Sections from './Sections'
-import { CourseBodyContainer } from '../styles'
 
 const CourseBody = () => {
   const { course } = useCourses()
 
   return (
-    <CourseBodyContainer className="container">
+    <div className="container">
       <div className="info-65 mb-30">
         <p
           contentEditable={true}
@@ -14,13 +13,18 @@ const CourseBody = () => {
           title="description"
           className="fake-input"
           defaultValue={course?.description}
+          style={{
+            lineHeight: 1.7,
+            color: 'var(--primary-gray)',
+            fontWeight: 300,
+          }}
         >
           {course?.description}
         </p>
       </div>
 
       <Sections />
-    </CourseBodyContainer>
+    </div>
   )
 }
 
