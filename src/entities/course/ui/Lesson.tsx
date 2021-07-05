@@ -1,4 +1,5 @@
 import { Lesson } from 'src/entities/shared-lesson/services'
+import { videoIcon } from 'src/utils/static/icons'
 
 export interface LessonProps {
   lesson: Lesson
@@ -6,10 +7,11 @@ export interface LessonProps {
 
 const LessonItem: React.FC<LessonProps> = ({ lesson }) => {
   return (
-    <div>
-      <input type="text" defaultValue={lesson.name} />
-      <input type="text" defaultValue={lesson.description} />
-      <p>{lesson.posted_time}</p>
+    <div className="lesson">
+      <div className="icon">{videoIcon}</div>
+      <h4 contentEditable suppressContentEditableWarning>
+        {lesson.name}
+      </h4>
     </div>
   )
 }

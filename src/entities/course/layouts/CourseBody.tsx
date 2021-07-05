@@ -1,5 +1,4 @@
 import { useCourses } from '../services'
-import WhatYouWillLearn from '../components/WhatYouWillLearn'
 import Sections from './Sections'
 import { CourseBodyContainer } from '../styles'
 
@@ -20,7 +19,6 @@ const CourseBody = () => {
         </p>
       </div>
 
-      <WhatYouWillLearn />
       <Sections />
     </CourseBodyContainer>
   )

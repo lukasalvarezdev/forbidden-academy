@@ -260,3 +260,19 @@ export const shareIcon = (
     />
   </svg>
 )
+
+export const sectionNumberContainerIcon = (
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="32.302" viewBox="0 0 26 32.302">
+    <path
+      id="Path_48"
+      data-name="Path 48"
+      d="M10394,1978.5v30.3l12.161-8.577L10418,2008.8v-30.3Z"
+      transform="translate(-10393 -1977.5)"
+      fill="#5078ef"
+      stroke="#5078ef"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+    />
+  </svg>
+)

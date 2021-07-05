@@ -3,8 +3,10 @@ import { Lesson } from '../services'
 
 export function useLesson(courseId: string) {
   const [sections, setSections] = React.useState([
-    { name: 'First section', id: '2jdsa', number_of_lessons: 29, courseId: 'edd' },
-    { name: 'First section', id: '2jdsas', number_of_lessons: 29, courseId: 'edd' },
+    { name: 'Welcome to the project', id: '2jdsa', number_of_lessons: 29, courseId: 'edd' },
+    { name: 'First project', id: '2jdsass', number_of_lessons: 29, courseId: 'edd' },
+    { name: 'Introduction to Express', id: '2jdsasss', number_of_lessons: 29, courseId: 'eds' },
+    { name: 'Second project', id: '2jdsassss', number_of_lessons: 29, courseId: 'edd' },
   ])
 
   const [lessons, setLessons] = React.useState<Lesson[]>([
@@ -23,6 +25,86 @@ export function useLesson(courseId: string) {
       posted_time: 'sda',
       questions: [],
       section: '2jdsa',
+    },
+    {
+      name: 'First',
+      description: 'Hello world',
+      id: 'sdads',
+      announcements: [
+        {
+          title: 'pepe',
+          body: 'sd',
+          posted_time: 'sd',
+        },
+      ],
+      last_modified_time: 'sd',
+      posted_time: 'sda',
+      questions: [],
+      section: '2jdsa',
+    },
+    {
+      name: 'First',
+      description: 'Hello world',
+      id: 'sdads',
+      announcements: [
+        {
+          title: 'pepe',
+          body: 'sd',
+          posted_time: 'sd',
+        },
+      ],
+      last_modified_time: 'sd',
+      posted_time: 'sda',
+      questions: [],
+      section: '2jdsa',
+    },
+    {
+      name: 'First',
+      description: 'Hello world',
+      id: 'sdads',
+      announcements: [
+        {
+          title: 'pepe',
+          body: 'sd',
+          posted_time: 'sd',
+        },
+      ],
+      last_modified_time: 'sd',
+      posted_time: 'sda',
+      questions: [],
+      section: '2jdsa',
+    },
+    {
+      name: 'Seconds',
+      description: 'Hello worlddd',
+      id: 'sdads',
+      announcements: [
+        {
+          title: 'pepe',
+          body: 'sd',
+          posted_time: 'sd',
+        },
+      ],
+      last_modified_time: 'sd',
+      posted_time: 'sda',
+      questions: [],
+      section: '2jdsas',
+    },
+    {
+      name: 'Seconds',
+      description: 'Hello worlddd',
+      id: 'sdads',
+      announcements: [
+        {
+          title: 'pepe',
+          body: 'sd',
+          posted_time: 'sd',
+        },
+      ],
+      last_modified_time: 'sd',
+      posted_time: 'sda',
+      questions: [],
+      section: '2jdsas',
     },
     {
       name: 'Seconds',

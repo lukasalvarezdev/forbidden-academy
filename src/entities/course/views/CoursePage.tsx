@@ -4,23 +4,27 @@ import CourseHeading from '../layouts/CourseHeading'
 import CourseInfoCard from '../layouts/CourseInfoCard'
 import CourseBody from '../layouts/CourseBody'
 import { CourseContainer } from '../styles'
+import Header from 'src/layouts/Header'
 
 const CoursePage = () => {
   const { handleSubmit } = useCourses()
 
   return (
-    <CourseContainer>
-      <div>
-        <CourseHeading />
-        <CourseInfoCard />
-      </div>
+    <>
+      <Header />
+      <CourseContainer>
+        <div>
+          <CourseHeading />
+          <CourseInfoCard />
+        </div>
 
-      <div>
-        <CourseBody />
-      </div>
+        <div>
+          <CourseBody />
+        </div>
 
-      <button onClick={handleSubmit}>Create xd</button>
-    </CourseContainer>
+        <button onClick={handleSubmit}>Create xd</button>
+      </CourseContainer>
+    </>
   )
 }
 

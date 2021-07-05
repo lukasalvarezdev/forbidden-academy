@@ -240,3 +240,8 @@
 .btn-primary:hover {
   background-color: #5a70fff5;
 }
+
+.btn-primary.-gray {
+  background-color: #d4dceb;
+  color: var(--main-black);
+}

@@ -26,11 +26,11 @@ const CourseInfoCard = () => {
     <CourseInfoCardContainer className="normal-shadow" custom-body-width={courseBodyWith}>
       <div className="img"></div>
       <div className="info p-20">
-        <h3 className="mb-30">$ 99</h3>
+        <h3 className="mb-20">$ 99</h3>
 
-        <div className="mb-30">
-          <button className="button d-b mb-10">Add to cart</button>
-          <button className="button button-t d-b">Buy now</button>
+        <div className="mb-20">
+          <button className="btn-primary d-b mb-10">Add to cart</button>
+          <button className="btn-primary -gray d-b">Buy now</button>
         </div>
 
         <h4 className="mb-20">This course includes</h4>

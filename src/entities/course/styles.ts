@@ -58,7 +58,7 @@ export const CourseInfoCardContainer = styled.div`
   border-radius: 3px;
   width: 390px;
   position: fixed;
-  top: 40px;
+  top: calc(40px + 60px);
   margin-left: ${props => {
     // @ts-ignore
     return `${props['custom-body-width'] + 30}px`
@@ -73,34 +73,8 @@ export const CourseInfoCardContainer = styled.div`
   }
 
   h3 {
-    font-size: 3rem;
-  }
-
-  .button {
-    background-color: var(--purple);
-    color: white;
-    padding: 1.5rem 0;
-    width: 100%;
-    border-radius: 3px;
-    border: 2px solid transparent;
-    transition: all 0.4s ease-in-out;
-
-    &:hover {
-      background-color: transparent;
-      color: var(--purple);
-      border: 2px solid var(--purple);
-    }
-
-    &.button-t {
-      background-color: transparent;
-      border: 2px solid var(--purple);
-      color: var(--purple);
-
-      &:hover {
-        background-color: var(--purple);
-        color: white;
-      }
-    }
+    font-size: 3.6rem;
+    font-weight: 800;
   }
 
   li {
