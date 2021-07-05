@@ -9,9 +9,11 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; /* 1rem == 1px*/
+  height: 100%;
 }
 
 body {
+  height: 100%;
   box-sizing: inherit;
   font-family: var(--font-inter);
   font-size: 1.6rem;
