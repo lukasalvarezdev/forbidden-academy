@@ -1,7 +1,7 @@
 import { useLesson } from 'src/entities/shared-lesson/services'
 import Lesson from '../ui/Lesson'
 import styled from 'styled-components'
-import { filledArrowIcon, sectionNumberContainerIcon } from 'src/utils/static/icons'
+import { FilledArrowIcon, SectionNumberContainerIcon } from 'src/utils/static/icons'
 
 const StyledSections = styled.div`
   background-color: #d5e4f7;
@@ -82,13 +82,13 @@ const Sections = () => {
         <div key={index} className="section">
           <div className="section-info">
             <div className="number-container">
-              {sectionNumberContainerIcon}
+              <SectionNumberContainerIcon />
               <span>{index}</span>
             </div>
             <h3 contentEditable suppressContentEditableWarning>
               {section.name}
             </h3>
-            {filledArrowIcon}
+            <FilledArrowIcon />
           </div>
 
           <div className="lessons">

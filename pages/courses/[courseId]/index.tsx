@@ -4,10 +4,10 @@ import Header from 'src/layouts/Header'
 import styled from 'styled-components'
 import LessonItem from 'src/entities/course/ui/Lesson'
 import {
-  borderedArrowIcon,
-  clockIcon,
-  filledArrowIcon,
-  sectionNumberContainerIcon,
+  BorderedArrowIcon,
+  ClockIcon,
+  FilledArrowIcon,
+  SectionNumberContainerIcon,
 } from 'src/utils/static/icons'
 
 const StlyedPepe = styled.div`
@@ -283,13 +283,13 @@ export default function CreateCoursePage() {
             <div key={index} className="section">
               <div className="section-info">
                 <div className="number-container">
-                  {sectionNumberContainerIcon}
+                  {<SectionNumberContainerIcon />}
                   <span>{index}</span>
                 </div>
                 <h3 contentEditable suppressContentEditableWarning>
                   {section.name}
                 </h3>
-                {filledArrowIcon}
+                {<FilledArrowIcon />}
               </div>
 
               <div className="lessons">
@@ -307,14 +307,18 @@ export default function CreateCoursePage() {
           <div className="lesson-heading d-f center-f mb-30">
             <h3>Installing NodeJS</h3>
             <div className="lesson-duration d-f center-f">
-              {clockIcon}
+              <ClockIcon />
               <span className="ml-10">12:32</span>
             </div>
           </div>
 
           <div className="lesson">
-            <div className="skip">{borderedArrowIcon}</div>
-            <div className="skip -reverse">{borderedArrowIcon}</div>
+            <div className="skip">
+              <BorderedArrowIcon />{' '}
+            </div>
+            <div className="skip -reverse">
+              <BorderedArrowIcon />
+            </div>
             <div className="img"></div>
 
             <p className="description">

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { searchIcon, cartIcon, coursesIcon, bellIcon } from 'src/utils/static/icons'
+import { SearchIcon, CartIcon, CoursesIcon, BellIcon } from 'src/utils/static/icons'
 
 const StyledHeader = styled.header`
   height: 60px;
@@ -84,7 +84,9 @@ export default function Header() {
         </div>
         <div className="search-bar d-f align-items-c ml-30">
           <input type="text" placeholder="Search for anything" />
-          <button className="icon d-f center-f ml-20">{searchIcon}</button>
+          <button className="icon d-f center-f ml-20">
+            <SearchIcon />
+          </button>
         </div>
       </div>
 
@@ -92,9 +94,15 @@ export default function Header() {
         <Link href="/">
           <a className="mr-20">Teach on lukidemy</a>
         </Link>
-        <button className="icon">{cartIcon}</button>
-        <button className="icon">{coursesIcon}</button>
-        <button className="icon">{bellIcon}</button>
+        <button className="icon">
+          <CartIcon />
+        </button>
+        <button className="icon">
+          <CoursesIcon />
+        </button>
+        <button className="icon">
+          <BellIcon />
+        </button>
         <div className="profile d-f center-f">LU</div>
       </div>
     </StyledHeader>
