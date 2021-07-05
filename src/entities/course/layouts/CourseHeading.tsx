@@ -1,28 +1,47 @@
-import { useCourses, useEditableInput } from '../services'
+import { useCourses } from '../services'
+import { CourseHeadingContainer } from '../styles'
 
 const CourseHeading = () => {
   const { course } = useCourses()
-  const handleChange = useEditableInput()
 
   return (
-    <form onChange={handleChange}>
-      <div>
-        <label htmlFor="xd">Title</label>
-        <input type="text" name="title" />
-      </div>
-      <div>
-        <label htmlFor="xd">Short description</label>
-        <input type="text" name="short_description" />
-      </div>
-      <div>
-        <label htmlFor="xd">Langugage</label>
-        <select name="language" defaultValue={course?.language || ''}>
-          <option value=""> --Select a language --</option>
-          <option value="spanish">Spanish</option>
-          <option value="english">English</option>
-        </select>
-      </div>
-    </form>
+    <header className="bg-primary-black fc-white mb-30">
+      <CourseHeadingContainer className="container">
+        <div className="info-65" id="course-info">
+          <div className="mb-20">
+            <h1
+              contentEditable={true}
+              suppressContentEditableWarning={true}
+              className="fake-input"
+              title="name"
+            >
+              {course?.name}
+            </h1>
+          </div>
+          <div>
+            <p
+              className="mb-20 fake-input"
+              contentEditable={true}
+              suppressContentEditableWarning={true}
+              title="short_description"
+            >
+              {course?.short_description}
+            </p>
+          </div>
+          <div>
+            <select
+              name="language"
+              defaultValue={course?.language || ''}
+              className="fake-input"
+            >
+              <option value=""> - Select a language -</option>
+              <option value="spanish">Spanish</option>
+              <option value="english">English</option>
+            </select>
+          </div>
+        </div>
+      </CourseHeadingContainer>
+    </header>
   )
 }
 
