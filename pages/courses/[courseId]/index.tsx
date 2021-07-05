@@ -20,6 +20,7 @@ const StlyedPepe = styled.div`
   .lessons-container {
     background-color: #d5e4f7;
     width: 25%;
+    min-width: 380px;
     padding: 20px;
   }
 
