@@ -193,7 +193,7 @@
 
 /* FLEX */
 .f-one {
-  flex: one;
+  flex: 1;
 }
 .f-d-column {
   flex-direction: column;
@@ -227,7 +227,7 @@
   text-align: center;
 }
 
-.bnt-primary {
+.btn-primary {
   height: 50px;
   background-color: var(--purple);
   color: white;
@@ -237,6 +237,6 @@
   font-weight: 600;
 }
 
-.bnt-primary:hover {
+.btn-primary:hover {
   background-color: #5a70fff5;
 }

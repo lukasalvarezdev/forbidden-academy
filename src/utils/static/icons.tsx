@@ -1,4 +1,4 @@
-export const starIcon = () => (
+export const starIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="14.11"
@@ -17,8 +17,8 @@ export const starIcon = () => (
   </svg>
 )
 
-export const halfStarIcon = () => <svg></svg>
-export const searchIcon = () => (
+export const halfStarIcon = <svg></svg>
+export const searchIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="18.047"
@@ -36,7 +36,7 @@ export const searchIcon = () => (
   </svg>
 )
 
-export const cartIcon = () => (
+export const cartIcon = (
   <svg
     id="Group_75"
     data-name="Group 75"
@@ -69,7 +69,7 @@ export const cartIcon = () => (
   </svg>
 )
 
-export const coursesIcon = () => (
+export const coursesIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="38.548"
@@ -86,7 +86,7 @@ export const coursesIcon = () => (
   </svg>
 )
 
-export const bellIcon = () => (
+export const bellIcon = (
   <svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" viewBox="0 0 25 28">
     <path
       id="Path_37"
@@ -98,7 +98,7 @@ export const bellIcon = () => (
   </svg>
 )
 
-export const videoIcon = () => (
+export const videoIcon = (
   <svg xmlns="http://www.w3.org/2000/svg" width="19" height="14.473" viewBox="0 0 19 14.473">
     <g id="youtube" transform="translate(0 -61)">
       <path
@@ -118,7 +118,7 @@ export const videoIcon = () => (
   </svg>
 )
 
-export const borderedArrowIcon = () => (
+export const borderedArrowIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="9.156"
@@ -139,7 +139,7 @@ export const borderedArrowIcon = () => (
   </svg>
 )
 
-export const filledArrowIcon = () => (
+export const filledArrowIcon = (
   <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
     <path
       id="Polygon_7"
@@ -155,7 +155,7 @@ export const filledArrowIcon = () => (
   </svg>
 )
 
-export const clockIcon = () => (
+export const clockIcon = (
   <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
     <g id="clock" transform="translate(0.5 0.5)">
       <g id="Group_103" data-name="Group 103" transform="translate(7.38 3.712)">
@@ -187,7 +187,7 @@ export const clockIcon = () => (
   </svg>
 )
 
-export const personIcon = () => (
+export const personIcon = (
   <svg
     id="person_black_24dp"
     xmlns="http://www.w3.org/2000/svg"
@@ -205,7 +205,7 @@ export const personIcon = () => (
   </svg>
 )
 
-export const globalIcon = () => (
+export const globalIcon = (
   <svg
     id="language_black_24dp"
     xmlns="http://www.w3.org/2000/svg"
@@ -223,7 +223,7 @@ export const globalIcon = () => (
   </svg>
 )
 
-export const favoriteIcon = () => (
+export const favoriteIcon = (
   <svg
     id="favorite_border_black_24dp"
     xmlns="http://www.w3.org/2000/svg"
@@ -242,7 +242,7 @@ export const favoriteIcon = () => (
   </svg>
 )
 
-export const shareIcon = () => (
+export const shareIcon = (
   <svg
     id="share_black_24dp"
     xmlns="http://www.w3.org/2000/svg"

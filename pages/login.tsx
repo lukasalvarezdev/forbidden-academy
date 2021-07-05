@@ -89,7 +89,7 @@ export default function LoginPage() {
           </div>
           <span className="d-b mb-20">Forgot your passowrd?</span>
 
-          <button className="bnt-primary -big">Log in</button>
+          <button className="btn-primary -big">Log in</button>
         </form>
 
         <p className="mb-20">Or</p>
