@@ -1,70 +1,6 @@
 import GoogleLogo from '@/static/img/google-logo'
 import styled from 'styled-components'
 
-const StyledLogin = styled.div`
-  background-color: #fff;
-  border-radius: 5px;
-  max-width: 450px;
-  width: 95%;
-  margin: 0 auto;
-  padding: 30px 60px 40px 60px;
-
-  .logo img {
-    width: 160px;
-  }
-
-  .field {
-    label {
-      text-align: left;
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--primary-gray);
-      margin-bottom: 5px;
-    }
-
-    input {
-      height: 40px;
-      background-color: var(--light-gray);
-      border: 0.5px solid var(--primary-gray);
-      border-radius: 4px;
-      width: 100%;
-      padding-left: 15px;
-    }
-  }
-
-  span {
-    margin-top: 5px;
-    font-size: 12px;
-    text-align: left;
-  }
-
-  .google-login {
-    background-color: #4285f4;
-    color: white;
-    text-align: center;
-    width: 100%;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-    position: relative;
-    height: 40px;
-
-    .google-box {
-      background-color: #fff;
-      border-radius: 3px;
-      position: absolute;
-      height: 34px;
-      width: 34px;
-      left: 3px;
-      top: 3px;
-
-      svg {
-      }
-    }
-  }
-`
-
 export default function LoginPage() {
   return (
     <div
@@ -104,3 +40,47 @@ export default function LoginPage() {
     </div>
   )
 }
+
+const StyledLogin = styled.div`
+  background-color: #fff;
+  border-radius: 5px;
+  max-width: 450px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 30px 60px 40px 60px;
+
+  .logo img {
+    width: 160px;
+  }
+
+  span {
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .google-login {
+    background-color: #4285f4;
+    color: white;
+    text-align: center;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    height: 40px;
+
+    .google-box {
+      background-color: #fff;
+      border-radius: 3px;
+      position: absolute;
+      height: 34px;
+      width: 34px;
+      left: 3px;
+      top: 3px;
+
+      svg {
+      }
+    }
+  }
+`

@@ -1,9 +1,14 @@
-export const starIcon = (
+interface Icon {
+  className?: string
+}
+
+export const StarIcon: React.FC<Icon> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="14.11"
     height="13.485"
     viewBox="0 0 14.11 13.485"
+    className={className}
   >
     <g id="Group_19" data-name="Group 19" transform="translate(-3.443 -3.573)">
       <path
@@ -17,13 +22,14 @@ export const starIcon = (
   </svg>
 )
 
-export const halfStarIcon = <svg></svg>
-export const searchIcon = (
+export const HalfStarIcon: React.FC<Icon> = () => <svg></svg>
+export const SearchIcon: React.FC<Icon> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="18.047"
     height="18.568"
     viewBox="0 0 18.047 18.568"
+    className={className}
   >
     <path
       id="search"
@@ -36,7 +42,7 @@ export const searchIcon = (
   </svg>
 )
 
-export const cartIcon = (
+export const CartIcon: React.FC<Icon> = ({ className }) => (
   <svg
     id="Group_75"
     data-name="Group 75"
@@ -44,6 +50,7 @@ export const cartIcon = (
     width="27.134"
     height="28.202"
     viewBox="0 0 27.134 28.202"
+    className={className}
   >
     <path
       id="Path_39"
@@ -69,12 +76,13 @@ export const cartIcon = (
   </svg>
 )
 
-export const coursesIcon = (
+export const CoursesIcon: React.FC<Icon> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="38.548"
     height="27.709"
     viewBox="0 0 38.548 27.709"
+    className={className}
   >
     <path
       id="Path_38"
@@ -86,8 +94,14 @@ export const coursesIcon = (
   </svg>
 )
 
-export const bellIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" viewBox="0 0 25 28">
+export const BellIcon: React.FC<Icon> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="28"
+    viewBox="0 0 25 28"
+    className={className}
+  >
     <path
       id="Path_37"
       data-name="Path 37"
@@ -98,8 +112,14 @@ export const bellIcon = (
   </svg>
 )
 
-export const videoIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="19" height="14.473" viewBox="0 0 19 14.473">
+export const VideoIcon: React.FC<Icon> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="19"
+    height="14.473"
+    viewBox="0 0 19 14.473"
+    className={className}
+  >
     <g id="youtube" transform="translate(0 -61)">
       <path
         id="Path_43"
@@ -118,11 +138,12 @@ export const videoIcon = (
   </svg>
 )
 
-export const borderedArrowIcon = (
+export const BorderedArrowIcon: React.FC<Icon> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="9.156"
     height="15.313"
+    className={className}
     viewBox="0 0 9.156 15.313"
   >
     <path
@@ -139,8 +160,14 @@ export const borderedArrowIcon = (
   </svg>
 )
 
-export const filledArrowIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+export const FilledArrowIcon: React.FC<Icon> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="8"
+    height="6"
+    viewBox="0 0 8 6"
+    className={className}
+  >
     <path
       id="Polygon_7"
       data-name="Polygon 7"
@@ -155,8 +182,14 @@ export const filledArrowIcon = (
   </svg>
 )
 
-export const clockIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+export const ClockIcon: React.FC<Icon> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="17"
+    height="17"
+    viewBox="0 0 17 17"
+    className={className}
+  >
     <g id="clock" transform="translate(0.5 0.5)">
       <g id="Group_103" data-name="Group 103" transform="translate(7.38 3.712)">
         <g id="Group_102" data-name="Group 102">
@@ -187,13 +220,14 @@ export const clockIcon = (
   </svg>
 )
 
-export const personIcon = (
+export const PersonIcon: React.FC<Icon> = ({ className }) => (
   <svg
     id="person_black_24dp"
     xmlns="http://www.w3.org/2000/svg"
     width="24"
     height="24"
     viewBox="0 0 24 24"
+    className={className}
   >
     <path id="Path_21" data-name="Path 21" d="M0,0H24V24H0Z" fill="none" />
     <path
@@ -205,13 +239,14 @@ export const personIcon = (
   </svg>
 )
 
-export const globalIcon = (
+export const GlobalIcon: React.FC<Icon> = ({ className }) => (
   <svg
     id="language_black_24dp"
     xmlns="http://www.w3.org/2000/svg"
     width="24"
     height="24"
     viewBox="0 0 24 24"
+    className={className}
   >
     <path id="Path_19" data-name="Path 19" d="M0,0H24V24H0Z" fill="none" />
     <path
@@ -223,13 +258,14 @@ export const globalIcon = (
   </svg>
 )
 
-export const favoriteIcon = (
+export const FavoriteIcon: React.FC<Icon> = ({ className }) => (
   <svg
     id="favorite_border_black_24dp"
     xmlns="http://www.w3.org/2000/svg"
     width="18.884"
     height="18.884"
     viewBox="0 0 18.884 18.884"
+    className={className}
   >
     <path id="Path_6" data-name="Path 6" d="M0,0H18.884V18.884H0Z" fill="none" />
     <path
@@ -242,13 +278,14 @@ export const favoriteIcon = (
   </svg>
 )
 
-export const shareIcon = (
+export const ShareIcon: React.FC<Icon> = ({ className }) => (
   <svg
     id="share_black_24dp"
     xmlns="http://www.w3.org/2000/svg"
     width="18"
     height="18"
     viewBox="0 0 18 18"
+    className={className}
   >
     <path id="Path_17" data-name="Path 17" d="M0,0H18V18H0Z" fill="none" />
     <path
@@ -261,8 +298,14 @@ export const shareIcon = (
   </svg>
 )
 
-export const sectionNumberContainerIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="32.302" viewBox="0 0 26 32.302">
+export const SectionNumberContainerIcon: React.FC<Icon> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="26"
+    height="32.302"
+    viewBox="0 0 26 32.302"
+    className={className}
+  >
     <path
       id="Path_48"
       data-name="Path 48"

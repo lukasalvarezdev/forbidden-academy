@@ -245,3 +245,22 @@
   background-color: #d4dceb;
   color: var(--main-black);
 }
+
+/* FORMS */
+.field label {
+  text-align: left;
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-gray);
+  margin-bottom: 5px;
+}
+
+.field input {
+  height: 40px;
+  background-color: var(--light-gray);
+  border: 0.5px solid var(--primary-gray);
+  border-radius: 4px;
+  width: 100%;
+  padding-left: 15px;
+}
