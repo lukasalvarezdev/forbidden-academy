@@ -258,9 +258,27 @@
 
 .field input {
   height: 40px;
-  background-color: var(--light-gray);
+  background-color: var(--light-blue);
   border: 0.5px solid var(--primary-gray);
   border-radius: 4px;
   width: 100%;
+  font-size: 14px;
+  outline: none;
   padding-left: 15px;
+}
+
+.icon-primary {
+  background-color: transparent;
+  height: 40px;
+  flex: auto;
+  flex-basis: 40px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 40px;
+}
+.icon-primary svg {
+  transform: scale(0.9);
+}
+.icon-primary svg path {
+  fill: var(--primary-black);
 }
