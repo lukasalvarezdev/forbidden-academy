@@ -38,6 +38,10 @@ const StyledHeader = styled.header`
       flex-basis: 40px;
       flex-grow: 0;
       flex-shrink: 0;
+
+      svg {
+        transform: scale(0.9);
+      }
     }
   }
 
@@ -48,10 +52,13 @@ const StyledHeader = styled.header`
     }
 
     .icon {
-      margin-right: 30px;
+      margin-right: 20px;
       background-color: #fff;
       padding: 5px;
 
+      svg {
+        transform: scale(0.9);
+      }
       svg path {
         fill: var(--primary-black);
       }
@@ -142,7 +149,7 @@ export default function Home() {
 
         <div className="icons d-f align-items-c">
           <Link href="/">
-            <a className="mr-30">Teach on lukidemy</a>
+            <a className="mr-20">Teach on lukidemy</a>
           </Link>
           <button className="icon">{cartIcon}</button>
           <button className="icon">{coursesIcon}</button>
@@ -153,30 +160,32 @@ export default function Home() {
 
       <StyledCourses className="container d-g">
         {Array.from(Array(13)).map((_, index) => (
-          <div className="card" key={index}>
-            <div className="card-heading">
-              <div className="img"></div>
-            </div>
-            <div className="card-body p-20">
-              <h4>The complete guide NodeJS course</h4>
-              <p className="mt-10">
-                In this learning journey, you will find out how to be more digital and how to
-                digitize your current skills.
-              </p>
-              <span className="author mt-20 d-b">Lukas Alvarez</span>
-              <div className="rating d-f align-items-c mt-10">
-                <span className="rating-number mr-10">4.2</span>
-                <div className="d-f align-items-c">
-                  {starIcon}
-                  {starIcon}
-                  {starIcon}
-                  {starIcon}
-                </div>
-                <span className="rating-quantity">(666)</span>
+          <Link key={index} href={`/courses/${index}`}>
+            <a className="card">
+              <div className="card-heading">
+                <div className="img"></div>
               </div>
-            </div>
-            <button className="btn-primary">Add to cart</button>
-          </div>
+              <div className="card-body p-20">
+                <h4>The complete guide NodeJS course</h4>
+                <p className="mt-10">
+                  In this learning journey, you will find out how to be more digital and how to
+                  digitize your current skills.
+                </p>
+                <span className="author mt-20 d-b">Lukas Alvarez</span>
+                <div className="rating d-f align-items-c mt-10">
+                  <span className="rating-number mr-10">4.2</span>
+                  <div className="d-f align-items-c">
+                    {starIcon}
+                    {starIcon}
+                    {starIcon}
+                    {starIcon}
+                  </div>
+                  <span className="rating-quantity">(666)</span>
+                </div>
+              </div>
+              <button className="btn-primary">Add to cart</button>
+            </a>
+          </Link>
         ))}
       </StyledCourses>
     </>
