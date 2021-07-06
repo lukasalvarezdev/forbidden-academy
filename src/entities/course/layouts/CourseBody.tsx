@@ -1,5 +1,5 @@
 import { useCourses } from '../services'
-import Sections from './Sections'
+import Sections from 'src/entities/lesson/layouts/Sections'
 
 const CourseBody = () => {
   const { course } = useCourses()

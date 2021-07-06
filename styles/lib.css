@@ -215,6 +215,9 @@
 .fc-white {
   color: white;
 }
+.bg-white {
+  background-color: #fff;
+}
 
 /* SHADOWS */
 .normal-shadow {
@@ -281,4 +284,37 @@
 }
 .icon-primary svg path {
   fill: var(--primary-black);
+}
+
+.border-radius-primary {
+  border-radius: 4px;
+}
+
+/* POSITION */
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/* FONTS */
+.font-bold {
+  font-weight: bold;
+}
+.font-lighe {
+  font-weight: 300;
+}
+.font-normal {
+  font-weight: 400;
+}
+.font-semi-bold {
+  font-weight: 600;
 }
