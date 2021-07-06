@@ -1,5 +1,9 @@
 {
-  "name": "lukidemy",
+  "name": "forbidden-academy",
+  "repository": {
+    "url": "https://github.com/lukasalvarezdev/forbidden-academy",
+    "directory": "next"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +13,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "firebase": "^8.6.8",
     "next": "11.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
