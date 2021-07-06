@@ -1,10 +1,5 @@
-import CoursesProvider from 'src/entities/course/store/context'
-import CoursePage from 'src/entities/course/views/CoursePage'
+import CoursePage from 'src/views/CoursePage'
 
 export default function CreateCoursePage() {
-  return (
-    <CoursesProvider>
-      <CoursePage />
-    </CoursesProvider>
-  )
+  return <CoursePage />
 }

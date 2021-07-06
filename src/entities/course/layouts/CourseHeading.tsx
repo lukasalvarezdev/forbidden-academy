@@ -1,5 +1,5 @@
+import styled from 'styled-components'
 import { useCourses } from '../services'
-import { CourseHeadingContainer } from '../styles'
 
 const CourseHeading = () => {
   const { course } = useCourses()
@@ -46,3 +46,29 @@ const CourseHeading = () => {
 }
 
 export default CourseHeading
+
+const CourseHeadingContainer = styled.div`
+  padding: 4rem 0;
+
+  .fake-input {
+    color: white;
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+  }
+
+  select {
+    font-size: 1.4rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    outline: none;
+
+    option {
+      background-color: var(--primary-black);
+    }
+  }
+`
