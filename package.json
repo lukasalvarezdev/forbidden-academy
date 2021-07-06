@@ -1,5 +1,9 @@
 {
-  "name": "lukidemy",
+  "name": "forbidden-academy",
+  "repository": {
+    "url": "https://github.com/lukasalvarezdev/forbidden-academy",
+    "directory": "next"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
