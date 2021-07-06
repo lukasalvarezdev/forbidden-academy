@@ -215,6 +215,9 @@
 .fc-white {
   color: white;
 }
+.bg-white {
+  background-color: #fff;
+}
 
 /* SHADOWS */
 .normal-shadow {
@@ -244,4 +247,74 @@
 .btn-primary.-gray {
   background-color: #d4dceb;
   color: var(--main-black);
+}
+
+/* FORMS */
+.field label {
+  text-align: left;
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-gray);
+  margin-bottom: 5px;
+}
+
+.field input {
+  height: 40px;
+  background-color: var(--light-blue);
+  border: 0.5px solid var(--primary-gray);
+  border-radius: 4px;
+  width: 100%;
+  font-size: 14px;
+  outline: none;
+  padding-left: 15px;
+}
+
+.icon-primary {
+  background-color: transparent;
+  height: 40px;
+  flex: auto;
+  flex-basis: 40px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 40px;
+}
+.icon-primary svg {
+  transform: scale(0.9);
+}
+.icon-primary svg path {
+  fill: var(--primary-black);
+}
+
+.border-radius-primary {
+  border-radius: 4px;
+}
+
+/* POSITION */
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/* FONTS */
+.font-bold {
+  font-weight: bold;
+}
+.font-lighe {
+  font-weight: 300;
+}
+.font-normal {
+  font-weight: 400;
+}
+.font-semi-bold {
+  font-weight: 600;
 }

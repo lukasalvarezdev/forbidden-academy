@@ -1,32 +1,16 @@
 import * as React from 'react'
-import { CourseInfoCardContainer } from '../styles'
-import { Circle } from '../ui/icons'
+import styled from 'styled-components'
+import { Circle } from '@/icons'
+import { useCourses } from '../services'
 
 const CourseInfoCard = () => {
-  const [courseBodyWith, setCouseBodyWidth] = React.useState(0)
-
-  function setCourseWidthEvent() {
-    const courseInfo = document.getElementById('course-info')
-    if (!courseInfo) return
-
-    setCouseBodyWidth((courseInfo?.offsetLeft as number) + (courseInfo?.offsetWidth as number))
-  }
-
-  React.useLayoutEffect(() => {
-    setCourseWidthEvent()
-  }, [])
-
-  React.useEffect(() => {
-    window.addEventListener('resize', setCourseWidthEvent)
-
-    return () => window.removeEventListener('resize', setCourseWidthEvent)
-  }, [])
+  const { course } = useCourses()
 
   return (
-    <CourseInfoCardContainer className="normal-shadow" custom-body-width={courseBodyWith}>
-      <div className="img"></div>
-      <div className="info p-20">
-        <h3 className="mb-20">$ 99</h3>
+    <CourseInfoCardContainer className="normal-shadow">
+      <div className="card-headin img"></div>
+      <div className="card-body p-20">
+        <h3 className="mb-20">$ {course?.price}</h3>
 
         <div className="mb-20">
           <button className="btn-primary d-b mb-10">Add to cart</button>
@@ -55,3 +39,29 @@ const CourseInfoCard = () => {
 }
 
 export default CourseInfoCard
+
+const CourseInfoCardContainer = styled.div`
+  background-color: #fff;
+  border-radius: 3px;
+  width: 390px;
+  position: fixed;
+  top: calc(40px + 60px);
+  margin-left: 30px;
+  border-radius: 4px;
+
+  .img {
+    width: 100%;
+    height: 200px;
+    background-color: red;
+    border-radius: 4px 4px 0px 0px;
+  }
+
+  h3 {
+    font-size: 3.6rem;
+    font-weight: 800;
+  }
+
+  ul li {
+    font-size: 1.4rem;
+  }
+`

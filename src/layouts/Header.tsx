@@ -1,6 +1,42 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { searchIcon, cartIcon, coursesIcon, bellIcon } from 'src/utils/static/icons'
+import { SearchIcon, CartIcon, CoursesIcon, BellIcon } from 'src/utils/static/icons'
+
+export default function Header() {
+  return (
+    <StyledHeader className="d-f align-items-c normal-shadow justify-content-sb">
+      <div className="d-f align-items-c f-one">
+        <div className="logo">
+          <img src="/logo.png" alt="Lukidemy logo" />
+        </div>
+        <div className="search-bar d-f align-items-c ml-30">
+          <div className="field">
+            <input type="text" placeholder="Search for anything" />
+          </div>
+          <button className="icon-primary d-f center-f ml-20">
+            <SearchIcon />
+          </button>
+        </div>
+      </div>
+
+      <div className="icons d-f align-items-c">
+        <Link href="/">
+          <a className="mr-20">Teach on lukidemy</a>
+        </Link>
+        <button className="icon-primary">
+          <CartIcon />
+        </button>
+        <button className="icon-primary">
+          <CoursesIcon />
+        </button>
+        <button className="icon-primary">
+          <BellIcon />
+        </button>
+        <div className="profile d-f center-f">LU</div>
+      </div>
+    </StyledHeader>
+  )
+}
 
 const StyledHeader = styled.header`
   height: 60px;
@@ -14,33 +50,21 @@ const StyledHeader = styled.header`
   .search-bar {
     flex: 1;
 
-    input {
-      height: 40px;
-      background-color: var(--light-blue);
-      border: 0.5px solid var(--primary-gray);
-      border-radius: 4px;
+    .field {
       width: 100%;
-      padding-left: 15px;
-      font-size: 14px;
       max-width: 40%;
-      outline: none;
 
-      &::placeholder {
+      input ::placeholder {
         font-weight: 300;
       }
     }
 
-    .icon {
+    .icon-primary {
       background-color: var(--purple);
       border-radius: 50%;
-      height: 40px;
-      flex: auto;
-      flex-basis: 40px;
-      flex-grow: 0;
-      flex-shrink: 0;
 
-      svg {
-        transform: scale(0.9);
+      path {
+        fill: white;
       }
     }
   }
@@ -51,21 +75,13 @@ const StyledHeader = styled.header`
       color: var(--primary-gray);
     }
 
-    .icon {
+    .icon-primary {
       margin-right: 20px;
-      background-color: #fff;
-      padding: 5px;
-
-      svg {
-        transform: scale(0.9);
-      }
-      svg path {
-        fill: var(--primary-black);
-      }
     }
+
     .profile {
-      width: 40px;
-      height: 40px;
+      width: 35px;
+      height: 35px;
       background-color: #ff4a1d;
       color: white;
       border-radius: 50%;
@@ -74,29 +90,3 @@ const StyledHeader = styled.header`
     }
   }
 `
-
-export default function Header() {
-  return (
-    <StyledHeader className="d-f align-items-c normal-shadow justify-content-sb">
-      <div className="d-f align-items-c f-one">
-        <div className="logo">
-          <img src="/logo.png" alt="Lukidemy logo" />
-        </div>
-        <div className="search-bar d-f align-items-c ml-30">
-          <input type="text" placeholder="Search for anything" />
-          <button className="icon d-f center-f ml-20">{searchIcon}</button>
-        </div>
-      </div>
-
-      <div className="icons d-f align-items-c">
-        <Link href="/">
-          <a className="mr-20">Teach on lukidemy</a>
-        </Link>
-        <button className="icon">{cartIcon}</button>
-        <button className="icon">{coursesIcon}</button>
-        <button className="icon">{bellIcon}</button>
-        <div className="profile d-f center-f">LU</div>
-      </div>
-    </StyledHeader>
-  )
-}

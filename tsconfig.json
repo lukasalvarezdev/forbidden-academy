@@ -6,6 +6,7 @@
       "src/*": ["src/*"],
       "@fire": ["config/fire-config.ts"],
       "@/static/*": ["src/utils/static/*"],
+      "@/icons": ["src/utils/static/icons.tsx"]
     },
     "target": "es6",
     "lib": [
