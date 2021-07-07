@@ -18,7 +18,7 @@ const CourseInfoCard = () => {
     setCouseBodyWidth((courseInfo?.offsetLeft as number) + (courseInfo?.offsetWidth as number))
   }
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     setCourseWidthEvent()
   }, [])
 
