@@ -1,7 +1,11 @@
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { useCourses } from '../services'
 
 const CourseHeading = () => {
+  const {
+    query: { courseId },
+  } = useRouter()
   const { course } = useCourses()
 
   return (
@@ -10,28 +14,28 @@ const CourseHeading = () => {
         <div className="info-65" id="course-info">
           <div className="mb-20">
             <h1
-              contentEditable={true}
-              suppressContentEditableWarning={true}
+              contentEditable
+              suppressContentEditableWarning
               className="fake-input"
               title="name"
             >
-              {course?.name}
+              {courseId ? course?.name : ''}
             </h1>
           </div>
           <div>
             <p
               className="mb-20 fake-input"
-              contentEditable={true}
-              suppressContentEditableWarning={true}
+              contentEditable
+              suppressContentEditableWarning
               title="short_description"
             >
-              {course?.short_description}
+              {courseId ? course?.short_description : ''}
             </p>
           </div>
           <div>
             <select
               name="language"
-              defaultValue={course?.language || ''}
+              defaultValue={courseId ? course?.language || '' : ''}
               className="fake-input"
             >
               <option value=""> - Select a language -</option>

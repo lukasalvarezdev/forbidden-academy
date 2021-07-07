@@ -2,15 +2,20 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Circle } from '@/icons'
 import { useCourses } from '../services'
+import { useRouter } from 'next/router'
 
 const CourseInfoCard = () => {
+  const {
+    query: { courseId },
+  } = useRouter()
   const { course } = useCourses()
 
+  return null
   return (
     <CourseInfoCardContainer className="normal-shadow">
       <div className="card-headin img"></div>
       <div className="card-body p-20">
-        <h3 className="mb-20">$ {course?.price}</h3>
+        <h3 className="mb-20">$ {courseId ? course?.price : ''}</h3>
 
         <div className="mb-20">
           <button className="btn-primary d-b mb-10">Add to cart</button>
