@@ -3,13 +3,13 @@ export function parseCourse(courseForm: HTMLFormElement | null) {
 
   try {
     return [
-      Array.from(courseForm.elements).reduce(
+      Array.from(courseForm.querySelectorAll('.parse-courses')).reduce(
         (acc, curr: any) =>
           curr.classList.contains('fake-input') ||
           ['INPUT', 'SELECT', 'TEXTAREA'].includes(curr.nodeName)
             ? {
                 ...acc,
-                [curr.title || curr.name]: curr.textContent || curr.value,
+                [curr.title || curr.name]: curr.title ? curr.textContent : curr.value,
               }
             : acc,
         {},

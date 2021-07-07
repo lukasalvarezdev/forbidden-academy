@@ -45,7 +45,7 @@ const CoursesProvider: React.FC = ({ children }) => {
       return
     }
 
-    console.log(createdCourse.id)
+    console.log(createdCourse)
   }
 
   async function handleSubmitUpdate() {
@@ -68,9 +68,10 @@ const CoursesProvider: React.FC = ({ children }) => {
         courseFormRef,
       }}
     >
-      {children}
+      <button onClick={handleSubmit}>pepe</button>
+      <form ref={courseFormRef}>{children}</form>
     </coursesContext.Provider>
   )
 }
 
-export default CoursesProvider
+export { CoursesProvider }

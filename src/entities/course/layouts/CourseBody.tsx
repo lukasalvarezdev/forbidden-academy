@@ -15,7 +15,7 @@ const CourseBody = () => {
           contentEditable
           suppressContentEditableWarning
           title="description"
-          className="fake-input"
+          className="fake-input parse-courses"
           style={{
             lineHeight: 1.7,
             color: 'var(--primary-gray)',

@@ -15,7 +15,13 @@ const CourseInfoCard = () => {
     <CourseInfoCardContainer className="normal-shadow">
       <div className="card-headin img"></div>
       <div className="card-body p-20">
-        <h3 className="mb-20">$ {courseId ? course?.price : ''}</h3>
+        <h3
+          className="mb-20 fake-input parse-courses"
+          contentEditable
+          suppressContentEditableWarning
+        >
+          $ {courseId ? course?.price : ''}
+        </h3>
 
         <div className="mb-20">
           <button className="btn-primary d-b mb-10">Add to cart</button>

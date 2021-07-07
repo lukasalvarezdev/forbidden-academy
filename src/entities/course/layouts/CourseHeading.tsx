@@ -16,7 +16,7 @@ const CourseHeading = () => {
             <h1
               contentEditable
               suppressContentEditableWarning
-              className="fake-input"
+              className="fake-input parse-courses"
               title="name"
             >
               {courseId ? course?.name : ''}
@@ -24,7 +24,7 @@ const CourseHeading = () => {
           </div>
           <div>
             <p
-              className="mb-20 fake-input"
+              className="mb-20 fake-input parse-courses"
               contentEditable
               suppressContentEditableWarning
               title="short_description"
@@ -36,7 +36,7 @@ const CourseHeading = () => {
             <select
               name="language"
               defaultValue={courseId ? course?.language || '' : ''}
-              className="fake-input"
+              className="fake-input parse-courses"
             >
               <option value=""> - Select a language -</option>
               <option value="spanish">Spanish</option>
