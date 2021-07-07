@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
-import { coursesAPI, CourseProvider, Course } from '../services'
+import { coursesAPI, CourseProvider, Course, parseCourse } from '../services'
 import defaultCourse from '../utils/course.json'
 
 const coursesContext = React.createContext<Partial<CourseProvider>>({
@@ -14,6 +14,7 @@ export function useCourses() {
 }
 
 const CoursesProvider: React.FC = ({ children }) => {
+  const courseFormRef = React.useRef<HTMLFormElement>(null)
   const [course, setCourse] = React.useState(defaultCourse as Course)
   const {
     query: { id: courseId },
@@ -30,7 +31,14 @@ const CoursesProvider: React.FC = ({ children }) => {
   }
 
   async function handleCreate() {
-    const [createdCourse, error] = await coursesAPI.createCourse(course)
+    const [parsedCourse, parseCourseError] = parseCourse(courseFormRef.current)
+
+    if (!parsedCourse || parseCourseError) {
+      console.log(parseCourseError)
+      return
+    }
+
+    const [createdCourse, error] = await coursesAPI.createCourse(parsedCourse)
 
     if (!createdCourse || error) {
       console.log(error)
@@ -57,6 +65,7 @@ const CoursesProvider: React.FC = ({ children }) => {
         course,
         updateCourse,
         handleSubmit,
+        courseFormRef,
       }}
     >
       {children}
