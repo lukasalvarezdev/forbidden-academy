@@ -18,6 +18,7 @@ const CoursesProvider: React.FC = ({ children }) => {
   const [course, setCourse] = React.useState(defaultCourse as Course)
   const {
     query: { id: courseId },
+    push,
   } = useRouter()
 
   const updateCourse: CourseProvider['updateCourse'] = async rewrites => {
@@ -45,7 +46,7 @@ const CoursesProvider: React.FC = ({ children }) => {
       return
     }
 
-    console.log(createdCourse)
+    push(`/courses/${createdCourse.id}`)
   }
 
   async function handleSubmitUpdate() {
