@@ -6,9 +6,11 @@ export default function Header() {
   return (
     <StyledHeader className="d-f align-items-c normal-shadow justify-content-sb">
       <div className="d-f align-items-c f-one">
-        <div className="logo">
-          <img src="/logo.png" alt="Lukidemy logo" />
-        </div>
+        <Link href="/">
+          <a className="mr-20 logo">
+            <img src="/logo.png" alt="Lukidemy logo" />
+          </a>
+        </Link>
         <div className="search-bar d-f align-items-c ml-30">
           <div className="field">
             <input type="text" placeholder="Search for anything" />
@@ -20,7 +22,7 @@ export default function Header() {
       </div>
 
       <div className="icons d-f align-items-c">
-        <Link href="/">
+        <Link href="/courses/create">
           <a className="mr-20">Teach on lukidemy</a>
         </Link>
         <button className="icon-primary">

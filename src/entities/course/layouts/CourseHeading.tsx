@@ -1,8 +1,12 @@
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { useCourses } from '../services'
 
 const CourseHeading = () => {
-  const { course } = useCourses()
+  const {
+    query: { courseId },
+  } = useRouter()
+  const { course, isEditMode } = useCourses()
 
   return (
     <header className="bg-primary-black fc-white mb-30">
@@ -10,34 +14,38 @@ const CourseHeading = () => {
         <div className="info-65" id="course-info">
           <div className="mb-20">
             <h1
-              contentEditable={true}
-              suppressContentEditableWarning={true}
-              className="fake-input"
+              contentEditable={isEditMode}
+              suppressContentEditableWarning
+              className="fake-input parse-courses"
               title="name"
             >
-              {course?.name}
+              {courseId ? course.name : ''}
             </h1>
           </div>
           <div>
             <p
-              className="mb-20 fake-input"
-              contentEditable={true}
-              suppressContentEditableWarning={true}
+              className="mb-20 fake-input parse-courses"
+              contentEditable={isEditMode}
+              suppressContentEditableWarning
               title="short_description"
             >
-              {course?.short_description}
+              {courseId ? course.short_description : ''}
             </p>
           </div>
           <div>
-            <select
-              name="language"
-              defaultValue={course?.language || ''}
-              className="fake-input"
-            >
-              <option value=""> - Select a language -</option>
-              <option value="spanish">Spanish</option>
-              <option value="english">English</option>
-            </select>
+            {isEditMode ? (
+              <select
+                name="language"
+                defaultValue={courseId ? course.language || '' : ''}
+                className="fake-input parse-courses"
+              >
+                <option value=""> - Select a language -</option>
+                <option value="spanish">Spanish</option>
+                <option value="english">English</option>
+              </select>
+            ) : (
+              <p>{course.language}</p>
+            )}
           </div>
         </div>
       </CourseHeadingContainer>

@@ -1,25 +1,28 @@
+import { useRouter } from 'next/router'
 import { useCourses } from '../services'
 import Sections from 'src/entities/lesson/layouts/Sections'
 
 const CourseBody = () => {
-  const { course } = useCourses()
+  const {
+    query: { courseId },
+  } = useRouter()
+  const { course, isEditMode } = useCourses()
 
   return (
     <div className="container">
       <div className="info-65 mb-30">
         <p
-          contentEditable={true}
-          suppressContentEditableWarning={true}
+          contentEditable={isEditMode}
+          suppressContentEditableWarning
           title="description"
-          className="fake-input"
-          defaultValue={course?.description}
+          className="fake-input parse-courses"
           style={{
             lineHeight: 1.7,
             color: 'var(--primary-gray)',
             fontWeight: 300,
           }}
         >
-          {course?.description}
+          {courseId ? course.description : ''}
         </p>
       </div>
 
