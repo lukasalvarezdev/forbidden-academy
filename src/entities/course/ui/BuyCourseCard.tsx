@@ -8,9 +8,8 @@ const CourseInfoCard = () => {
   const {
     query: { courseId },
   } = useRouter()
-  const { course, isEditMode } = useCourses()
+  const { course, isEditMode, handleSubmit } = useCourses()
 
-  return null
   return (
     <CourseInfoCardContainer className="normal-shadow">
       <div className="card-headin img"></div>
@@ -24,8 +23,19 @@ const CourseInfoCard = () => {
         </h3>
 
         <div className="mb-20">
-          <button className="btn-primary d-b mb-10">Add to cart</button>
-          <button className="btn-primary -gray d-b">Buy now</button>
+          <button
+            className="btn-primary d-b mb-10"
+            onClick={
+              courseId
+                ? e => {
+                    e.preventDefault()
+                  }
+                : handleSubmit
+            }
+          >
+            {courseId ? 'Add to cart' : 'Create course'}
+          </button>
+          {courseId ? <button className="btn-primary -gray d-b">Buy now</button> : null}
         </div>
 
         <h4 className="mb-20">This course includes</h4>
@@ -59,6 +69,7 @@ const CourseInfoCardContainer = styled.div`
   top: calc(40px + 60px);
   margin-left: 30px;
   border-radius: 4px;
+  z-index: 1;
 
   .img {
     width: 100%;

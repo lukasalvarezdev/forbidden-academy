@@ -72,8 +72,6 @@ const CoursesProvider: React.FC = ({ children }) => {
         setEditMode,
       }}
     >
-      <button onClick={handleSubmit}>pepe</button>
-      <button onClick={() => setEditMode(true)}>Enable edit mode</button>
       <form ref={courseFormRef}>{children}</form>
     </coursesContext.Provider>
   )
