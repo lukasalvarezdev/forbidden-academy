@@ -9,9 +9,27 @@ const CourseInfoCard = () => {
     query: { courseId },
   } = useRouter()
   const { course, isEditMode, handleSubmit } = useCourses()
+  const [courseBodyWith, setCouseBodyWidth] = React.useState(0)
+
+  function setCourseWidthEvent() {
+    const courseInfo = document.getElementById('course-info')
+    if (!courseInfo) return
+
+    setCouseBodyWidth((courseInfo?.offsetLeft as number) + (courseInfo?.offsetWidth as number))
+  }
+
+  React.useLayoutEffect(() => {
+    setCourseWidthEvent()
+  }, [])
+
+  React.useEffect(() => {
+    window.addEventListener('resize', setCourseWidthEvent)
+
+    return () => window.removeEventListener('resize', setCourseWidthEvent)
+  }, [])
 
   return (
-    <CourseInfoCardContainer className="normal-shadow">
+    <CourseInfoCardContainer className="normal-shadow" custom-body-width={courseBodyWith}>
       <div className="card-headin img"></div>
       <div className="card-body p-20">
         <h3
@@ -65,11 +83,15 @@ const CourseInfoCardContainer = styled.div`
   background-color: #fff;
   border-radius: 3px;
   width: 390px;
-  position: fixed;
-  top: calc(40px + 60px);
+  position: absolute;
+  top: 40px;
   margin-left: 30px;
   border-radius: 4px;
   z-index: 1;
+  margin-left: ${props => {
+    // @ts-ignore
+    return `${props['custom-body-width'] + 30}px`
+  }};
 
   .img {
     width: 100%;
