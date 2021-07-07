@@ -6,13 +6,13 @@ const CourseBody = () => {
   const {
     query: { courseId },
   } = useRouter()
-  const { course } = useCourses()
+  const { course, isEditMode } = useCourses()
 
   return (
     <div className="container">
       <div className="info-65 mb-30">
         <p
-          contentEditable
+          contentEditable={isEditMode}
           suppressContentEditableWarning
           title="description"
           className="fake-input parse-courses"
@@ -22,7 +22,7 @@ const CourseBody = () => {
             fontWeight: 300,
           }}
         >
-          {courseId ? course?.description : ''}
+          {courseId ? course.description : ''}
         </p>
       </div>
 

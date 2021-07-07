@@ -6,7 +6,7 @@ const CourseHeading = () => {
   const {
     query: { courseId },
   } = useRouter()
-  const { course } = useCourses()
+  const { course, isEditMode } = useCourses()
 
   return (
     <header className="bg-primary-black fc-white mb-30">
@@ -14,34 +14,38 @@ const CourseHeading = () => {
         <div className="info-65" id="course-info">
           <div className="mb-20">
             <h1
-              contentEditable
+              contentEditable={isEditMode}
               suppressContentEditableWarning
               className="fake-input parse-courses"
               title="name"
             >
-              {courseId ? course?.name : ''}
+              {courseId ? course.name : ''}
             </h1>
           </div>
           <div>
             <p
               className="mb-20 fake-input parse-courses"
-              contentEditable
+              contentEditable={isEditMode}
               suppressContentEditableWarning
               title="short_description"
             >
-              {courseId ? course?.short_description : ''}
+              {courseId ? course.short_description : ''}
             </p>
           </div>
           <div>
-            <select
-              name="language"
-              defaultValue={courseId ? course?.language || '' : ''}
-              className="fake-input parse-courses"
-            >
-              <option value=""> - Select a language -</option>
-              <option value="spanish">Spanish</option>
-              <option value="english">English</option>
-            </select>
+            {isEditMode ? (
+              <select
+                name="language"
+                defaultValue={courseId ? course.language || '' : ''}
+                className="fake-input parse-courses"
+              >
+                <option value=""> - Select a language -</option>
+                <option value="spanish">Spanish</option>
+                <option value="english">English</option>
+              </select>
+            ) : (
+              <p>{course.language}</p>
+            )}
           </div>
         </div>
       </CourseHeadingContainer>

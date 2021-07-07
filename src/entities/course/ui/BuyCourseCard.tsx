@@ -8,7 +8,7 @@ const CourseInfoCard = () => {
   const {
     query: { courseId },
   } = useRouter()
-  const { course } = useCourses()
+  const { course, isEditMode } = useCourses()
 
   return null
   return (
@@ -17,10 +17,10 @@ const CourseInfoCard = () => {
       <div className="card-body p-20">
         <h3
           className="mb-20 fake-input parse-courses"
-          contentEditable
+          contentEditable={isEditMode}
           suppressContentEditableWarning
         >
-          $ {courseId ? course?.price : ''}
+          $ {courseId ? course.price : ''}
         </h3>
 
         <div className="mb-20">

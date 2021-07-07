@@ -3,9 +3,9 @@ import { useRouter } from 'next/router'
 import { coursesAPI, CourseProvider, Course, parseCourse } from '../services'
 import defaultCourse from '../utils/course.json'
 
-const coursesContext = React.createContext<Partial<CourseProvider>>({
+const coursesContext = React.createContext<CourseProvider>({
   course: defaultCourse as Course,
-})
+} as CourseProvider)
 
 export function useCourses() {
   const context = React.useContext(coursesContext)
@@ -14,12 +14,13 @@ export function useCourses() {
 }
 
 const CoursesProvider: React.FC = ({ children }) => {
-  const courseFormRef = React.useRef<HTMLFormElement>(null)
-  const [course, setCourse] = React.useState(defaultCourse as Course)
   const {
     query: { id: courseId },
     push,
   } = useRouter()
+  const courseFormRef = React.useRef<HTMLFormElement>(null)
+  const [course, setCourse] = React.useState(defaultCourse as Course)
+  const [isEditMode, setEditMode] = React.useState(false)
 
   const updateCourse: CourseProvider['updateCourse'] = async rewrites => {
     setCourse(x => ({ ...x, ...rewrites }))
@@ -67,9 +68,12 @@ const CoursesProvider: React.FC = ({ children }) => {
         updateCourse,
         handleSubmit,
         courseFormRef,
+        isEditMode,
+        setEditMode,
       }}
     >
       <button onClick={handleSubmit}>pepe</button>
+      <button onClick={() => setEditMode(true)}>Enable edit mode</button>
       <form ref={courseFormRef}>{children}</form>
     </coursesContext.Provider>
   )
