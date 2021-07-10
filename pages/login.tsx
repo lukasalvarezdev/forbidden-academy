@@ -84,3 +84,9 @@ const StyledLogin = styled.div`
     }
   }
 `
+
+export async function getServerSideProps() {
+  return {
+    props: {},
+  }
+}

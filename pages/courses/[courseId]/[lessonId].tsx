@@ -4,3 +4,9 @@ import LessonView from 'src/views/LessonPage'
 export default function LessonPage() {
   return <LessonView />
 }
+
+export async function getServerSideProps() {
+  return {
+    props: {},
+  }
+}

@@ -12,3 +12,9 @@ export default function CreateCoursePage() {
     </>
   )
 }
+
+export async function getServerSideProps() {
+  return {
+    props: {},
+  }
+}
