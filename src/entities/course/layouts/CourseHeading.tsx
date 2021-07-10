@@ -1,29 +1,38 @@
+import * as React from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { useCourses } from '../services'
+import EditField from '../components/EditField'
 
 const CourseHeading = () => {
   const {
     query: { courseId },
   } = useRouter()
   const { course, isEditMode } = useCourses()
+  const titleRef = React.useRef<HTMLHeadingElement>(null)
+  const shortDescriptionRef = React.useRef<HTMLParagraphElement>(null)
+  const languageRef = React.useRef<HTMLParagraphElement>(null)
 
   return (
     <header className="bg-primary-black fc-white mb-30">
       <CourseHeadingContainer className="container">
         <div className="info-65" id="course-info">
-          <div className="mb-20">
+          <div className="mb-20 relative">
+            <EditField fieldRef={titleRef} />
             <h1
               contentEditable={isEditMode}
               suppressContentEditableWarning
               className="fake-input parse-courses"
               title="name"
+              ref={titleRef}
             >
               {courseId ? course.name : ''}
             </h1>
           </div>
-          <div>
+          <div className="relative">
+            <EditField fieldRef={shortDescriptionRef} />
             <p
+              ref={shortDescriptionRef}
               className="mb-20 fake-input parse-courses"
               contentEditable={isEditMode}
               suppressContentEditableWarning
@@ -44,7 +53,10 @@ const CourseHeading = () => {
                 <option value="english">English</option>
               </select>
             ) : (
-              <p>{course.language}</p>
+              <div className="relative">
+                <EditField fieldRef={languageRef} />
+                <p ref={languageRef}>{course.language}</p>
+              </div>
             )}
           </div>
         </div>

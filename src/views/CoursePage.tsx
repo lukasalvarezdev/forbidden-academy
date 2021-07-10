@@ -6,18 +6,16 @@ import CourseBody from 'src/entities/course/layouts/CourseBody'
 
 const CoursePage = () => {
   return (
-    <>
-      <CourseContainer>
-        <div>
-          <CourseHeading />
-          <BuyCourseCard />
-        </div>
+    <CourseContainer>
+      <div>
+        <CourseHeading />
+        <BuyCourseCard />
+      </div>
 
-        <div>
-          <CourseBody />
-        </div>
-      </CourseContainer>
-    </>
+      <div>
+        <CourseBody />
+      </div>
+    </CourseContainer>
   )
 }
 

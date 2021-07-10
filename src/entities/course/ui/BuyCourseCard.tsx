@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Circle } from '@/icons'
 import { useCourses } from '../services'
+import EditField from '../components/EditField'
 import { useRouter } from 'next/router'
 
 const CourseInfoCard = () => {
@@ -10,6 +11,7 @@ const CourseInfoCard = () => {
   } = useRouter()
   const { course, isEditMode, handleSubmit } = useCourses()
   const [courseBodyWith, setCouseBodyWidth] = React.useState(0)
+  const priceRef = React.useRef<HTMLParagraphElement>(null)
 
   function setCourseWidthEvent() {
     const courseInfo = document.getElementById('course-info')
@@ -32,10 +34,12 @@ const CourseInfoCard = () => {
     <CourseInfoCardContainer className="normal-shadow" custom-body-width={courseBodyWith}>
       <div className="card-headin img"></div>
       <div className="card-body p-20">
+        <EditField fieldRef={priceRef} />
         <h3
           className="mb-20 fake-input parse-courses"
           contentEditable={isEditMode}
           suppressContentEditableWarning
+          ref={priceRef}
         >
           $ {courseId ? course.price : ''}
         </h3>
