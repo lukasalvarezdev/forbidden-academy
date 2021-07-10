@@ -1,8 +1,12 @@
+import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { SearchIcon, CartIcon, CoursesIcon, BellIcon } from 'src/utils/static/icons'
+import { SearchIcon, CartIcon, CoursesIcon, BellIcon, MenuIcon } from 'src/utils/static/icons'
+import ResponsiveMenu from './ResponsiveMenu'
 
 export default function Header() {
+  const [openMenu, setIsOpenMenu] = React.useState(false)
+
   return (
     <StyledHeader className="d-f align-items-c normal-shadow justify-content-sb">
       <div className="d-f align-items-c f-one">
@@ -36,6 +40,12 @@ export default function Header() {
         </button>
         <div className="profile d-f center-f">LU</div>
       </div>
+
+      <div className="icon-menu" onClick={() => setIsOpenMenu(!openMenu)}>
+        <MenuIcon />
+      </div>
+
+      {openMenu ? <ResponsiveMenu /> : null}
     </StyledHeader>
   )
 }
@@ -44,6 +54,22 @@ const StyledHeader = styled.header`
   height: 60px;
   background-color: #fff;
   padding: 0 20px;
+
+  .icon-menu {
+    display: none;
+  }
+
+  @media screen and (max-width: 480px) {
+    .icons {
+      display: none;
+    }
+    .icon-menu {
+      display: block;
+    }
+    .search-bar {
+      display: none;
+    }
+  }
 
   .logo img {
     width: 120px;
