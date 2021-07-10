@@ -9,13 +9,13 @@ export default function Header() {
 
   return (
     <StyledHeader className="d-f align-items-c normal-shadow justify-content-sb">
-      <div className="d-f align-items-c f-one">
+      <div className="d-f align-items-c f-one column">
         <Link href="/">
           <a className="mr-20 logo">
             <img src="/logo.png" alt="Lukidemy logo" />
           </a>
         </Link>
-        <div className="search-bar d-f align-items-c ml-30">
+        <div className="desktop search-bar d-f align-items-c ml-30">
           <div className="field">
             <input type="text" placeholder="Search for anything" />
           </div>
@@ -25,7 +25,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="icons d-f align-items-c">
+      <div className="desktop icons d-f align-items-c">
         <Link href="/courses/create">
           <a className="mr-20">Teach on lukidemy</a>
         </Link>
@@ -60,13 +60,13 @@ const StyledHeader = styled.header`
   }
 
   @media screen and (max-width: 480px) {
-    .icons {
+    .desktop.icons {
       display: none;
     }
     .icon-menu {
       display: block;
     }
-    .search-bar {
+    .desktop.search-bar {
       display: none;
     }
   }
@@ -78,9 +78,12 @@ const StyledHeader = styled.header`
   .search-bar {
     flex: 1;
 
+    &.desktop {
+      max-width: 40%;
+    }
+
     .field {
       width: 100%;
-      max-width: 40%;
 
       input ::placeholder {
         font-weight: 300;
@@ -98,13 +101,13 @@ const StyledHeader = styled.header`
   }
 
   .icons {
-    > a {
-      font-size: 14px;
-      color: var(--primary-gray);
-    }
-
     .icon-primary {
       margin-right: 20px;
+    }
+
+    &.desktop > a {
+      font-size: 14px;
+      color: var(--primary-gray);
     }
 
     .profile {
