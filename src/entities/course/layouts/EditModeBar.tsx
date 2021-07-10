@@ -8,7 +8,7 @@ const CourseHeading = () => {
   if (role !== 'admin') return null
 
   return (
-    <StyledEditModeBar className=" bg-white">
+    <StyledEditModeBar className=" bg-white d-f justify-content-e align-items-c">
       <div className="container d-f justify-content-e align-items-c">
         {!isEditMode ? (
           <button
