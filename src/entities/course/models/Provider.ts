@@ -7,4 +7,5 @@ export interface CourseProvider {
   setEditMode: React.Dispatch<React.SetStateAction<boolean>>
   handleSubmit: (e: React.MouseEvent<HTMLButtonElement>) => Promise<void>
   courseFormRef: React.RefObject<HTMLFormElement>
+  role: 'user' | 'admin'
 }

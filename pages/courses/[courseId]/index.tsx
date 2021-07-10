@@ -6,7 +6,7 @@ export default function CoursePage() {
   return (
     <>
       <Header />
-      <CoursesProvider>
+      <CoursesProvider role="admin">
         <CourseView />
       </CoursesProvider>
     </>
