@@ -11,7 +11,7 @@ const CoursePage = () => {
       <div>
         <EditModeBar />
         <CourseHeading />
-        {/* <BuyCourseCard /> */}
+        <BuyCourseCard />
       </div>
 
       <div>

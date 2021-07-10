@@ -4,6 +4,7 @@ import { Circle } from '@/icons'
 import { useCourses } from '../services'
 import EditField from '../components/EditField'
 import { useRouter } from 'next/router'
+import ResponsiveBuyCourseCard from './ResponsiveBuyCourseCard'
 
 const CourseInfoCard = () => {
   const {
@@ -32,51 +33,55 @@ const CourseInfoCard = () => {
 
   return (
     <CourseInfoCardContainer className="normal-shadow" custom-body-width={courseBodyWith}>
-      <div className="card-headin img"></div>
-      <div className="card-body p-20">
-        <EditField fieldRef={priceRef} />
-        <h3
-          className="mb-20 fake-input parse-courses"
-          contentEditable={isEditMode}
-          suppressContentEditableWarning
-          ref={priceRef}
-        >
-          $ {courseId ? course.price : ''}
-        </h3>
-
-        <div className="mb-20">
-          <button
-            className="btn-primary d-b mb-10"
-            onClick={
-              courseId
-                ? e => {
-                    e.preventDefault()
-                  }
-                : handleSubmit
-            }
+      <div className="desktop-card">
+        <div className="card-headin img"></div>
+        <div className="card-body p-20">
+          <EditField fieldRef={priceRef} />
+          <h3
+            className="mb-20 fake-input parse-courses"
+            contentEditable={isEditMode}
+            suppressContentEditableWarning
+            ref={priceRef}
           >
-            {courseId ? 'Add to cart' : 'Create course'}
-          </button>
-          {courseId ? <button className="btn-primary -gray d-b">Buy now</button> : null}
-        </div>
+            $ {courseId ? course.price : ''}
+          </h3>
 
-        <h4 className="mb-20">This course includes</h4>
-        <ul>
-          <li className="d-f align-items-c mb-10">
-            <Circle className="mr-10" /> 77 hours of video
-          </li>
-          <li className="d-f align-items-c mb-10">
-            <Circle className="mr-10" />
-            99 lessons
-          </li>
-          <li className="d-f align-items-c mb-10">
-            <Circle className="mr-10" /> Full lifetime access
-          </li>
-          <li className="d-f align-items-c mb-10">
-            <Circle className="mr-10" /> Access on mobile, TV and desktop
-          </li>
-        </ul>
+          <div className="mb-20">
+            <button
+              className="btn-primary d-b mb-10"
+              onClick={
+                courseId
+                  ? e => {
+                      e.preventDefault()
+                    }
+                  : handleSubmit
+              }
+            >
+              {courseId ? 'Add to cart' : 'Create course'}
+            </button>
+            {courseId ? <button className="btn-primary -gray d-b">Buy now</button> : null}
+          </div>
+
+          <h4 className="mb-20">This course includes</h4>
+          <ul>
+            <li className="d-f align-items-c mb-10">
+              <Circle className="mr-10" /> 77 hours of video
+            </li>
+            <li className="d-f align-items-c mb-10">
+              <Circle className="mr-10" />
+              99 lessons
+            </li>
+            <li className="d-f align-items-c mb-10">
+              <Circle className="mr-10" /> Full lifetime access
+            </li>
+            <li className="d-f align-items-c mb-10">
+              <Circle className="mr-10" /> Access on mobile, TV and desktop
+            </li>
+          </ul>
+        </div>
       </div>
+
+      <ResponsiveBuyCourseCard />
     </CourseInfoCardContainer>
   )
 }
@@ -96,6 +101,32 @@ const CourseInfoCardContainer = styled.div`
     // @ts-ignore
     return `${props['custom-body-width'] + 30}px`
   }};
+
+  .desktop-card {
+    display: block;
+  }
+  .mobile-card {
+    display: none;
+  }
+
+  @media screen and (max-width: 480px) {
+    background-color: transparent;
+    position: static;
+    height: max-content;
+
+    .desktop-card {
+      display: none;
+    }
+
+    .mobile-card {
+      display: block;
+      background-color: #fff;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      z-index: 100;
+    }
+  }
 
   .img {
     width: 100%;
