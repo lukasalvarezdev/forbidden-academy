@@ -8,22 +8,45 @@ const CourseHeading = () => {
   if (role !== 'admin') return null
 
   return (
-    <StyledEditModeBar className="container d-f justify-items-e">
-      {isEditMode ? (
-        <button className="button" onClick={handleSubmit}>
-          Save changes
-        </button>
-      ) : (
-        <button
-          className="button"
-          onClick={e => {
-            e.preventDefault()
-            setEditMode(true)
-          }}
-        >
-          Edit mode
-        </button>
-      )}
+    <StyledEditModeBar className=" bg-white">
+      <div className="container d-f justify-content-e align-items-c">
+        {!isEditMode ? (
+          <button
+            className="button"
+            onClick={e => {
+              e.preventDefault()
+              setEditMode(true)
+            }}
+          >
+            Edit mode
+          </button>
+        ) : null}
+
+        {isEditMode ? (
+          <button
+            className="button cancel mr-20"
+            onClick={e => {
+              e.preventDefault()
+              setEditMode(false)
+            }}
+          >
+            Cancel
+          </button>
+        ) : null}
+
+        {isEditMode ? (
+          <button
+            className="button"
+            onClick={e => {
+              e.preventDefault()
+              handleSubmit(e)
+              setEditMode(false)
+            }}
+          >
+            Save changes
+          </button>
+        ) : null}
+      </div>
     </StyledEditModeBar>
   )
 }
@@ -31,5 +54,19 @@ const CourseHeading = () => {
 export default CourseHeading
 
 const StyledEditModeBar = styled.div`
-  height: 30px;
+  height: 40px;
+
+  .button {
+    background-color: var(--purple);
+    color: white;
+    border-radius: 30px;
+    padding: 7px 13px;
+    font-weight: 600;
+    font-size: 13px;
+
+    &.cancel {
+      background-color: #d4dceb;
+      color: var(--main-black);
+    }
+  }
 `
