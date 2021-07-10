@@ -13,7 +13,10 @@ export function useCourses() {
   return context
 }
 
-const CoursesProvider: React.FC = ({ children }) => {
+const CoursesProvider: React.FC<{ children: React.ReactChild; role: 'user' | 'admin' }> = ({
+  children,
+  role,
+}) => {
   const {
     query: { id: courseId },
     push,
@@ -70,6 +73,7 @@ const CoursesProvider: React.FC = ({ children }) => {
         courseFormRef,
         isEditMode,
         setEditMode,
+        role,
       }}
     >
       <form ref={courseFormRef}>{children}</form>
