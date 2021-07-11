@@ -46,7 +46,7 @@ const StyledCourseBody = styled.div`
     background-color: var(--medium-blue);
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 900px) {
     margin-top: 3rem;
 
     .sections-list {

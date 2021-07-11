@@ -59,7 +59,7 @@ const StyledHeader = styled.header`
     display: none;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 900px) {
     .desktop.icons {
       display: none;
     }

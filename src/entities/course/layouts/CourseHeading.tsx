@@ -92,7 +92,7 @@ const CourseHeadingContainer = styled.div`
     }
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 900px) {
     background-color: transparent;
     color: var(--primary-black);
     margin: 3rem auto;

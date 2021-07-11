@@ -109,7 +109,7 @@ const CourseInfoCardContainer = styled.div`
     display: none;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 900px) {
     background-color: transparent;
     position: static;
     height: max-content;

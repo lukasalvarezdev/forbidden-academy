@@ -3,11 +3,11 @@ import MobileLessonLayout from 'src/entities/lesson/layouts/MobileLessonLayout'
 import LessonLayout from 'src/entities/lesson/layouts/LessonLayout'
 
 export default function LessonPage() {
-  const [isMobile, setIsMobile] = React.useState(document.body.clientWidth < 480)
+  const [isMobile, setIsMobile] = React.useState(document.body.clientWidth < 900)
 
   React.useEffect(() => {
     function setIsMobileFn() {
-      setIsMobile(document.body.clientWidth < 480)
+      setIsMobile(document.body.clientWidth < 900)
     }
 
     window.addEventListener('resize', setIsMobileFn)

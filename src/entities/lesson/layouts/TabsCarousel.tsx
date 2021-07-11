@@ -48,7 +48,7 @@ const StyledTabsCarousel = styled.div`
     padding: 5px 15px;
     font-size: 14px;
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 900px) {
       margin: 0;
     }
   }
