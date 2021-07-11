@@ -1,24 +1,10 @@
 import * as React from 'react'
-import { CourseContainer } from 'src/entities/course/styles'
-import CourseHeading from 'src/entities/course/layouts/CourseHeading'
-import BuyCourseCard from 'src/entities/course/ui/BuyCourseCard'
-import CourseBody from 'src/entities/course/layouts/CourseBody'
-import EditModeBar from 'src/entities/course/layouts/EditModeBar'
+import CourseLayout from 'src/entities/course/layouts/CourseLayout'
+import MobileCourseLayout from 'src/entities/course/layouts/MobileCourseLayout'
 
 const CoursePage = () => {
-  return (
-    <CourseContainer>
-      <div>
-        <EditModeBar />
-        <CourseHeading />
-        <BuyCourseCard />
-      </div>
-
-      <div>
-        <CourseBody />
-      </div>
-    </CourseContainer>
-  )
+  const pepe = false
+  return <>{pepe ? <CourseLayout /> : <MobileCourseLayout />}</>
 }
 
 export default CoursePage
