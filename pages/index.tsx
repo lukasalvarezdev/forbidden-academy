@@ -31,3 +31,9 @@ const courseExample = {
   id: '12334',
   price: 122,
 }
+
+export async function getServerSideProps() {
+  return {
+    props: {},
+  }
+}

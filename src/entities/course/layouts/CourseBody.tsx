@@ -1,31 +1,46 @@
+import * as React from 'react'
+import { useRouter } from 'next/router'
 import { useCourses } from '../services'
 import Sections from 'src/entities/lesson/layouts/Sections'
+import EditField from '../components/EditField'
+import styled from 'styled-components'
 
 const CourseBody = () => {
-  const { course } = useCourses()
+  const descriptionRef = React.useRef<HTMLParagraphElement>(null)
+  const {
+    query: { courseId },
+  } = useRouter()
+  const { course, isEditMode } = useCourses()
 
   return (
-    <div className="container">
-      <div className="info-65 mb-30">
+    <StyledCourseBody className="container">
+      <div className="info-65 mb-30 relative">
+        <EditField fieldRef={descriptionRef} />
         <p
-          contentEditable={true}
-          suppressContentEditableWarning={true}
+          contentEditable={isEditMode}
+          suppressContentEditableWarning
           title="description"
-          className="fake-input"
-          defaultValue={course?.description}
+          className="fake-input parse-courses"
           style={{
             lineHeight: 1.7,
             color: 'var(--primary-gray)',
             fontWeight: 300,
           }}
+          ref={descriptionRef}
         >
-          {course?.description}
+          {courseId ? course.description : ''}
         </p>
       </div>
 
       <Sections />
-    </div>
+    </StyledCourseBody>
   )
 }
 
 export default CourseBody
+
+const StyledCourseBody = styled.div`
+  @media screen and (max-width: 480px) {
+    margin-top: 3rem;
+  }
+`

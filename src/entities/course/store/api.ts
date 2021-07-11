@@ -1,8 +1,13 @@
-
 export function getAllCourses() {}
 
 export function createCourse(course: any) {
-  return [{id: '2'}, null]
+  return [
+    {
+      ...course,
+      id: '2',
+    },
+    null,
+  ]
 }
 
 export function updateCourse(rewrites: any) {

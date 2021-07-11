@@ -1,15 +1,21 @@
+import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { SearchIcon, CartIcon, CoursesIcon, BellIcon } from 'src/utils/static/icons'
+import { SearchIcon, CartIcon, CoursesIcon, BellIcon, MenuIcon } from 'src/utils/static/icons'
+import ResponsiveMenu from './ResponsiveMenu'
 
 export default function Header() {
+  const [openMenu, setIsOpenMenu] = React.useState(false)
+
   return (
     <StyledHeader className="d-f align-items-c normal-shadow justify-content-sb">
-      <div className="d-f align-items-c f-one">
-        <div className="logo">
-          <img src="/logo.png" alt="Lukidemy logo" />
-        </div>
-        <div className="search-bar d-f align-items-c ml-30">
+      <div className="d-f align-items-c f-one column">
+        <Link href="/">
+          <a className="mr-20 logo">
+            <img src="/logo.png" alt="Lukidemy logo" />
+          </a>
+        </Link>
+        <div className="desktop search-bar d-f align-items-c ml-30">
           <div className="field">
             <input type="text" placeholder="Search for anything" />
           </div>
@@ -19,8 +25,8 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="icons d-f align-items-c">
-        <Link href="/">
+      <div className="desktop icons d-f align-items-c">
+        <Link href="/courses/create">
           <a className="mr-20">Teach on lukidemy</a>
         </Link>
         <button className="icon-primary">
@@ -34,6 +40,12 @@ export default function Header() {
         </button>
         <div className="profile d-f center-f">LU</div>
       </div>
+
+      <div className="icon-menu" onClick={() => setIsOpenMenu(!openMenu)}>
+        <MenuIcon />
+      </div>
+
+      {openMenu ? <ResponsiveMenu /> : null}
     </StyledHeader>
   )
 }
@@ -43,6 +55,22 @@ const StyledHeader = styled.header`
   background-color: #fff;
   padding: 0 20px;
 
+  .icon-menu {
+    display: none;
+  }
+
+  @media screen and (max-width: 480px) {
+    .desktop.icons {
+      display: none;
+    }
+    .icon-menu {
+      display: block;
+    }
+    .desktop.search-bar {
+      display: none;
+    }
+  }
+
   .logo img {
     width: 120px;
   }
@@ -50,9 +78,12 @@ const StyledHeader = styled.header`
   .search-bar {
     flex: 1;
 
+    &.desktop {
+      max-width: 40%;
+    }
+
     .field {
       width: 100%;
-      max-width: 40%;
 
       input ::placeholder {
         font-weight: 300;
@@ -70,13 +101,13 @@ const StyledHeader = styled.header`
   }
 
   .icons {
-    > a {
-      font-size: 14px;
-      color: var(--primary-gray);
-    }
-
     .icon-primary {
       margin-right: 20px;
+    }
+
+    &.desktop > a {
+      font-size: 14px;
+      color: var(--primary-gray);
     }
 
     .profile {

@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
-import { coursesAPI, CourseProvider, Course } from '../services'
+import { coursesAPI, CourseProvider, Course, parseCourse } from '../services'
 import defaultCourse from '../utils/course.json'
 
-const coursesContext = React.createContext<Partial<CourseProvider>>({
+const coursesContext = React.createContext<CourseProvider>({
   course: defaultCourse as Course,
-})
+} as CourseProvider)
 
 export function useCourses() {
   const context = React.useContext(coursesContext)
@@ -13,11 +13,17 @@ export function useCourses() {
   return context
 }
 
-const CoursesProvider: React.FC = ({ children }) => {
-  const [course, setCourse] = React.useState(defaultCourse as Course)
+const CoursesProvider: React.FC<{ children: React.ReactChild; role: 'user' | 'admin' }> = ({
+  children,
+  role,
+}) => {
   const {
     query: { id: courseId },
+    push,
   } = useRouter()
+  const courseFormRef = React.useRef<HTMLFormElement>(null)
+  const [course, setCourse] = React.useState(defaultCourse as Course)
+  const [isEditMode, setEditMode] = React.useState(false)
 
   const updateCourse: CourseProvider['updateCourse'] = async rewrites => {
     setCourse(x => ({ ...x, ...rewrites }))
@@ -30,14 +36,21 @@ const CoursesProvider: React.FC = ({ children }) => {
   }
 
   async function handleCreate() {
-    const [createdCourse, error] = await coursesAPI.createCourse(course)
+    const [parsedCourse, parseCourseError] = parseCourse(courseFormRef.current)
+
+    if (!parsedCourse || parseCourseError) {
+      console.log(parseCourseError)
+      return
+    }
+
+    const [createdCourse, error] = await coursesAPI.createCourse(parsedCourse)
 
     if (!createdCourse || error) {
       console.log(error)
       return
     }
 
-    console.log(createdCourse.id)
+    push(`/courses/${createdCourse.id}`)
   }
 
   async function handleSubmitUpdate() {
@@ -57,11 +70,15 @@ const CoursesProvider: React.FC = ({ children }) => {
         course,
         updateCourse,
         handleSubmit,
+        courseFormRef,
+        isEditMode,
+        setEditMode,
+        role,
       }}
     >
-      {children}
+      <form ref={courseFormRef}>{children}</form>
     </coursesContext.Provider>
   )
 }
 
-export default CoursesProvider
+export { CoursesProvider }

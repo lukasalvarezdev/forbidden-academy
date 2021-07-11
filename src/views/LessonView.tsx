@@ -1,8 +1,8 @@
 import * as React from 'react'
-import CourseLayout from 'src/entities/course/layouts/CourseLayout'
-import MobileCourseLayout from 'src/entities/course/layouts/MobileCourseLayout'
+import MobileLessonLayout from 'src/entities/lesson/layouts/MobileLessonLayout'
+import LessonLayout from 'src/entities/lesson/layouts/LessonLayout'
 
-const CoursePage = () => {
+export default function LessonPage() {
   const [isMobile, setIsMobile] = React.useState(document.body.clientWidth < 480)
 
   React.useEffect(() => {
@@ -14,7 +14,5 @@ const CoursePage = () => {
     return () => window.removeEventListener('resize', setIsMobileFn)
   }, [])
 
-  return <>{isMobile ? <MobileCourseLayout /> : <CourseLayout />}</>
+  return <div>{isMobile ? <MobileLessonLayout /> : <LessonLayout />}</div>
 }
-
-export default CoursePage

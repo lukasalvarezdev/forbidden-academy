@@ -1,47 +1,67 @@
+import * as React from 'react'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { useCourses } from '../services'
+import EditField from '../components/EditField'
 
 const CourseHeading = () => {
-  const { course } = useCourses()
+  const {
+    query: { courseId },
+  } = useRouter()
+  const { course, isEditMode } = useCourses()
+  const titleRef = React.useRef<HTMLHeadingElement>(null)
+  const shortDescriptionRef = React.useRef<HTMLParagraphElement>(null)
+  const languageRef = React.useRef<HTMLParagraphElement>(null)
 
   return (
-    <header className="bg-primary-black fc-white mb-30">
-      <CourseHeadingContainer className="container">
+    <CourseHeadingContainer className="bg-primary-black fc-white mb-30">
+      <div className="container">
         <div className="info-65" id="course-info">
-          <div className="mb-20">
+          <div className="mb-20 relative">
+            <EditField fieldRef={titleRef} />
             <h1
-              contentEditable={true}
-              suppressContentEditableWarning={true}
-              className="fake-input"
+              contentEditable={isEditMode}
+              suppressContentEditableWarning
+              className="fake-input parse-courses"
               title="name"
+              ref={titleRef}
             >
-              {course?.name}
+              {courseId ? course.name : ''}
             </h1>
           </div>
-          <div>
+          <div className="relative">
+            <EditField fieldRef={shortDescriptionRef} />
             <p
-              className="mb-20 fake-input"
-              contentEditable={true}
-              suppressContentEditableWarning={true}
+              ref={shortDescriptionRef}
+              className="mb-20 fake-input parse-courses"
+              contentEditable={isEditMode}
+              suppressContentEditableWarning
               title="short_description"
             >
-              {course?.short_description}
+              {courseId ? course.short_description : ''}
             </p>
           </div>
           <div>
-            <select
-              name="language"
-              defaultValue={course?.language || ''}
-              className="fake-input"
-            >
-              <option value=""> - Select a language -</option>
-              <option value="spanish">Spanish</option>
-              <option value="english">English</option>
-            </select>
+            {isEditMode ? (
+              <select
+                name="language"
+                defaultValue={courseId ? course.language || '' : ''}
+                className="fake-input parse-courses"
+              >
+                <option value=""> - Select a language -</option>
+                <option value="spanish">Spanish</option>
+                <option value="english">English</option>
+              </select>
+            ) : (
+              <div className="relative">
+                <EditField fieldRef={languageRef} />
+                <p ref={languageRef}>{course.language}</p>
+              </div>
+            )}
           </div>
         </div>
-      </CourseHeadingContainer>
-    </header>
+      </div>
+    </CourseHeadingContainer>
   )
 }
 
@@ -69,6 +89,25 @@ const CourseHeadingContainer = styled.div`
 
     option {
       background-color: var(--primary-black);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    background-color: transparent;
+    color: var(--primary-black);
+    margin: 3rem auto;
+    padding: 0;
+
+    .fake-input {
+      color: var(--primary-black);
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    select option {
+      background-color: white;
     }
   }
 `

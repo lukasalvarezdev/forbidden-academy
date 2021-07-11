@@ -1,10 +1,23 @@
-import CoursesProvider from 'src/entities/course/store/context'
-import CourseView from 'src/views/CoursePage'
+import { CoursesProvider } from 'src/entities/course/services'
+import dynamic from 'next/dynamic'
+const CourseView = dynamic(() => import('src/views/CoursePage'), {
+  ssr: false,
+})
+import Header from 'src/layouts/Header'
 
 export default function CoursePage() {
   return (
-    <CoursesProvider>
-      <CourseView />
-    </CoursesProvider>
+    <>
+      <Header />
+      <CoursesProvider role="admin">
+        <CourseView />
+      </CoursesProvider>
+    </>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {},
+  }
 }
