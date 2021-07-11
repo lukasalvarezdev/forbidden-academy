@@ -1,16 +1,13 @@
-import { ClockIcon, BorderedArrowIcon } from '@/icons'
 import styled from 'styled-components'
+import { BorderedArrowIcon } from '@/icons'
+import LessonHeading from '../ui/LessonHeading'
+import TabsCarousel from './TabsCarousel'
+import Sections from './Sections'
 
 const Lesson = () => {
   return (
     <StyledLesson className="f-one">
-      <div className="lesson-heading d-f center-f mb-30 bg-white">
-        <h3>{lesson.name}</h3>
-        <div className="lesson-duration d-f center-f font-semi-bold ml-20">
-          <ClockIcon />
-          <span className="ml-10">{lesson.duration}</span>
-        </div>
-      </div>
+      <LessonHeading />
 
       <div className="lesson bg-white border-radius p-30 relative">
         <div className="skip absolute d-f center-f pointer">
@@ -21,7 +18,9 @@ const Lesson = () => {
         </div>
         <div className="img"></div>
 
-        <p className="description font-light">{lesson.description}</p>
+        {/* <p className="description font-light">{lesson.description}</p> */}
+        <TabsCarousel />
+        <Sections />
       </div>
     </StyledLesson>
   )
@@ -30,42 +29,19 @@ const Lesson = () => {
 export default Lesson
 
 const StyledLesson = styled.div`
-  .lesson-heading {
-    height: 70px;
-
-    @media screen and (max-width: 480px) {
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 0;
-      margin-bottom: 0;
-    }
-
-    .lesson-duration {
-      background-color: var(--medium-blue);
-      border-radius: 30px;
-      padding: 5px 15px;
-      font-size: 14px;
-
-      @media screen and (max-width: 480px) {
-        margin: 0;
-      }
-    }
-  }
-
   .lesson {
     width: 90%;
     margin: 0 auto;
 
     @media screen and (max-width: 480px) {
       width: 100%;
-      padding: 20px;
+      padding: 30px 0;
     }
 
     .img {
-      max-width: 744px;
       height: 419px;
-      width: 100%;
+      max-width: 744px;
+      width: 90%;
       background-color: #585454;
       border-radius: 4px;
       margin: 0 auto;
@@ -81,6 +57,10 @@ const StyledLesson = styled.div`
       color: var(--primary-gray);
       max-width: 744px;
       line-height: 1.8;
+
+      @media screen and (max-width: 480px) {
+        width: 90%;
+      }
     }
 
     .skip {
