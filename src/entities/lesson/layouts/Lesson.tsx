@@ -29,6 +29,79 @@ const Lesson = () => {
 
 export default Lesson
 
+const StyledLesson = styled.div`
+  .lesson-heading {
+    height: 70px;
+
+    @media screen and (max-width: 480px) {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      margin-bottom: 0;
+    }
+
+    .lesson-duration {
+      background-color: var(--medium-blue);
+      border-radius: 30px;
+      padding: 5px 15px;
+      font-size: 14px;
+
+      @media screen and (max-width: 480px) {
+        margin: 0;
+      }
+    }
+  }
+
+  .lesson {
+    width: 90%;
+    margin: 0 auto;
+
+    @media screen and (max-width: 480px) {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .img {
+      max-width: 744px;
+      height: 419px;
+      width: 100%;
+      background-color: #585454;
+      border-radius: 4px;
+      margin: 0 auto;
+
+      @media screen and (max-width: 480px) {
+        height: 200px;
+      }
+    }
+
+    .description {
+      margin: 0 auto;
+      margin-top: 30px;
+      color: var(--primary-gray);
+      max-width: 744px;
+      line-height: 1.8;
+    }
+
+    .skip {
+      background-color: var(--medium-blue);
+      height: 70px;
+      width: 30px;
+      left: -30px;
+
+      @media screen and (max-width: 480px) {
+        display: none;
+      }
+
+      &.-reverse {
+        left: auto;
+        right: -30px;
+        transform: scale(-1, 1);
+      }
+    }
+  }
+`
+
 const lesson = {
   name: 'First',
   description: 'Hello world',
@@ -46,50 +119,3 @@ const lesson = {
   section: '2jdsa',
   duration: '23:22',
 }
-
-const StyledLesson = styled.div`
-  .lesson-heading {
-    height: 70px;
-
-    .lesson-duration {
-      background-color: var(--medium-blue);
-      border-radius: 30px;
-      padding: 5px 15px;
-      font-size: 14px;
-    }
-  }
-
-  .lesson {
-    width: 90%;
-    margin: 0 auto;
-
-    .img {
-      width: 744px;
-      height: 419px;
-      background-color: #585454;
-      border-radius: 4px;
-      margin: 0 auto;
-    }
-
-    .description {
-      margin: 0 auto;
-      margin-top: 30px;
-      color: var(--primary-gray);
-      max-width: 744px;
-      line-height: 1.8;
-    }
-
-    .skip {
-      background-color: var(--medium-blue);
-      height: 70px;
-      width: 30px;
-      left: -30px;
-
-      &.-reverse {
-        left: auto;
-        right: -30px;
-        transform: scale(-1, 1);
-      }
-    }
-  }
-`

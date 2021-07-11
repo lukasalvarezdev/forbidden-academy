@@ -1,8 +1,13 @@
-import LessonView from 'src/views/LessonPage'
+import LessonView from 'src/views/LessonView'
+import Header from 'src/layouts/Header'
 
-// TODO: LESSON PROVDER HERE
 export default function LessonPage() {
-  return <LessonView />
+  return (
+    <div>
+      <Header />
+      <LessonView />
+    </div>
+  )
 }
 
 export async function getServerSideProps() {
