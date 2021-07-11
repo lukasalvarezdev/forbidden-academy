@@ -1,5 +1,8 @@
 import { CoursesProvider } from 'src/entities/course/services'
-import CourseView from 'src/views/CoursePage'
+import dynamic from 'next/dynamic'
+const CourseView = dynamic(() => import('src/views/CoursePage'), {
+  ssr: false,
+})
 import Header from 'src/layouts/Header'
 
 export default function CoursePage() {
