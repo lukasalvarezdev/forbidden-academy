@@ -1,8 +1,16 @@
-import LessonView from 'src/views/LessonPage'
+import Header from 'src/layouts/Header'
+import dynamic from 'next/dynamic'
+const LessonView = dynamic(() => import('src/views/LessonView'), {
+  ssr: false,
+})
 
-// TODO: LESSON PROVDER HERE
 export default function LessonPage() {
-  return <LessonView />
+  return (
+    <div>
+      <Header />
+      <LessonView />
+    </div>
+  )
 }
 
 export async function getServerSideProps() {
