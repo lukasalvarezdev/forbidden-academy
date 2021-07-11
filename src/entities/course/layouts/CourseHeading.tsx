@@ -14,8 +14,8 @@ const CourseHeading = () => {
   const languageRef = React.useRef<HTMLParagraphElement>(null)
 
   return (
-    <header className="bg-primary-black fc-white mb-30">
-      <CourseHeadingContainer className="container">
+    <CourseHeadingContainer className="bg-primary-black fc-white mb-30">
+      <div className="container">
         <div className="info-65" id="course-info">
           <div className="mb-20 relative">
             <EditField fieldRef={titleRef} />
@@ -60,8 +60,8 @@ const CourseHeading = () => {
             )}
           </div>
         </div>
-      </CourseHeadingContainer>
-    </header>
+      </div>
+    </CourseHeadingContainer>
   )
 }
 
@@ -89,6 +89,25 @@ const CourseHeadingContainer = styled.div`
 
     option {
       background-color: var(--primary-black);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    background-color: transparent;
+    color: var(--primary-black);
+    margin: 3rem auto;
+    padding: 0;
+
+    .fake-input {
+      color: var(--primary-black);
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    select option {
+      background-color: white;
     }
   }
 `

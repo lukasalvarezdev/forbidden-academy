@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useCourses } from '../services'
 import Sections from 'src/entities/lesson/layouts/Sections'
 import EditField from '../components/EditField'
+import styled from 'styled-components'
 
 const CourseBody = () => {
   const descriptionRef = React.useRef<HTMLParagraphElement>(null)
@@ -12,7 +13,7 @@ const CourseBody = () => {
   const { course, isEditMode } = useCourses()
 
   return (
-    <div className="container">
+    <StyledCourseBody className="container">
       <div className="info-65 mb-30 relative">
         <EditField fieldRef={descriptionRef} />
         <p
@@ -32,8 +33,14 @@ const CourseBody = () => {
       </div>
 
       <Sections />
-    </div>
+    </StyledCourseBody>
   )
 }
 
 export default CourseBody
+
+const StyledCourseBody = styled.div`
+  @media screen and (max-width: 480px) {
+    margin-top: 3rem;
+  }
+`
