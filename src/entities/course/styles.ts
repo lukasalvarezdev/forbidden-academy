@@ -10,5 +10,9 @@ export const CourseContainer = styled.div`
 
   .info-65 {
     max-width: 65%;
+
+    @media screen and (max-width: 480px) {
+      max-width: 100%;
+    }
   }
 `

@@ -1,24 +1,20 @@
 import * as React from 'react'
-import { CourseContainer } from 'src/entities/course/styles'
-import CourseHeading from 'src/entities/course/layouts/CourseHeading'
-import BuyCourseCard from 'src/entities/course/ui/BuyCourseCard'
-import CourseBody from 'src/entities/course/layouts/CourseBody'
-import EditModeBar from 'src/entities/course/layouts/EditModeBar'
+import CourseLayout from 'src/entities/course/layouts/CourseLayout'
+import MobileCourseLayout from 'src/entities/course/layouts/MobileCourseLayout'
 
 const CoursePage = () => {
-  return (
-    <CourseContainer>
-      <div>
-        <EditModeBar />
-        <CourseHeading />
-        {/* <BuyCourseCard /> */}
-      </div>
+  const [isMobile, setIsMobile] = React.useState(document.body.clientWidth < 480)
 
-      <div>
-        <CourseBody />
-      </div>
-    </CourseContainer>
-  )
+  React.useEffect(() => {
+    function setIsMobileFn() {
+      setIsMobile(document.body.clientWidth < 480)
+    }
+
+    window.addEventListener('resize', setIsMobileFn)
+    return () => window.removeEventListener('resize', setIsMobileFn)
+  }, [])
+
+  return <>{isMobile ? <MobileCourseLayout /> : <CourseLayout />}</>
 }
 
 export default CoursePage
