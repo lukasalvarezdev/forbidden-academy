@@ -34,5 +34,9 @@ const StyledLesson = styled.div`
   .icon {
     padding: 5px;
     background-color: var(--medium-light-blue);
+
+    svg {
+      vertical-align: middle;
+    }
   }
 `

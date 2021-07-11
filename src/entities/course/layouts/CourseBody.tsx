@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
 import { useCourses } from '../services'
-import Sections from 'src/entities/lesson/layouts/Sections'
 import EditField from '../components/EditField'
 import styled from 'styled-components'
+import SectionsList from 'src/entities/lesson/components/SectionsList'
 
 const CourseBody = () => {
   const descriptionRef = React.useRef<HTMLParagraphElement>(null)
@@ -32,7 +32,9 @@ const CourseBody = () => {
         </p>
       </div>
 
-      <Sections />
+      <div className="sections-list p-20 info-65 border-radius">
+        <SectionsList />
+      </div>
     </StyledCourseBody>
   )
 }
@@ -40,7 +42,34 @@ const CourseBody = () => {
 export default CourseBody
 
 const StyledCourseBody = styled.div`
+  .sections-list {
+    background-color: var(--medium-blue);
+  }
+
   @media screen and (max-width: 480px) {
     margin-top: 3rem;
+
+    .sections-list {
+      background-color: transparent;
+      padding: 0;
+
+      .section-info {
+        border-radius: 4px;
+        box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.158);
+
+        h3 {
+          font-size: 16px;
+        }
+      }
+
+      .lessons > div {
+        border-radius: 4px;
+        box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.158);
+
+        h4 {
+          font-size: 14px;
+        }
+      }
+    }
   }
 `

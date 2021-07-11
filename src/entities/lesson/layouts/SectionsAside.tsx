@@ -1,9 +1,10 @@
-import Sections from './Sections'
+import SectionsList from '../components/SectionsList'
 
 const SectionsAside = () => {
   return (
     <div>
       <div
+        className="p-20"
         style={{
           backgroundColor: 'var(--medium-blue)',
           width: '25%',
@@ -11,7 +12,7 @@ const SectionsAside = () => {
           height: '100%',
         }}
       >
-        <Sections />
+        <SectionsList />
       </div>
     </div>
   )
