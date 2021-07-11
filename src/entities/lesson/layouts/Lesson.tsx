@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { BorderedArrowIcon } from '@/icons'
 import LessonHeading from '../ui/LessonHeading'
 import TabsCarousel from './TabsCarousel'
-import Sections from './Sections'
+import SectionsList from '../components/SectionsList'
 
 const Lesson = () => {
   return (
@@ -20,7 +20,9 @@ const Lesson = () => {
 
         {/* <p className="description font-light">{lesson.description}</p> */}
         <TabsCarousel />
-        <Sections />
+        <div className="sections-list p-20 info-65 border-radius mt-20">
+          <SectionsList />
+        </div>
       </div>
     </StyledLesson>
   )
@@ -80,22 +82,34 @@ const StyledLesson = styled.div`
       }
     }
   }
-`
 
-const lesson = {
-  name: 'First',
-  description: 'Hello world',
-  id: 'sdads',
-  announcements: [
-    {
-      title: 'pepe',
-      body: 'sd',
-      posted_time: 'sd',
-    },
-  ],
-  last_modified_time: 'sd',
-  posted_time: 'sda',
-  questions: [],
-  section: '2jdsa',
-  duration: '23:22',
-}
+  @media screen and (max-width: 480px) {
+    margin-top: 3rem;
+
+    .sections-list {
+      background-color: transparent;
+      padding: 0;
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 20px;
+
+      .section-info {
+        border-radius: 4px;
+        box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.158);
+
+        h3 {
+          font-size: 16px;
+        }
+      }
+
+      .lessons > div {
+        border-radius: 4px;
+        box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.158);
+
+        h4 {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+`
