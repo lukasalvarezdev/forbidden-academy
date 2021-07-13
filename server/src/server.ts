@@ -3,6 +3,7 @@ import { graphqlHTTP } from 'express-graphql';
 import graphQlSchema from './graphql';
 import cors from 'cors';
 
+// TODO: Add authentication at this level as middleware in the main entrypoint
 class Server {
   private app: Application;
   private port: string;

@@ -1,40 +1,25 @@
-const {
-  GraphQLString,
-  GraphQLID,
-  GraphQLObjectType,
-  GraphQLSchema,
-  GraphQLList,
-  GraphQLNonNull,
-} = require('graphql');
+import { GraphQLObjectType, GraphQLSchema, GraphQLList, GraphQLID } from 'graphql';
 
-const Books = [
-  { id: 1, name: 'Book 1', genre: 'Fiction' },
-  { id: 2, name: 'Book 2', genre: 'non-Fiction' },
-];
+import UserType from './userSchema';
 
-const BookType = new GraphQLObjectType({
-  name: 'Book',
-  fields: () => ({
-    id: { type: GraphQLID },
-    name: { type: GraphQLString },
-    genre: { type: GraphQLString },
-  }),
-});
+import UserRepo from './userRepo';
+
+const userRepo = UserRepo.getInstance()
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
-    book: {
-      type: BookType,
+    user: {
+      type: UserType,
       args: { id: { type: GraphQLID } },
-      resolve(parent, args) {
-        return Books.find((x) => x.id == args.id);
+      resolve(parent, args, context) {
+        return userRepo.getOne(args.id);
       },
     },
-    books: {
-      type: new GraphQLList(BookType),
+    users: {
+      type: new GraphQLList(UserType),
       resolve(parent, args) {
-        return Books;
+        return userRepo.getAll();
       },
     },
   },
@@ -43,13 +28,9 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    addBook: {
-      type: BookType,
-      args: {
-        name: { type: new GraphQLNonNull(GraphQLString) },
-        genre: { type: new GraphQLNonNull(GraphQLString) },
-        authorId: { type: new GraphQLNonNull(GraphQLID) },
-      },
+    addCourse: {
+      type: UserType,
+      args: {},
       resolve(parent, args) {
         return 'created';
       },
