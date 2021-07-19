@@ -1,0 +1,18 @@
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="8"
+    height="6"
+    viewBox="0 0 8 6"
+  >
+    <path
+      id="Polygon_7"
+      data-name="Polygon 7"
+      d="M3,0,6,4H0Z"
+      transform="translate(7 5) rotate(180)"
+      fill="#0e113a"
+      stroke="#0e113a"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+    />
+  </svg>
