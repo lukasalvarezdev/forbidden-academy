@@ -40,7 +40,7 @@ export default ResponsiveMenu
 const StyledResponsiveMenu = styled.div`
   display: none;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1200px) {
     display: block;
     text-align: center;
     position: absolute;

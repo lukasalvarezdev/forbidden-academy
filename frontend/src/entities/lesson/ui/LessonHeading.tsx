@@ -18,7 +18,7 @@ export default LessonHeading
 const StyledLessonHeading = styled.div`
   height: 70px;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1200px) {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +32,7 @@ const StyledLessonHeading = styled.div`
     padding: 5px 15px;
     font-size: 14px;
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 1200px) {
       margin: 0;
     }
   }

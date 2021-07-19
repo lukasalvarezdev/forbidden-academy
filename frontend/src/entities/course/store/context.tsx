@@ -3,16 +3,6 @@ import { useRouter } from 'next/router'
 import { coursesAPI, CourseProvider, Course, parseCourse } from '../services'
 import defaultCourse from '../utils/course.json'
 
-const coursesContext = React.createContext<CourseProvider>({
-  course: defaultCourse as Course,
-} as CourseProvider)
-
-export function useCourses() {
-  const context = React.useContext(coursesContext)
-  if (!context) throw new Error('useCourses must be used within its provider')
-  return context
-}
-
 const CoursesProvider: React.FC<{ children: React.ReactChild; role: 'user' | 'admin' }> = ({
   children,
   role,
@@ -23,7 +13,6 @@ const CoursesProvider: React.FC<{ children: React.ReactChild; role: 'user' | 'ad
   } = useRouter()
   const courseFormRef = React.useRef<HTMLFormElement>(null)
   const [course, setCourse] = React.useState(defaultCourse as Course)
-  const [isEditMode, setEditMode] = React.useState(false)
 
   const updateCourse: CourseProvider['updateCourse'] = async rewrites => {
     setCourse(x => ({ ...x, ...rewrites }))
@@ -71,14 +60,22 @@ const CoursesProvider: React.FC<{ children: React.ReactChild; role: 'user' | 'ad
         updateCourse,
         handleSubmit,
         courseFormRef,
-        isEditMode,
-        setEditMode,
         role,
       }}
     >
       <form ref={courseFormRef}>{children}</form>
     </coursesContext.Provider>
   )
+}
+
+const coursesContext = React.createContext<CourseProvider>({
+  course: defaultCourse as Course,
+} as CourseProvider)
+
+export function useCourses() {
+  const context = React.useContext(coursesContext)
+  if (!context) throw new Error('useCourses must be used within its provider')
+  return context
 }
 
 export { CoursesProvider }
