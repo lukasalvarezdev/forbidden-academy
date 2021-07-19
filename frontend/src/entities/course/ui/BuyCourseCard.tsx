@@ -1,18 +1,16 @@
 import * as React from 'react'
+import { useRouter } from 'next/router'
+import { useCourses } from '../services'
 import styled from 'styled-components'
 import { Circle } from '@/icons'
-import { useCourses } from '../services'
-import EditField from '../components/EditField'
-import { useRouter } from 'next/router'
 import ResponsiveBuyCourseCard from './ResponsiveBuyCourseCard'
 
 const CourseInfoCard = () => {
   const {
     query: { courseId },
   } = useRouter()
-  const { course, isEditMode, handleSubmit } = useCourses()
+  const { course, handleSubmit } = useCourses()
   const [courseBodyWith, setCouseBodyWidth] = React.useState(0)
-  const priceRef = React.useRef<HTMLParagraphElement>(null)
 
   function setCourseWidthEvent() {
     const courseInfo = document.getElementById('course-info')
@@ -36,15 +34,7 @@ const CourseInfoCard = () => {
       <div className="desktop-card">
         <div className="card-headin img"></div>
         <div className="card-body p-20">
-          <EditField fieldRef={priceRef} />
-          <h3
-            className="mb-20 fake-input parse-courses"
-            contentEditable={isEditMode}
-            suppressContentEditableWarning
-            ref={priceRef}
-          >
-            $ {courseId ? course.price : ''}
-          </h3>
+          <h3 className="mb-20 fake-input parse-courses">$ {course.price}</h3>
 
           <div className="mb-20">
             <button
@@ -109,7 +99,7 @@ const CourseInfoCardContainer = styled.div`
     display: none;
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1200px) {
     background-color: transparent;
     position: static;
     height: max-content;

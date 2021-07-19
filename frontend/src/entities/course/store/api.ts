@@ -1,6 +1,6 @@
 export function getAllCourses() {}
 
-export function createCourse(course: any) {
+export async function createCourse(course: any) {
   return [
     {
       ...course,
@@ -10,7 +10,7 @@ export function createCourse(course: any) {
   ]
 }
 
-export function updateCourse(rewrites: any) {
+export async function updateCourse(rewrites: any) {
   return [true, null]
 }
 

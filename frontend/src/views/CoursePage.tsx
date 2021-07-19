@@ -3,11 +3,13 @@ import CourseLayout from 'src/entities/course/layouts/CourseLayout'
 import MobileCourseLayout from 'src/entities/course/layouts/MobileCourseLayout'
 
 const CoursePage = () => {
-  const [isMobile, setIsMobile] = React.useState(document.body.clientWidth < 900)
+  const [isMobile, setIsMobile] = React.useState(false)
 
   React.useEffect(() => {
+    setIsMobile(document.body.clientWidth < 1200)
+
     function setIsMobileFn() {
-      setIsMobile(document.body.clientWidth < 900)
+      setIsMobile(document.body.clientWidth < 1200)
     }
 
     window.addEventListener('resize', setIsMobileFn)

@@ -35,7 +35,7 @@ const StyledLesson = styled.div`
     width: 90%;
     margin: 0 auto;
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 1200px) {
       width: 100%;
       padding: 30px 0;
     }
@@ -48,7 +48,7 @@ const StyledLesson = styled.div`
       border-radius: 4px;
       margin: 0 auto;
 
-      @media screen and (max-width: 900px) {
+      @media screen and (max-width: 1200px) {
         height: 200px;
       }
     }
@@ -60,7 +60,7 @@ const StyledLesson = styled.div`
       max-width: 744px;
       line-height: 1.8;
 
-      @media screen and (max-width: 900px) {
+      @media screen and (max-width: 1200px) {
         width: 90%;
       }
     }
@@ -71,7 +71,7 @@ const StyledLesson = styled.div`
       width: 30px;
       left: -30px;
 
-      @media screen and (max-width: 900px) {
+      @media screen and (max-width: 1200px) {
         display: none;
       }
 
@@ -83,7 +83,7 @@ const StyledLesson = styled.div`
     }
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1200px) {
     margin-top: 3rem;
 
     .sections-list {
