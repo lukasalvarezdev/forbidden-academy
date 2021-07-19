@@ -1,9 +1,13 @@
+import { useRouter } from 'next/router'
 import * as React from 'react'
 import styled from 'styled-components'
 import { useCourses } from '../store/context'
 
 const MobileCourseLayout = () => {
-  const { updateCourse, course } = useCourses()
+  const {
+    query: { id },
+  } = useRouter()
+  const { updateCourse, course, handleSubmit } = useCourses()
 
   return (
     <CourseContainer>
@@ -30,6 +34,10 @@ const MobileCourseLayout = () => {
         <div className="mb-20">
           <input type="text" name="price" defaultValue={course.price} />
         </div>
+
+        <button onClick={handleSubmit} className="btn-primary">
+          {id ? 'Save' : 'Create'}
+        </button>
       </form>
     </CourseContainer>
   )
