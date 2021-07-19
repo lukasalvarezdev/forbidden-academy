@@ -10,7 +10,7 @@ const CourseHeading = () => {
       <div className="container">
         <div className="info-65" id="course-info">
           <div className="mb-20 relative">
-            <h1 className="fake-input parse-courses">{course.name}</h1>
+            <h1 className="fake-input parse-courses">{course.title}</h1>
           </div>
           <div className="relative">
             <p className="mb-20 fake-input parse-courses">{course.short_description}</p>

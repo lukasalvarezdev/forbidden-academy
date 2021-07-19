@@ -2,7 +2,7 @@ import { CoursesProvider } from 'src/entities/course/services'
 import ManageCourse from 'src/views/ManageCourse'
 import Header from 'src/layouts/Header'
 
-export default function CreateCoursePage() {
+export default function ManageCoursePage() {
   return (
     <>
       <Header />

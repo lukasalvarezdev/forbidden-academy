@@ -19,7 +19,7 @@ export default function Header() {
           <div className="field">
             <input type="text" placeholder="Search for anything" />
           </div>
-          <button className="icon-primary d-f center-f ml-20">
+          <button className="icon-primary d-f center-f ml-10">
             <SearchIcon />
           </button>
         </div>
@@ -84,6 +84,11 @@ const StyledHeader = styled.header`
 
     .field {
       width: 100%;
+
+      input {
+        border-radius: 30px;
+        padding-left: 2rem;
+      }
 
       input ::placeholder {
         font-weight: 300;
