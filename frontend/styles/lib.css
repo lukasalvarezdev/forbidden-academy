@@ -260,7 +260,8 @@
 }
 
 .field input,
-.field textarea {
+.field textarea,
+.field select.select-primary {
   height: 40px;
   background-color: var(--light-gray);
   border: 0.5px solid var(--medium-blue);
@@ -269,6 +270,16 @@
   font-size: 14px;
   outline: none;
   padding-left: 15px;
+}
+
+.field select.select-primary {
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  background-image: url('../src/utils/static/img/dropdown-arrow.svg');
+  background-repeat: no-repeat;
+  background-position: 98%;
+  cursor: pointer;
 }
 
 .icon-primary {
