@@ -11,6 +11,7 @@ export async function createCourse(course: any) {
 }
 
 export async function updateCourse(rewrites: any) {
+  rewrites
   return [true, null]
 }
 
