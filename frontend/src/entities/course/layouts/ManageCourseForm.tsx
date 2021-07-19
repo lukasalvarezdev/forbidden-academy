@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router'
 import * as React from 'react'
-import styled from 'styled-components'
+import { useRouter } from 'next/router'
 import { useCourses } from '../store/context'
+import styled from 'styled-components'
 
 const MobileCourseLayout = () => {
   const {
