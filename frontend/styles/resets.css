@@ -38,7 +38,8 @@ button {
 }
 
 input,
-select {
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
   border: none;
