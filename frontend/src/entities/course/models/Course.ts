@@ -1,5 +1,5 @@
 export interface Course {
-  name: string
+  title: string
   description: string
   short_description: string
   skill_level: 'beginner' | 'intermediate' | 'advanced'

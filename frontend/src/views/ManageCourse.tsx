@@ -1,5 +1,11 @@
+import ManageCourseForm from 'src/entities/course/layouts/ManageCourseForm'
+
 const ManageCourse = () => {
-  return <h2>Hello world</h2>
+  return (
+    <div>
+      <ManageCourseForm />
+    </div>
+  )
 }
 
 export default ManageCourse

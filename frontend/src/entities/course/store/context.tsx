@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
-import { coursesAPI, CourseProvider, Course, parseCourse } from '../services'
-import defaultCourse from '../utils/course.json'
+import { coursesAPI, CourseProvider, Course } from '../services'
+import { defaultCourse } from '../utils/course'
 
 const CoursesProvider: React.FC<{ children: React.ReactChild; role: 'user' | 'admin' }> = ({
   children,
@@ -11,7 +11,6 @@ const CoursesProvider: React.FC<{ children: React.ReactChild; role: 'user' | 'ad
     query: { id: courseId },
     push,
   } = useRouter()
-  const courseFormRef = React.useRef<HTMLFormElement>(null)
   const [course, setCourse] = React.useState(defaultCourse as Course)
 
   const updateCourse: CourseProvider['updateCourse'] = async rewrites => {
@@ -25,14 +24,7 @@ const CoursesProvider: React.FC<{ children: React.ReactChild; role: 'user' | 'ad
   }
 
   async function handleCreate() {
-    const [parsedCourse, parseCourseError] = parseCourse(courseFormRef.current)
-
-    if (!parsedCourse || parseCourseError) {
-      console.log(parseCourseError)
-      return
-    }
-
-    const [createdCourse, error] = await coursesAPI.createCourse(parsedCourse)
+    const [createdCourse, error] = await coursesAPI.createCourse(course)
 
     if (!createdCourse || error) {
       console.log(error)
@@ -59,11 +51,10 @@ const CoursesProvider: React.FC<{ children: React.ReactChild; role: 'user' | 'ad
         course,
         updateCourse,
         handleSubmit,
-        courseFormRef,
         role,
       }}
     >
-      <form ref={courseFormRef}>{children}</form>
+      {children}
     </coursesContext.Provider>
   )
 }
