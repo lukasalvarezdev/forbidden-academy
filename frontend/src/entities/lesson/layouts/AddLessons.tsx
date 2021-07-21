@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import { FilledArrowIcon, SectionNumberContainerIcon, VideoIcon } from '@/icons'
+import { FilledArrowIcon, SectionNumberContainerIcon, VideoIcon, EditIcon } from '@/icons'
+import { useStateWithPromise } from 'src/hooks/useStateWithPromise'
 
 const AddLessonForm = () => {
   const {
@@ -10,6 +11,8 @@ const AddLessonForm = () => {
   const [openedSection, setOpenedSection] = React.useState('')
   const [sections, setSections] = React.useState<any>([])
   const [lessons, setLessons] = React.useState<any>([])
+  const [editableSection, setEditableSection] = useStateWithPromise<string>('')
+  const sectionTitleRef = React.useRef<HTMLInputElement>(null)
 
   function addLesson(e: any, id: string) {
     e.preventDefault()
@@ -37,21 +40,57 @@ const AddLessonForm = () => {
     ])
   }
 
+  function editSection(e: any, id: string) {
+    setSections(
+      sections.map((sec: any) => (sec.id === id ? { ...sec, name: e.target.value } : sec)),
+    )
+  }
+
+  function onSaveSection(id: string) {
+    console.log('Saved!', id)
+  }
+
   return (
     <CourseContainer className="p-20 border-radius-primary normal-shadow">
       <h3 className="mb-20">Add lessons</h3>
       {sections.map((section: any, index: number) => (
         <div key={index} className="section mb-10">
-          <div
-            className="section-info p-20 border-radius-primary d-f align-items-c justify-content-sb relative pointer bg-white normal-shadow"
-            onClick={() => setOpenedSection(openedSection === section.id ? '' : section.id)}
-          >
+          <div className="section-info p-20 border-radius-primary d-f align-items-c justify-content-sb relative bg-white normal-shadow">
             <div className="number-container absolute">
               <SectionNumberContainerIcon />
               <span className="absolute fc-white font-semi-bold">{index}</span>
             </div>
-            <h3>{section.name}</h3>
-            <FilledArrowIcon />
+            <div className="d-f align-items-c">
+              <span
+                onClick={async () => {
+                  await setEditableSection(editableSection === section.id ? '' : section.id)
+                  sectionTitleRef.current?.focus()
+                }}
+              >
+                <EditIcon className="mr-10 pointer" />
+              </span>
+              {editableSection === section.id ? (
+                <input
+                  type="text"
+                  defaultValue={section.name}
+                  className="section-name"
+                  onChange={e => editSection(e, section.id)}
+                  ref={sectionTitleRef}
+                  onBlur={() => {
+                    setEditableSection('')
+                    onSaveSection(section.id)
+                  }}
+                />
+              ) : (
+                <h3>{section.name}</h3>
+              )}
+            </div>
+            <div
+              className="d-f f-one align-items-c justify-content-e h-100 pointer"
+              onClick={() => setOpenedSection(openedSection === section.id ? '' : section.id)}
+            >
+              <FilledArrowIcon />
+            </div>
           </div>
 
           {openedSection === section.id ? (
