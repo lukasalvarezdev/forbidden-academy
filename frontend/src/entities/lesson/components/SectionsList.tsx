@@ -23,7 +23,9 @@ const SectionsList = () => {
 
           <div className="lessons pl-10">
             {lessons.map((lesson, index) =>
-              lesson.section === section.id ? <LessonItem lesson={lesson} key={index} /> : null,
+              lesson.section_id === section.id ? (
+                <LessonItem lesson={lesson} key={index} />
+              ) : null,
             )}
           </div>
         </StyledSection>

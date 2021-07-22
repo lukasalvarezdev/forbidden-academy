@@ -1,9 +1,10 @@
 import ManageCourseForm from 'src/entities/course/layouts/ManageCourseForm'
+import AddLessonForm from 'src/entities/lesson/layouts/AddLessons'
 
 const ManageCourse = () => {
   return (
     <div>
-      <ManageCourseForm />
+      <AddLessonForm />
     </div>
   )
 }

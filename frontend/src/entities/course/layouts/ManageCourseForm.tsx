@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useCourses } from '../store/context'
 import styled from 'styled-components'
 
-const MobileCourseLayout = () => {
+const ManageCourseForm = () => {
   const {
     query: { id },
   } = useRouter()
@@ -65,7 +65,7 @@ const MobileCourseLayout = () => {
   )
 }
 
-export default MobileCourseLayout
+export default ManageCourseForm
 
 export const CourseContainer = styled.div`
   background-color: #fff;
