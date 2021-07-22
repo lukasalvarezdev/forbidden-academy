@@ -10,7 +10,7 @@ const ManageCourseForm = () => {
   const { updateCourse, course, handleSubmit } = useCourses()
 
   return (
-    <CourseContainer className="p-20 border-radius-primary normal-shadow">
+    <CourseContainer className="p-20  normal-shadow">
       <form
         onChange={(e: React.ChangeEvent<HTMLFormElement>) =>
           updateCourse({ [e.target.name]: e.target.value })
@@ -69,8 +69,7 @@ export default ManageCourseForm
 
 export const CourseContainer = styled.div`
   background-color: #fff;
-  width: 95%;
-  margin: 3rem auto;
+  border-radius: 0 4px 4px 4px;
 
   .field {
     textarea {
