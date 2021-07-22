@@ -42,7 +42,7 @@ export default function Header() {
       </div>
 
       <div className="icon-menu" onClick={() => setIsOpenMenu(!openMenu)}>
-        <MenuIcon />
+        <MenuIcon className="pointer" />
       </div>
 
       {openMenu ? <ResponsiveMenu /> : null}
