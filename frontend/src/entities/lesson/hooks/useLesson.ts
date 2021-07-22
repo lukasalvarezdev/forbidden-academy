@@ -14,113 +14,43 @@ export function useLesson(courseId: string) {
       name: 'First',
       description: 'Hello world',
       id: 'sdads',
-      announcements: [
-        {
-          title: 'pepe',
-          body: 'sd',
-          posted_time: 'sd',
-        },
-      ],
-      last_modified_time: 'sd',
-      posted_time: 'sda',
-      questions: [],
-      section: '2jdsa',
+      section_id: '2jdsa',
     },
     {
       name: 'First',
       description: 'Hello world',
+      section_id: '2jdsa',
       id: 'sdads',
-      announcements: [
-        {
-          title: 'pepe',
-          body: 'sd',
-          posted_time: 'sd',
-        },
-      ],
-      last_modified_time: 'sd',
-      posted_time: 'sda',
-      questions: [],
-      section: '2jdsa',
     },
     {
       name: 'First',
       description: 'Hello world',
+      section_id: '2jdsa',
       id: 'sdads',
-      announcements: [
-        {
-          title: 'pepe',
-          body: 'sd',
-          posted_time: 'sd',
-        },
-      ],
-      last_modified_time: 'sd',
-      posted_time: 'sda',
-      questions: [],
-      section: '2jdsa',
     },
     {
       name: 'First',
       description: 'Hello world',
+      section_id: '2jdsa',
       id: 'sdads',
-      announcements: [
-        {
-          title: 'pepe',
-          body: 'sd',
-          posted_time: 'sd',
-        },
-      ],
-      last_modified_time: 'sd',
-      posted_time: 'sda',
-      questions: [],
-      section: '2jdsa',
     },
     {
-      name: 'Seconds',
-      description: 'Hello worlddd',
+      name: 'First',
+      description: 'Hello world',
+      section_id: '2jdsa',
       id: 'sdads',
-      announcements: [
-        {
-          title: 'pepe',
-          body: 'sd',
-          posted_time: 'sd',
-        },
-      ],
-      last_modified_time: 'sd',
-      posted_time: 'sda',
-      questions: [],
-      section: '2jdsas',
     },
     {
-      name: 'Seconds',
-      description: 'Hello worlddd',
+      name: 'First',
+      description: 'Hello world',
+      section_id: '2jdsa',
       id: 'sdads',
-      announcements: [
-        {
-          title: 'pepe',
-          body: 'sd',
-          posted_time: 'sd',
-        },
-      ],
-      last_modified_time: 'sd',
-      posted_time: 'sda',
-      questions: [],
-      section: '2jdsas',
     },
     {
-      name: 'Seconds',
-      description: 'Hello worlddd',
+      name: 'First',
+      description: 'Hello world',
+      section_id: '2jdsa',
       id: 'sdads',
-      announcements: [
-        {
-          title: 'pepe',
-          body: 'sd',
-          posted_time: 'sd',
-        },
-      ],
-      last_modified_time: 'sd',
-      posted_time: 'sda',
-      questions: [],
-      section: '2jdsas',
     },
   ])
 
@@ -134,16 +64,15 @@ export function useLesson(courseId: string) {
     setSections(sectionsCopy)
   }
 
-  function createLesson(lesson: Pick<Lesson, 'description' | 'name' | 'section'>) {
+  function createLesson(lesson: any) {
     setLessons(lessons => [
       ...lessons,
       {
         ...lesson,
-        id: '12',
-        announcements: [],
-        questions: [],
-        posted_time: 's',
-        last_modified_time: '',
+        name: 'First',
+        description: 'Hello world',
+        section_id: '2jdsa',
+        id: 'sdads',
       },
     ])
   }
