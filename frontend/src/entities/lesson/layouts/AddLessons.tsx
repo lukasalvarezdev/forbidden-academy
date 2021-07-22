@@ -13,6 +13,8 @@ const AddLessonForm = () => {
   const [lessons, setLessons] = React.useState<any>([])
   const [editableSection, setEditableSection] = useStateWithPromise<string>('')
   const sectionTitleRef = React.useRef<HTMLInputElement>(null)
+  const [editableLesson, setEditableLesson] = useStateWithPromise<string>('')
+  const lessonItemRef = React.useRef<HTMLInputElement>(null)
 
   function addLesson(e: any, id: string) {
     e.preventDefault()
@@ -20,7 +22,7 @@ const AddLessonForm = () => {
     setLessons((lessons: any) => [
       ...lessons,
       {
-        name: 'el pepe nuevo',
+        name: 'Lesson name',
         id: Math.random().toString(),
         section_id: id,
       },
@@ -33,7 +35,7 @@ const AddLessonForm = () => {
     setSections((sections: any) => [
       ...sections,
       {
-        name: 'el section nuevo',
+        name: 'Section name',
         id: Math.random().toString(),
         course_id: id as string,
       },
@@ -50,6 +52,18 @@ const AddLessonForm = () => {
     console.log('Saved!', id)
   }
 
+  function editLesson(e: any, id: string) {
+    setLessons(
+      lessons.map((lesson: any) =>
+        lesson.id === id ? { ...lesson, name: e.target.value } : lesson,
+      ),
+    )
+  }
+
+  function onSaveLesson(id: string) {
+    console.log('Saved!', id)
+  }
+
   return (
     <CourseContainer className="p-20 border-radius-primary normal-shadow">
       <h3 className="mb-20">Add lessons</h3>
@@ -63,9 +77,10 @@ const AddLessonForm = () => {
             <div className="d-f align-items-c">
               <span
                 onClick={async () => {
-                  await setEditableSection(editableSection === section.id ? '' : section.id)
+                  await setEditableSection(section.id)
                   sectionTitleRef.current?.focus()
                 }}
+                className="d-f align-items-c"
               >
                 <EditIcon className="mr-10 pointer" />
               </span>
@@ -104,7 +119,30 @@ const AddLessonForm = () => {
                     <div className="icon">
                       <VideoIcon />
                     </div>
-                    <h4 className="ml-20">{lesson.name}</h4>
+                    <span
+                      className="d-f align-items-c"
+                      onClick={async () => {
+                        await setEditableLesson(lesson.id)
+                        lessonItemRef.current?.focus()
+                      }}
+                    >
+                      <EditIcon className="ml-10 pointer" />
+                    </span>
+                    {editableLesson === lesson.id ? (
+                      <input
+                        type="text"
+                        defaultValue={lesson.name}
+                        className="section-name input-primary"
+                        onChange={e => editLesson(e, section.id)}
+                        ref={lessonItemRef}
+                        onBlur={() => {
+                          setEditableLesson('')
+                          onSaveLesson(lesson.id)
+                        }}
+                      />
+                    ) : (
+                      <h4 className="ml-20">{lesson.name}</h4>
+                    )}
                   </div>
                 ) : null,
               )}
