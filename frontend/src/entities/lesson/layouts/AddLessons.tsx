@@ -73,7 +73,7 @@ const AddLessonForm = () => {
                 <input
                   type="text"
                   defaultValue={section.name}
-                  className="section-name"
+                  className="section-name input-primary"
                   onChange={e => editSection(e, section.id)}
                   ref={sectionTitleRef}
                   onBlur={() => {
