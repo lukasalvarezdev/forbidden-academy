@@ -1,10 +1,13 @@
 import { GraphQLObjectType, GraphQLSchema, GraphQLList, GraphQLID } from 'graphql';
 
-import UserType from './userSchema';
+import UserType from './schemas/userSchema';
+import CourseType from './schemas/courseSchema'; './schemas/courseSchema';
 
-import UserRepo from './userRepo';
+import UserRepo from './repos/usersRepo';
+import CourseRepo from './repos/coursesRepo';
 
 const userRepo = UserRepo.getInstance()
+const courseRepo = CourseRepo.getInstance()
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -20,6 +23,19 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(UserType),
       resolve(parent, args) {
         return userRepo.getAll();
+      },
+    },
+    course: {
+      type: CourseType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args, context) {
+        return courseRepo.getOne(args.id);
+      },
+    },
+    courses: {
+      type: new GraphQLList(CourseType),
+      resolve(parent, args) {
+        return courseRepo.getAll();
       },
     },
   },
