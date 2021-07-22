@@ -65,7 +65,7 @@ const AddLessonForm = () => {
   }
 
   return (
-    <CourseContainer className="p-20 border-radius-primary normal-shadow">
+    <CourseContainer className="p-20 normal-shadow">
       <h3 className="mb-20">Add lessons</h3>
       {sections.map((section: any, index: number) => (
         <div key={index} className="section mb-10">
@@ -165,8 +165,8 @@ export default AddLessonForm
 
 export const CourseContainer = styled.div`
   background-color: #fff;
-  width: 95%;
-  margin: 3rem auto;
+  margin: 0 auto;
+  border-radius: 0 4px 4px 4px;
 
   .btn-primary {
     height: 40px;
