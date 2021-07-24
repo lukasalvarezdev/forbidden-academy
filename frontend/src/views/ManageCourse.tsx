@@ -1,6 +1,6 @@
 import * as React from 'react'
 import ManageCourseForm from 'src/entities/course/layouts/ManageCourseForm'
-import AddLessonForm from 'src/entities/lesson/layouts/AddLessons'
+import SectionsTab from 'src/entities/lesson/layouts/SectionsTab'
 import styled from 'styled-components'
 
 const ManageCourse = () => {
@@ -23,7 +23,7 @@ const ManageCourse = () => {
         </div>
       </div>
       <div className="form-container">
-        {tab === 'lesson' ? <AddLessonForm /> : null}
+        {tab === 'lesson' ? <SectionsTab /> : null}
         {tab === 'course' ? <ManageCourseForm /> : null}
       </div>
     </StyledManageCourse>
