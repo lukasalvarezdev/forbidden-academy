@@ -18,7 +18,6 @@ const SectionItem: React.FC<SectionItemProps> = ({ section, index, children }) =
     setEditableSection,
     sectionTitleRef,
   } = useSection(section.id)
-  console.log(children)
 
   return (
     <div className="mb-10">
@@ -75,6 +74,10 @@ const StyledSectionInfo = styled.div`
 
   h3 {
     font-size: 2rem;
+
+    @media screen and (max-width: 1200px) {
+      font-size: 1.6rem;
+    }
   }
 
   .number-container {

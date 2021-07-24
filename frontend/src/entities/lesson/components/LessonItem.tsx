@@ -54,6 +54,10 @@ const StyledLesson = styled.div`
     font-size: 16px;
     font-weight: 500;
     color: var(--primary-black);
+
+    @media screen and (max-width: 1200px) {
+      font-size: 1.4rem;
+    }
   }
 
   .icon {
