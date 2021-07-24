@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
+const TABS = ['lessons', 'description']
+
 const TabsCarousel = () => {
   const [currentTab, setCurrentTab] = React.useState('description')
-  const tabs = ['lessons', 'description']
 
   return (
     <StyledTabsCarousel className="d-f bg-white align-items-c">
-      {tabs.map(tab => (
+      {TABS.map(tab => (
         <div
           className={`tab ${currentTab === tab ? 'current' : ''}`}
           key={tab}
@@ -39,17 +40,6 @@ const StyledTabsCarousel = styled.div`
     &.current {
       color: var(--primary-black);
       border-bottom: 2px solid var(--primary-black);
-    }
-  }
-
-  .lesson-duration {
-    background-color: var(--medium-blue);
-    border-radius: 30px;
-    padding: 5px 15px;
-    font-size: 14px;
-
-    @media screen and (max-width: 1200px) {
-      margin: 0;
     }
   }
 `

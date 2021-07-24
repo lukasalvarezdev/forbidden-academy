@@ -1,5 +1,5 @@
 import { useLesson } from '../hooks/useLesson'
-import LessonItem from '../layouts/LessonItem'
+import LessonItem from './LessonItem'
 
 const LessonsList = ({ sectionId }: { sectionId: string }) => {
   const { lessons, addLesson } = useLesson()

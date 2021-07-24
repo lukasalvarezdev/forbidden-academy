@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useSection } from '../hooks/useSection'
-import SectionItem from '../layouts/SectionItem'
+import SectionItem from './SectionItem'
 import LessonsList from './LessonsList'
 
 const SectionsList = () => {
