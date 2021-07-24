@@ -1,9 +1,9 @@
 import { FilledArrowIcon, SectionNumberContainerIcon, EditIcon } from '@/icons'
 import styled from 'styled-components'
-import { useSection } from '../hooks/useSection'
+import { useSection, Section } from '../services'
 
 export interface SectionItemProps {
-  section: any
+  section: Section
   index: number
   children: React.ReactNode
 }

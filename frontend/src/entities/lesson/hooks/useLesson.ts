@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { useStateWithPromise } from 'src/hooks/useStateWithPromise'
+import { Lesson } from '../services'
 
 export function useLesson() {
-  const [lessons, setLessons] = React.useState<any>([])
+  const [lessons, setLessons] = React.useState<Lesson[]>([])
   const [editableLesson, setEditableLesson] = useStateWithPromise<string>('')
   const lessonItemRef = React.useRef<HTMLInputElement>(null)
 
