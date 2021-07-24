@@ -1,9 +1,9 @@
 import { VideoIcon, EditIcon } from '@/icons'
 import styled from 'styled-components'
-import { useLesson } from '../hooks/useLesson'
+import { useLesson, Lesson } from '../services'
 
 export interface LessonItemProps {
-  lesson: any
+  lesson: Lesson
   sectionId: string
 }
 

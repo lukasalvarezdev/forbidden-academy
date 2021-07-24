@@ -1,4 +1,4 @@
-import { useLesson } from '../hooks/useLesson'
+import { useLesson } from '../services'
 import LessonItem from './LessonItem'
 
 const LessonsList = ({ sectionId }: { sectionId: string }) => {

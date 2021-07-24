@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { useStateWithPromise } from 'src/hooks/useStateWithPromise'
+import { Section } from '../services'
 
 export function useSection(courseId: string) {
-  const [sections, setSections] = React.useState<any>([])
+  const [sections, setSections] = React.useState<Section[]>([])
   const [openedSection, setOpenedSection] = React.useState('')
   const [editableSection, setEditableSection] = useStateWithPromise<string>('')
   const sectionTitleRef = React.useRef<HTMLInputElement>(null)
