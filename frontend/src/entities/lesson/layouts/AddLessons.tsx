@@ -2,67 +2,33 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { FilledArrowIcon, SectionNumberContainerIcon, VideoIcon, EditIcon } from '@/icons'
-import { useStateWithPromise } from 'src/hooks/useStateWithPromise'
+import { useSection } from '../hooks/useSection'
+import { useLesson } from '../hooks/useLesson'
 
 const AddLessonForm = () => {
   const {
     query: { id },
   } = useRouter()
-  const [openedSection, setOpenedSection] = React.useState('')
-  const [sections, setSections] = React.useState<any>([])
-  const [lessons, setLessons] = React.useState<any>([])
-  const [editableSection, setEditableSection] = useStateWithPromise<string>('')
-  const sectionTitleRef = React.useRef<HTMLInputElement>(null)
-  const [editableLesson, setEditableLesson] = useStateWithPromise<string>('')
-  const lessonItemRef = React.useRef<HTMLInputElement>(null)
-
-  function addLesson(e: any, id: string) {
-    e.preventDefault()
-
-    setLessons((lessons: any) => [
-      ...lessons,
-      {
-        name: 'Lesson name',
-        id: Math.random().toString(),
-        section_id: id,
-      },
-    ])
-  }
-
-  function addSection(e: any) {
-    e.preventDefault()
-
-    setSections((sections: any) => [
-      ...sections,
-      {
-        name: 'Section name',
-        id: Math.random().toString(),
-        course_id: id as string,
-      },
-    ])
-  }
-
-  function editSection(e: any, id: string) {
-    setSections(
-      sections.map((sec: any) => (sec.id === id ? { ...sec, name: e.target.value } : sec)),
-    )
-  }
-
-  function onSaveSection(id: string) {
-    console.log('Saved!', id)
-  }
-
-  function editLesson(e: any, id: string) {
-    setLessons(
-      lessons.map((lesson: any) =>
-        lesson.id === id ? { ...lesson, name: e.target.value } : lesson,
-      ),
-    )
-  }
-
-  function onSaveLesson(id: string) {
-    console.log('Saved!', id)
-  }
+  const {
+    sections,
+    addSection,
+    editSection,
+    onSaveSection,
+    openedSection,
+    setOpenedSection,
+    editableSection,
+    setEditableSection,
+    sectionTitleRef,
+  } = useSection(id as string)
+  const {
+    lessons,
+    editableLesson,
+    setEditableLesson,
+    lessonItemRef,
+    addLesson,
+    editLesson,
+    onSaveLesson,
+  } = useLesson()
 
   return (
     <CourseContainer className="p-20 normal-shadow">

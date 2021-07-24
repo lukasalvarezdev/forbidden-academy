@@ -1,96 +1,44 @@
 import * as React from 'react'
-import { Lesson } from '../services'
+import { useStateWithPromise } from 'src/hooks/useStateWithPromise'
 
-export function useLesson(courseId: string) {
-  const [sections, setSections] = React.useState([
-    { name: 'Welcome to the project', id: '2jdsa', number_of_lessons: 29, courseId: 'edd' },
-    { name: 'First project', id: '2jdsass', number_of_lessons: 29, courseId: 'edd' },
-    { name: 'Introduction to Express', id: '2jdsasss', number_of_lessons: 29, courseId: 'eds' },
-    { name: 'Second project', id: '2jdsassss', number_of_lessons: 29, courseId: 'edd' },
-  ])
+export function useLesson() {
+  const [lessons, setLessons] = React.useState<any>([])
+  const [editableLesson, setEditableLesson] = useStateWithPromise<string>('')
+  const lessonItemRef = React.useRef<HTMLInputElement>(null)
 
-  const [lessons, setLessons] = React.useState<Lesson[]>([
-    {
-      name: 'First',
-      description: 'Hello world',
-      id: 'sdads',
-      section_id: '2jdsa',
-    },
-    {
-      name: 'First',
-      description: 'Hello world',
-      section_id: '2jdsa',
-      id: 'sdads',
-    },
-    {
-      name: 'First',
-      description: 'Hello world',
-      section_id: '2jdsa',
-      id: 'sdads',
-    },
-    {
-      name: 'First',
-      description: 'Hello world',
-      section_id: '2jdsa',
-      id: 'sdads',
-    },
-    {
-      name: 'First',
-      description: 'Hello world',
-      section_id: '2jdsa',
-      id: 'sdads',
-    },
-    {
-      name: 'First',
-      description: 'Hello world',
-      section_id: '2jdsa',
-      id: 'sdads',
-    },
-    {
-      name: 'First',
-      description: 'Hello world',
-      section_id: '2jdsa',
-      id: 'sdads',
-    },
-  ])
+  function addLesson(e: any, id: string) {
+    e.preventDefault()
 
-  function createSection(name: string) {
-    setSections(sections => [...sections, { name, id: 'das', number_of_lessons: 22, courseId }])
-  }
-
-  function updateSection(name: string, index: number) {
-    const sectionsCopy = [...sections]
-    sectionsCopy[index] = { ...sectionsCopy[index], name }
-    setSections(sectionsCopy)
-  }
-
-  function createLesson(lesson: any) {
-    setLessons(lessons => [
+    setLessons((lessons: any) => [
       ...lessons,
       {
-        ...lesson,
-        name: 'First',
-        description: 'Hello world',
-        section_id: '2jdsa',
-        id: 'sdads',
+        name: 'Lesson name',
+        id: Math.random().toString(),
+        section_id: id,
       },
     ])
   }
 
-  function updateLesson(rewrites: Partial<Lesson>, index: number) {
-    const lessonsCopy = [...lessons]
-    lessonsCopy[index] = { ...lessonsCopy[index], ...rewrites }
-    setLessons(lessonsCopy)
+  function editLesson(e: any, id: string) {
+    setLessons(
+      lessons.map((lesson: any) =>
+        lesson.id === id ? { ...lesson, name: e.target.value } : lesson,
+      ),
+    )
+  }
+
+  function onSaveLesson(id: string) {
+    console.log('Saved!', id)
   }
 
   return {
-    sections,
-    setSections,
     lessons,
     setLessons,
-    createSection,
-    updateSection,
-    createLesson,
-    updateLesson,
+    editableLesson,
+    setEditableLesson,
+    lessonItemRef,
+    addLesson,
+    editLesson,
+    onSaveLesson,
   }
 }
