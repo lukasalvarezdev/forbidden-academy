@@ -1,33 +1,32 @@
-import {
-  GraphQLString,
-  GraphQLID,
-  GraphQLObjectType,
-  GraphQLList,
-} from 'graphql';
-// TODO: Dependency Injection with awilix
-import UserRepo from '../repos/usersRepo';
-import StudentRepo from '../repos/studentsRepo';
+import { getModelForClass, plugin, prop, Ref } from '@typegoose/typegoose';
+import { ObjectId } from 'mongoose';
+import { Field, ObjectType } from 'type-graphql';
+import { ObjectIdScalar } from '../utils/scalars';
+import { User } from './User';
+import autopopulate from 'mongoose-autopopulate';
 
-import UserType from './userSchema';
+@ObjectType()
+@plugin(autopopulate)
+export class Course {
+  @Field(() => ObjectIdScalar)
+  readonly _id: ObjectId;
 
-const CourseType = new GraphQLObjectType({
-  name: 'Course',
-  fields: () => ({
-    id: { type: GraphQLID },
-    name: { type: GraphQLString },
-    instructor: {
-      type: UserType,
-      resolve(parent) {
-        return UserRepo.getInstance().getOne(parent.instructorId);
-      },
-    },
-    students: {
-      type: new GraphQLList(UserType),
-      resolve(parent) {
-        return StudentRepo.getInstance().getAllByCourse(parent.id);
-      },
-    },
-  }),
-});
+  @Field()
+  @prop()
+  name!: string;
 
-export default CourseType;
+  @Field(() => User)
+  @prop({ ref: User, autopopulate: true })
+  instructor: Ref<User>;
+
+  @prop({ ref: User })
+  students: Ref<User>[];
+
+  @prop()
+  createdAt!: Date;
+
+  @prop()
+  updatedAt!: Date;
+}
+
+export const CourseModel = getModelForClass(Course);

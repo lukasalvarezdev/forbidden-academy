@@ -1,12 +1,12 @@
 import { getModelForClass, prop } from '@typegoose/typegoose';
-// import { ObjectId } from 'mongoose';
+import { ObjectId } from 'mongoose';
 import { Field, ObjectType } from 'type-graphql';
+import { ObjectIdScalar } from '../utils/scalars';
 
-// TODO: try autopopulate
 @ObjectType()
 export class User {
-  @Field()
-  readonly _id!: string;
+  @Field(() => ObjectIdScalar)
+  readonly _id: ObjectId;
 
   @prop()
   @Field()
