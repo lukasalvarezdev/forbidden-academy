@@ -13,6 +13,8 @@ export class UserResolver {
   }
   @Query(() => User, { nullable: true })
   async getOneUser(@Arg('id') id: string): Promise<User | null> {
+    // TODO: change id from string to ObjectId
+    // async getOneUser(@Arg('id') id: ObjectId): Promise<User | null> {
     return UserModel.findById(id);
   }
   @Query(() => [User])

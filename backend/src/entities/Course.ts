@@ -19,7 +19,8 @@ export class Course {
   @prop({ ref: User, autopopulate: true })
   instructor: Ref<User>;
 
-  @prop({ ref: User })
+  @Field(() => [User])
+  @prop({ ref: User, autopopulate: true })
   students: Ref<User>[];
 
   @prop()
