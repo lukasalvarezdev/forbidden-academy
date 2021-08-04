@@ -13,14 +13,14 @@ export class Course {
 
   @Field()
   @prop()
-  name!: string;
+  name: string;
 
   @Field(() => User)
-  @prop({ ref: User, autopopulate: true })
+  @prop({ ref: 'User', autopopulate: true })
   instructor: Ref<User>;
 
   @Field(() => [User])
-  @prop({ ref: User, autopopulate: true })
+  @prop({ ref: 'User', autopopulate: true })
   students: Ref<User>[];
 
   @prop()

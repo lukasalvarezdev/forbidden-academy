@@ -1,12 +1,13 @@
-import { getModelForClass, prop } from '@typegoose/typegoose';
+import { prop, getModelForClass } from '@typegoose/typegoose';
 import { ObjectId } from 'mongoose';
-import { Field, ObjectType } from 'type-graphql';
+import { Field, ObjectType, Root } from 'type-graphql';
 import { ObjectIdScalar } from '../utils/scalars';
+import { Course, CourseModel } from './Course';
 
 @ObjectType()
 export class User {
   @Field(() => ObjectIdScalar)
-  readonly _id: ObjectId;
+  _id: ObjectId;
 
   @prop()
   @Field()
@@ -15,6 +16,18 @@ export class User {
   @prop()
   @Field()
   email!: string;
+
+  @Field(() => [Course])
+  async teachedCourses(@Root() parent: User): Promise<Course[]> {
+    const courses = await CourseModel.find();
+    console.log(courses.map((x) => x._id));
+    console.log(parent.email);
+    console.log(parent.createdAt);
+    console.log(parent.name);
+    console.log(parent.updatedAt);
+    console.log(parent._id);
+    return CourseModel.find({ instructor: '61083e32d64e0c6d75dff2d2' });
+  }
 
   @prop()
   createdAt!: Date;
