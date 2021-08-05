@@ -1,0 +1,54 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 1rem == 1px*/
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  box-sizing: inherit;
+  font-family: var(--font-inter);
+  font-size: 1.6rem;
+  color: var(--primary-black);
+  background-color: var(--light-gray);
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+}
+
+ul {
+  list-style: none;
+}
+
+*[contentEditable='true'] {
+  outline: none;
+}
