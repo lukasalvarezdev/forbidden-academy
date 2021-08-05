@@ -1,4 +1,12 @@
 /* SPACING */
+.m-auto {
+  margin: auto;
+}
+
+.m-0-auto {
+  margin: 0 auto;
+}
+
 .m-10 {
   margin: 10px;
 }
@@ -102,6 +110,10 @@
 /* DISPLAYS */
 .d-b {
   display: block;
+}
+
+.d-n {
+  display: none;
 }
 
 .d-ib {
