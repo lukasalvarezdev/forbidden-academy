@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import * as React from 'react'
 import ManageCourseForm from 'src/entities/course/components/ManageCourseForm'
 import ManageLessonsForm from 'src/entities/lesson/components/ManageLessonsForm'
@@ -5,6 +6,9 @@ import styled from 'styled-components'
 
 const ManageCourse = () => {
   const [tab, setTab] = React.useState('course')
+  const {
+    query: { id },
+  } = useRouter()
 
   return (
     <StyledManageCourse>
@@ -15,16 +19,24 @@ const ManageCourse = () => {
         >
           Course info
         </div>
-        <div
-          onClick={() => setTab('lesson')}
-          className={`tab d-f align-items-c pointer ${tab === 'lesson' ? 'selected' : ''}`}
-        >
-          Lessons
-        </div>
+        {id ? (
+          <div
+            onClick={() => setTab('lesson')}
+            className={`tab d-f align-items-c pointer ${tab === 'lesson' ? 'selected' : ''}`}
+          >
+            Lessons
+          </div>
+        ) : null}
       </div>
       <div className="form-container">
-        {tab === 'lesson' ? <ManageLessonsForm /> : null}
-        {tab === 'course' ? <ManageCourseForm /> : null}
+        {id ? (
+          <>
+            {tab === 'lesson' ? <ManageLessonsForm /> : null}
+            {tab === 'course' ? <ManageCourseForm /> : null}
+          </>
+        ) : (
+          <ManageCourseForm />
+        )}
       </div>
     </StyledManageCourse>
   )
