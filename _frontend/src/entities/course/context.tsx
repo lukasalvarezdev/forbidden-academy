@@ -2,60 +2,82 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import { coursesAPI, Course, defaultCourse } from 'src/entities/course/services'
 
-export const CoursesProvider: React.FC<{ children: React.ReactChild; role: 'user' | 'admin' }> =
-  ({ children, role }) => {
-    const {
-      query: { id: courseId },
-      push,
-    } = useRouter()
-    const [course, setCourse] = React.useState<Course>(defaultCourse)
+export const CoursesProvider = ({
+  children,
+  role,
+}: {
+  children: React.ReactChild
+  role: 'user' | 'admin'
+}) => {
+  const {
+    query: { id: courseId },
+    push,
+  } = useRouter()
+  const [course, setCourse] = React.useState<Course>(defaultCourse)
 
-    const updateCourse: CourseProviderProps['updateCourse'] = async rewrites => {
-      setCourse(x => ({ ...x, ...rewrites }))
+  React.useEffect(() => {
+    if (courseId) {
+      getCourse(courseId as string)
+    }
+  }, [courseId])
+
+  const getCourse = React.useCallback(async (courseId: string) => {
+    const [course, error] = await coursesAPI.getCourse(courseId)
+
+    if (!course || error) {
+      console.log(error)
+      return
     }
 
-    const handleSubmit: CourseProviderProps['handleSubmit'] = async e => {
-      e.preventDefault()
+    setCourse(course)
+  }, [])
 
-      // courseId ? handleSubmitUpdate() :
-      handleCreate()
-    }
-
-    async function handleCreate() {
-      const [id, error] = await coursesAPI.createCourse(course)
-
-      if (!id || error) {
-        console.log(error)
-        return
-      }
-
-      push(`/courses/${id}`)
-    }
-
-    // async function handleSubmitUpdate() {
-    //   const [wasUpdated, error] = await coursesAPI.updateCourse(course)
-
-    //   if (!wasUpdated || error) {
-    //     console.log(error)
-    //     return
-    //   }
-
-    //   console.log('Updated!')
-    // }
-
-    return (
-      <coursesContext.Provider
-        value={{
-          course,
-          updateCourse,
-          handleSubmit,
-          role,
-        }}
-      >
-        {children}
-      </coursesContext.Provider>
-    )
+  const updateCourse: CourseProviderProps['updateCourse'] = async rewrites => {
+    setCourse(x => ({ ...x, ...rewrites }))
   }
+
+  const handleSubmit: CourseProviderProps['handleSubmit'] = async e => {
+    e.preventDefault()
+
+    // courseId ? handleSubmitUpdate() :
+    handleCreate()
+  }
+
+  async function handleCreate() {
+    const [id, error] = await coursesAPI.createCourse(course)
+
+    if (!id || error) {
+      console.log(error)
+      return
+    }
+
+    push(`/courses/${id}`)
+  }
+
+  // async function handleSubmitUpdate() {
+  //   const [wasUpdated, error] = await coursesAPI.updateCourse(course)
+
+  //   if (!wasUpdated || error) {
+  //     console.log(error)
+  //     return
+  //   }
+
+  //   console.log('Updated!')
+  // }
+
+  return (
+    <coursesContext.Provider
+      value={{
+        course,
+        updateCourse,
+        handleSubmit,
+        role,
+      }}
+    >
+      {children}
+    </coursesContext.Provider>
+  )
+}
 
 const coursesContext = React.createContext<CourseProviderProps>({
   course: defaultCourse,

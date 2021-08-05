@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router'
 import * as React from 'react'
+import { useRouter } from 'next/router'
 import ManageCourseForm from 'src/entities/course/components/ManageCourseForm'
 import ManageLessonsForm from 'src/entities/lesson/components/ManageLessonsForm'
 import styled from 'styled-components'
