@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { StarIcon } from 'src/utils'
 import styled from 'styled-components'
-import { Course } from '@/entities/course/services'
+import { Course } from 'src/entities/course/services'
 
 const CourseCard = ({ course }: { course: Course }) => {
   return (

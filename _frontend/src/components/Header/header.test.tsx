@@ -1,5 +1,5 @@
 import { render, fireEvent } from 'src/testUtils'
-import Header from '@/components/Header'
+import Header from 'src/components/Header'
 
 describe('Home page', () => {
   test('should open the menu', async () => {

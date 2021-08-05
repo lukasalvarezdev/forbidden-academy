@@ -1,4 +1,4 @@
-import { Course } from '@/entities/course/services'
+import { Course } from 'src/entities/course/services'
 
 export async function getAllCourses(): Promise<[Course[], null]> {
   return [
@@ -84,4 +84,8 @@ export async function getAllCourses(): Promise<[Course[], null]> {
     ],
     null,
   ]
+}
+
+export async function createCourse(course: Course): Promise<[string | number, null]> {
+  return [Math.random(), null]
 }

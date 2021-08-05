@@ -1,6 +1,6 @@
-import Header from '@/components/Header'
-import CourseCard from '@/entities/course/components/CourseCard'
-import { coursesAPI, Course } from '@/entities/course/services'
+import Header from 'src/components/Header'
+import CourseCard from 'src/entities/course/components/CourseCard'
+import { coursesAPI, Course } from 'src/entities/course/services'
 
 export const HomePage = ({ courses }: { courses: Course[] }) => {
   return (
