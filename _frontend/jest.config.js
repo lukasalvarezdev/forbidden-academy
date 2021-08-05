@@ -12,5 +12,6 @@ module.exports = {
   moduleNameMapper: {
     'src/(.*)': '<rootDir>/src/$1',
     '@/components/(.*)': '<rootDir>/src/components/$1',
+    '@/entities/(.*)': '<rootDir>/src/entities/$1',
   },
 }
