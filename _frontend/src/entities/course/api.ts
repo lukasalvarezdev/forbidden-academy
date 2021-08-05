@@ -8,7 +8,7 @@ export async function getAllCourses(): Promise<[Course[], null]> {
         description:
           'In this learning journey, you will find out how to be more digital and how to digitize your current skills.',
         author: {
-          name: 'Lukas Alvarez',
+          name: 'Lukas Alvarez.',
           id: '1',
         },
         id: '1',
