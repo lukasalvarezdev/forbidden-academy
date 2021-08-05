@@ -57,7 +57,7 @@ const ManageCourseForm = () => {
           <input type="text" name="price" defaultValue={course.price} />
         </div>
 
-        <button onClick={handleSubmit} className="btn-primary">
+        <button onClick={handleSubmit} className="btn-primary" role="create-course">
           {id ? 'Save' : 'Create'}
         </button>
       </form>

@@ -23,6 +23,7 @@ const ManageCourse = () => {
           <div
             onClick={() => setTab('lesson')}
             className={`tab d-f align-items-c pointer ${tab === 'lesson' ? 'selected' : ''}`}
+            data-testid="lessons-tab-btn"
           >
             Lessons
           </div>
