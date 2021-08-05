@@ -1,10 +1,15 @@
-import { render } from 'src/testUtils'
-import Pepe from '@/components/Pepe'
+import { render, fireEvent } from 'src/testUtils'
+import Header from '@/components/Header'
 
 describe('Home page', () => {
-  it('Get pepe name', async () => {
-    const { findByText } = render(<Pepe pepe="El pepe" />, {})
-    expect((await findByText('El pepe')).innerHTML).toBe('El pepe')
+  test('should open the menu', async () => {
+    const { findByRole, findByTestId } = render(<Header />, {})
+
+    const menuBtn = await findByRole('menu-btn')
+    fireEvent.click(menuBtn)
+
+    const responsiveMenu = await findByTestId('responsive-menu')
+    expect(responsiveMenu).toBeTruthy()
   })
 })
 

@@ -40,7 +40,7 @@ export default function Header() {
         <div className="profile d-f center-f">LU</div>
       </div>
 
-      <div className="icon-menu d-n" onClick={() => setIsOpenMenu(!openMenu)}>
+      <div className="icon-menu d-n" onClick={() => setIsOpenMenu(!openMenu)} role="menu-btn">
         <MenuIcon className="pointer" />
       </div>
 
@@ -50,7 +50,7 @@ export default function Header() {
 }
 
 const ResponsiveMenu = () => (
-  <StyledResponsiveMenu className="normal-shadow">
+  <StyledResponsiveMenu className="normal-shadow" data-testid="responsive-menu">
     <div className="search-bar d-f align-items-c w-100 mb-30 justfify-space-between m-0-auto">
       <div className="field w-100">
         <input type="text" placeholder="Search for anything" />
