@@ -11,11 +11,3 @@ services:
       - '27017-27019:27017-27019'
     volumes:
       - ./data/mongo-db-volume:/data/db
-#   redis:
-#     image: "redis:latest"
-#     ports:
-#       - "6379:6379"
-#     volumes:
-#       - ./data/redis_data:/data
-#     entrypoint: redis-server --appendonly yes
-#     restart: always
