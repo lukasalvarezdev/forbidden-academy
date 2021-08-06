@@ -13,4 +13,19 @@ export class CreateUserInput {
   @IsEmail()
   @IsEmailAlreadyExist({ message: 'Email already in use' })
   email: string;
+
+  @Field()
+  @MinLength(1)
+  password: string;
+}
+
+@InputType()
+export class LoginInput {
+  @Field()
+  @IsEmail()
+  email: string;
+
+  @Field()
+  @MinLength(1)
+  password: string;
 }

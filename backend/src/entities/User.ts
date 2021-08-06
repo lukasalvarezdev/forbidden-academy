@@ -17,8 +17,12 @@ export class User {
   @Field()
   email!: string;
 
+  @prop()
+  password!: string;
+
   @Field(() => [Course])
   async teachedCourses(@Root() parent: User): Promise<Course[]> {
+    // TODO: Parent is not working
     const courses = await CourseModel.find();
     console.log(courses.map((x) => x._id));
     console.log(parent.email);

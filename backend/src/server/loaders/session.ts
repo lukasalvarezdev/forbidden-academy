@@ -17,7 +17,7 @@ export default async ({ isDev, sessionSecret }: Config) => {
     cookie: {
       httpOnly: true,
       secure: !isDev,
-      maxAge: 1000 * 60 * 60 * 24 * 7 * 365,
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
     },
   });
 };
