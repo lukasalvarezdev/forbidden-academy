@@ -1,11 +1,15 @@
+import { Request, Response } from 'express';
 import { Session } from 'express-session';
-import { Response } from 'express';
 
 interface MySession extends Session {
   userId: string;
 }
 
-export interface MyContext {
-  res: Response;
+interface MyRequest extends Request {
   session: MySession;
+}
+
+export interface MyContext {
+  req: MyRequest;
+  res: Response;
 }

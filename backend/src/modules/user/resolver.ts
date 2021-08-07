@@ -19,22 +19,21 @@ export class UserResolver {
   @Mutation(() => User, { nullable: true })
   async login(
     @Arg('data') { email, password }: LoginInput,
-    @Ctx() { session }: MyContext
+    @Ctx() ctx: MyContext
   ): Promise<User | null> {
     const user = await UserModel.findOne({ email });
     if (!user) return null;
 
     const isValidPassword = await bcrypt.compare(password, user.password);
     if (!isValidPassword) return null;
-
-    session.userId = user.id; //Store the cookie in redis
+    ctx.req.session.userId = user.id; //Store the cookie in redis
     return user;
   }
 
   @Mutation(() => Boolean)
-  async logout(@Ctx() { session, res }: MyContext): Promise<boolean> {
+  async logout(@Ctx() { req, res }: MyContext): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      session.destroy((err: any) => {
+      req.session.destroy((err: any) => {
         if (err) return reject(false);
         res.clearCookie('qid');
         resolve(true);
@@ -43,7 +42,9 @@ export class UserResolver {
   }
 
   @Query(() => User, { nullable: true })
-  async getMyUser(@Ctx() { session }: any): Promise<User | null> {
+  async getMyUser(
+    @Ctx() { req: { session } }: MyContext
+  ): Promise<User | null> {
     return session?.userId ? UserModel.findById(session.userId) : null;
   }
 
