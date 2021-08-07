@@ -16,15 +16,18 @@ export class CourseResolver {
   async addStudent(
     @Arg('data') { courseId, studentId }: AddStudentInput
   ): Promise<Course | null> {
-    const course = await CourseModel.findById(courseId);
-    if (!course) return null;
+    const [course, user] = await Promise.all([
+      CourseModel.findById(courseId),
+      UserModel.findById(studentId),
+    ]);
 
-    const student = await UserModel.findById(studentId);
-    if (student) {
-      // TODO: bug with repeated element first time
-      course.students = [...new Set([...course.students, student])];
-      await course.save();
-    }
+    if (!course || !user) return null;
+
+    // TODO: bug with repeated element first time
+    course.students = [...new Set([...course.students, user])];
+    user.enrolledCourses = [...new Set([...user.enrolledCourses, course])];
+    await Promise.all([course.save(), user.save()]);
+
     return course;
   }
   @Query(() => [Course])

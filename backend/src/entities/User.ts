@@ -1,37 +1,35 @@
-import { prop, getModelForClass } from '@typegoose/typegoose';
+import { prop, getModelForClass, Ref, plugin } from '@typegoose/typegoose';
 import { ObjectId } from 'mongoose';
 import { Field, ObjectType, Root } from 'type-graphql';
 import { ObjectIdScalar } from '../utils/scalars';
 import { Course, CourseModel } from './Course';
+import autopopulate from 'mongoose-autopopulate';
 
 @ObjectType()
+@plugin(autopopulate)
 export class User {
   @Field(() => ObjectIdScalar)
-  _id: ObjectId;
+  public readonly _id: ObjectId;
 
   @prop()
   @Field()
-  name!: string;
+  name: string;
 
   @prop()
   @Field()
-  email!: string;
+  email: string;
 
   @prop()
-  password!: string;
+  password: string;
 
   @Field(() => [Course])
-  async teachedCourses(@Root() parent: User): Promise<Course[]> {
-    // TODO: Parent is not working
-    const courses = await CourseModel.find();
-    console.log(courses.map((x) => x._id));
-    console.log(parent.email);
-    console.log(parent.createdAt);
-    console.log(parent.name);
-    console.log(parent.updatedAt);
-    console.log(parent._id);
-    return CourseModel.find({ instructor: '61083e32d64e0c6d75dff2d2' });
+  async teachedCourses(@Root() parent: any): Promise<Course[]> {
+    return CourseModel.find({ instructor: parent._id });
   }
+
+  @Field(() => [Course], { nullable: true })
+  @prop({ ref: 'Course', autopopulate: true })
+  enrolledCourses: Ref<Course>[];
 
   @prop()
   createdAt!: Date;
