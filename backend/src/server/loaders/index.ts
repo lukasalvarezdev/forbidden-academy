@@ -3,14 +3,14 @@ import { Config } from '../../config/index';
 
 import expressLoader from './express';
 import mongooseLoader from './mongoose';
-import graphql from './graphql';
-import session from './session';
+import apolloLoader from './apollo';
+import { ApolloServer } from 'apollo-server-express';
 
-export default async (app: Application, config: Config): Promise<void> => {
+export default async (
+  app: Application,
+  config: Config
+): Promise<ApolloServer> => {
+  await expressLoader(app, config);
   await mongooseLoader(config);
-
-  const graphqlMiddleware = await graphql(config);
-  const sessionMiddleware = await session(config);
-
-  await expressLoader(app, graphqlMiddleware, sessionMiddleware);
+  return apolloLoader();
 };
