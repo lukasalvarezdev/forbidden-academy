@@ -1,0 +1,65 @@
+## Public
+query{
+  getAllCourses {
+    _id
+  }
+  getCourse(id: "610eaa6bc1b4b483305a9e83"){
+    name
+  }
+}
+
+mutation{
+  createUser(data: {email: "mateo@comono.co", name: "mateo", password: "234"
+  }){
+    token
+    user{
+      name
+    }
+  }
+}
+
+mutation{
+  login(data: {email: "mateo@comono.co",password: "234"
+  }){
+    token
+    user {
+      name
+    }
+  }
+}
+
+## User
+query{
+  getMyUser {
+    name
+    teachedCourses {
+      _id
+      name
+    }
+    enrolledCourses {
+      _id
+    }
+  }
+}
+
+mutation{
+  createCourse(data: {name: "cursillo"
+  }){
+    name
+    instructor {
+      name
+    }
+  }
+}
+
+mutation{
+  addStudent(courseid: "6113db364e1a9370467c8fcd")
+}
+
+## Instructor
+mutation{
+  updateCourse(data: {name: "curso 2",courseId: "6113dec355a01a73e9dfc4bc"
+  }){
+    name
+  }
+}

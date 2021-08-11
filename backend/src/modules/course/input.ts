@@ -1,7 +1,7 @@
 import { Field, InputType } from 'type-graphql';
 import { MaxLength, MinLength } from 'class-validator';
-import { ObjectId } from 'mongoose';
 import { ObjectIdScalar } from '../../utils/scalars';
+import { ObjectId } from 'mongoose';
 
 @InputType()
 export class CreateCourseInput {
@@ -9,17 +9,15 @@ export class CreateCourseInput {
   @MaxLength(300)
   @MinLength(1)
   name: string;
-
-  @Field()
-  @MinLength(1)
-  instructorId: string;
 }
 
 @InputType()
-export class AddStudentInput {
+export class UpdateCourseInput {
   @Field(() => ObjectIdScalar)
   courseId: ObjectId;
 
-  @Field(() => ObjectIdScalar)
-  studentId: ObjectId;
+  @Field()
+  @MaxLength(300)
+  @MinLength(1)
+  name: string;
 }

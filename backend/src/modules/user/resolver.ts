@@ -8,12 +8,17 @@ import { LoginOutput } from './output';
 
 @Resolver()
 export class UserResolver {
-  @Mutation(() => User)
+  @Mutation(() => LoginOutput)
   async createUser(
     @Arg('data') { name, email, password }: CreateUserInput
-  ): Promise<User> {
+  ): Promise<LoginOutput | null> {
     const hashedPassword = await bcrypt.hash(password, 12);
-    return UserModel.create({ name, email, password: hashedPassword });
+    const newUser = await UserModel.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
+    return { user: newUser, ...issueJWT(newUser._id.toString()) };
   }
 
   @Mutation(() => LoginOutput, { nullable: true })
@@ -33,15 +38,5 @@ export class UserResolver {
   @Query(() => User, { nullable: true })
   async getMyUser(@Ctx() user: User): Promise<User | null> {
     return user._id ? user : null;
-  }
-
-  @Query(() => User, { nullable: true })
-  async getOneUser(@Arg('id') id: string): Promise<User | null> {
-    return UserModel.findById(id);
-  }
-
-  @Query(() => [User])
-  async getAllUsers(): Promise<User[]> {
-    return UserModel.find();
   }
 }
