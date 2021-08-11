@@ -10,7 +10,7 @@ export default async (
   app: Application,
   config: Config
 ): Promise<ApolloServer> => {
-  await expressLoader(app, config);
+  await expressLoader(app);
   await mongooseLoader(config);
   return apolloLoader();
 };

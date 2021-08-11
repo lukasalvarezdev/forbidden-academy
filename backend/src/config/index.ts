@@ -15,12 +15,12 @@ export interface Config {
   port: number;
   mongoURI: string;
   isDev: boolean;
-  sessionSecret: string;
+  tokenSecret: string;
 }
 
 export const config: Config = {
   port: +env('PORT'),
   mongoURI: env('MONGODB_URI'),
   isDev: env('NODE_ENV') === 'dev',
-  sessionSecret: env('SESSION_SECRET'),
+  tokenSecret: env('TOKEN_SECRET'),
 };
