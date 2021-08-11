@@ -2,7 +2,7 @@ import { Arg, Mutation } from 'type-graphql';
 import { Resolver, Query } from 'type-graphql';
 import { CreateCourseInput, AddStudentInput } from './input';
 import { Course, CourseModel } from '../../entities/Course';
-import { UserModel } from '../../entities/User';
+import { UserModel, User } from '../../entities/User';
 
 @Resolver()
 export class CourseResolver {
@@ -12,23 +12,34 @@ export class CourseResolver {
   ): Promise<Course> {
     return CourseModel.create({ name, instructor: instructorId });
   }
-  @Mutation(() => Course, { nullable: true })
+  @Mutation(() => Boolean)
   async addStudent(
     @Arg('data') { courseId, studentId }: AddStudentInput
-  ): Promise<Course | null> {
+  ): Promise<Boolean> {
     const [course, user] = await Promise.all([
       CourseModel.findById(courseId),
       UserModel.findById(studentId),
     ]);
 
-    if (!course || !user) return null;
+    if (!course || !user) return false;
+    if (isUserCourseInstructor() || isUserAlreadyStudent()) return false;
 
-    // TODO: bug with repeated element first time
     course.students = [...new Set([...course.students, user])];
     user.enrolledCourses = [...new Set([...user.enrolledCourses, course])];
     await Promise.all([course.save(), user.save()]);
 
-    return course;
+    return true;
+
+    function isUserCourseInstructor() {
+      return (
+        (course!.instructor as User)._id.toString() == user!._id.toString()
+      );
+    }
+    function isUserAlreadyStudent() {
+      return course!.students
+        .map((x) => (x as User)._id.toString())
+        .includes(user!._id.toString());
+    }
   }
   @Query(() => [Course])
   async getAllCourses(): Promise<Course[]> {
