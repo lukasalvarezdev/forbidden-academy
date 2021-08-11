@@ -31,9 +31,8 @@ export class UserResolver {
   }
 
   @Query(() => User, { nullable: true })
-  async getMyUser(@Ctx() ctx: any): Promise<User | null> {
-    console.log(ctx);
-    return null;
+  async getMyUser(@Ctx() user: User): Promise<User | null> {
+    return user._id ? user : null;
   }
 
   @Query(() => User, { nullable: true })
