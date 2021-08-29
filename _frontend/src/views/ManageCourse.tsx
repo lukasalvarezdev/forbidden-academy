@@ -2,11 +2,11 @@ import * as React from 'react'
 import { useCourse } from 'context/course.context'
 
 export const ManageCourse = () => {
-  const { course, handleSubmit, handleChange, message } = useCourse()
+  const { course, handleSubmit, handleChange, message, handlePublish } = useCourse()
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div>
           <label htmlFor="name">Name</label>
           <input
@@ -28,7 +28,12 @@ export const ManageCourse = () => {
           />
         </div>
 
-        <button data-testid="update-btn">Create</button>
+        <button data-testid="update-btn" onClick={handleSubmit}>
+          Edit
+        </button>
+        <button data-testid="publish-btn" onClick={handlePublish}>
+          Publish
+        </button>
       </form>
 
       {message ? (

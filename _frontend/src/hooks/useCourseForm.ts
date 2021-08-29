@@ -8,7 +8,7 @@ export function useCourseForm(id?: string) {
   const [course, setCourse] = React.useState<Course>({
     name: '',
     description: '',
-  })
+  } as Course)
   const [message, setMessage] = React.useState('')
 
   const getCourse = React.useCallback(async (id: string) => {
@@ -27,9 +27,24 @@ export function useCourseForm(id?: string) {
     setCourse({ ...course, [e.target.name]: e.target.value })
   }
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handlePublish(e: React.FormEvent<HTMLButtonElement>) {
     e.preventDefault()
-    // console.log(course)
+    const [wasPublished, error] = await coursesAPI.publishCourse(id)
+
+    if (!wasPublished || error) {
+      setMessage('There was an error')
+      return
+    }
+
+    setMessage('published')
+    setTimeout(() => {
+      setMessage('')
+    }, 3000)
+    setCourse(course => ({ ...course, published: true }))
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLButtonElement>) {
+    e.preventDefault()
 
     if (course.name === '' || course.description === '') {
       setMessage('All fields are mandatory')
@@ -56,5 +71,5 @@ export function useCourseForm(id?: string) {
     !id && push('/courses/' + (createdCourse as Course).id)
   }
 
-  return { course, message, handleChange, handleSubmit, setCourse, getCourse }
+  return { course, message, handleChange, handleSubmit, setCourse, getCourse, handlePublish }
 }
