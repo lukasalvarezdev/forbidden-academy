@@ -1,7 +1,8 @@
-import { useCourseForm } from 'hooks/useCourseForm'
+import * as React from 'react'
+import { useCourse } from 'context/course.context'
 
-export const CreateCourse = () => {
-  const { course, handleSubmit, handleChange, message } = useCourseForm()
+export const ManageCourse = () => {
+  const { course, handleSubmit, handleChange, message } = useCourse()
 
   return (
     <div>
@@ -27,7 +28,7 @@ export const CreateCourse = () => {
           />
         </div>
 
-        <button data-testid="create-btn">Create</button>
+        <button data-testid="update-btn">Create</button>
       </form>
 
       {message ? (
