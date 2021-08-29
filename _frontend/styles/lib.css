@@ -289,7 +289,7 @@
   -moz-appearance: none; /* Firefox */
   -webkit-appearance: none; /* Safari and Chrome */
   appearance: none;
-  background-image: url('../src/utils/static/img/dropdown-arrow.svg');
+  /* background-image: url('../src/utils/static/img/dropdown-arrow.svg'); */
   background-repeat: no-repeat;
   background-position: 98%;
   cursor: pointer;
