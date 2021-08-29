@@ -13,7 +13,7 @@ jest.mock('api/courses', () => ({
   createCourse: jest.fn(),
 }))
 
-describe('Mock', () => {
+describe('Create course', () => {
   beforeEach(() => (useRouter as jest.Mock).mockReset())
 
   test('should render error message', () => {
@@ -44,7 +44,7 @@ describe('Mock', () => {
 
     await waitFor(() => {
       expect(coursesAPI.createCourse as jest.Mock).toHaveBeenCalledWith(courseExample)
-      expect(mockRouter.push as jest.Mock).toHaveBeenCalledWith('/name-example')
+      expect(mockRouter.push as jest.Mock).toHaveBeenCalledWith('/courses/name-example')
     })
   })
 })

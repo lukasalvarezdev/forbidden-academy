@@ -16,5 +16,14 @@
     "jsx": "preserve"
   },
   "exclude": ["node_modules", ".next", "out"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"]
+  "include": [
+    "./pages/",
+    "./pages/**/*.ts",
+    "./pages/**/*.tsx",
+    "./src/",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "jest.config.js",
+    "globals.d.ts"
+  ],
 }

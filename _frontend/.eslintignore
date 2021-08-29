@@ -1,4 +1,7 @@
-**/node_modules/*
-**/out/*
-**/.next/*
 .eslintrc.js
+jest.config.js
+next.config.js
+checkStageAvailability.js
+getCloudfrontIDURL.js
+updateS3Redirect.js
+aws-pool.js
