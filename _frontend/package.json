@@ -8,7 +8,7 @@
     "format": "prettier --write .",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
-    "test-watch": "jest --watch"
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.12",
