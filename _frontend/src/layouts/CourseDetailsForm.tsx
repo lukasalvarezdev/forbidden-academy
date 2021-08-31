@@ -69,6 +69,9 @@ export const CourseDetailsForm = ({
               placeholder="Course short description"
             >
               <option value="">Choose a skill level</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
             </select>
           </div>
           <div className="form-field  f-one">
@@ -82,6 +85,8 @@ export const CourseDetailsForm = ({
               placeholder="Course short description"
             >
               <option value="">Choose a language</option>
+              <option value="english">English</option>
+              <option value="spanish">Spanish</option>
             </select>
           </div>
         </div>
@@ -101,7 +106,7 @@ export const CourseDetailsForm = ({
         {handlePublish ? (
           <div className="flex">
             <button data-testid="update-btn" onClick={handleSubmit}>
-              Create
+              Update
             </button>
             <button data-testid="publish-btn" onClick={handlePublish} className="ml-20 invert">
               Publish
