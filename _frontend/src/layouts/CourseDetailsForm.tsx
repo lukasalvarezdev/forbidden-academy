@@ -98,16 +98,20 @@ export const CourseDetailsForm = ({
           />
         </div>
 
-        <div className="flex">
-          <button data-testid="create-btn" onClick={handleSubmit}>
-            Create
-          </button>
-          {handlePublish ? (
+        {handlePublish ? (
+          <div className="flex">
+            <button data-testid="update-btn" onClick={handleSubmit}>
+              Create
+            </button>
             <button data-testid="publish-btn" onClick={handlePublish} className="ml-20 invert">
               Publish
             </button>
-          ) : null}
-        </div>
+          </div>
+        ) : (
+          <button data-testid="create-btn" onClick={handleSubmit}>
+            Create
+          </button>
+        )}
       </Form>
 
       {message ? (
