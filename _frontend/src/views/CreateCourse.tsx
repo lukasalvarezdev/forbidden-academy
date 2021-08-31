@@ -1,40 +1,24 @@
 import { useCourseForm } from 'hooks/useCourseForm'
+import { CourseForm } from 'layouts/CourseForm'
+import styled from 'styled-components'
 
 export const CreateCourse = () => {
-  const { course, handleSubmit, handleChange, message } = useCourseForm()
+  const { course, handleSubmit, handleChange, message, handlePublish } = useCourseForm()
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            onChange={handleChange}
-            value={course.name}
-          />
-        </div>
-        <div>
-          <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            id="description"
-            name="description"
-            value={course.description}
-            onChange={handleChange}
-          />
-        </div>
-
-        <button data-testid="create-btn">Create</button>
-      </form>
-
-      {message ? (
-        <div role="alert">
-          <p>{message}</p>
-        </div>
-      ) : null}
-    </div>
+    <StyledCreateCourse className="container">
+      <CourseForm
+        {...{ course, handleSubmit, handleChange, message, handlePublish }}
+        title="Set the course details"
+      />
+      {/* side options here */}
+      <div className="normal-shadow border-radius-primary bg-white">Some content</div>
+    </StyledCreateCourse>
   )
 }
+
+const StyledCreateCourse = styled.div`
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-gap: 30px;
+`

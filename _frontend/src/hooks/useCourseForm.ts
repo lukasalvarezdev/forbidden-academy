@@ -23,7 +23,9 @@ export function useCourseForm(id?: string) {
     setCourse(course)
   }, [])
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) {
     setCourse({ ...course, [e.target.name]: e.target.value })
   }
 
@@ -73,3 +75,5 @@ export function useCourseForm(id?: string) {
 
   return { course, message, handleChange, handleSubmit, setCourse, getCourse, handlePublish }
 }
+
+export type UseCourseFormReturnProps = ReturnType<typeof useCourseForm>

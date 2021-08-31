@@ -38,7 +38,7 @@ describe('Create course', () => {
 
     render(<CreateCourse />)
     userEvent.type(screen.getByLabelText(/name/i), courseExample.name)
-    userEvent.type(screen.getByLabelText(/description/i), courseExample.description)
+    userEvent.type(screen.getByLabelText('Description'), courseExample.description)
 
     act(() => userEvent.click(screen.getByTestId('create-btn')))
 

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useCourseForm } from 'hooks/useCourseForm'
+import { useCourseForm, UseCourseFormReturnProps } from 'hooks/useCourseForm'
 import { useRouter } from 'next/router'
 
 export const CourseProvider: React.FC = ({ children }) => {
@@ -30,9 +30,9 @@ export function useCourse() {
 }
 
 interface CourseContextProps {
-  course: ReturnType<typeof useCourseForm>['course']
-  handleSubmit: ReturnType<typeof useCourseForm>['handleSubmit']
-  handleChange: ReturnType<typeof useCourseForm>['handleChange']
-  handlePublish: ReturnType<typeof useCourseForm>['handlePublish']
-  message: ReturnType<typeof useCourseForm>['message']
+  course: UseCourseFormReturnProps['course']
+  handleSubmit: UseCourseFormReturnProps['handleSubmit']
+  handleChange: UseCourseFormReturnProps['handleChange']
+  handlePublish: UseCourseFormReturnProps['handlePublish']
+  message: UseCourseFormReturnProps['message']
 }
