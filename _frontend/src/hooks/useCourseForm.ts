@@ -31,6 +31,18 @@ export function useCourseForm(id?: string) {
 
   async function handlePublish(e: React.FormEvent<HTMLButtonElement>) {
     e.preventDefault()
+
+    if (
+      !course.description ||
+      !course.language ||
+      !course.name ||
+      !course.short_description ||
+      !course.skill_level
+    ) {
+      setMessage('All fields are mandatory')
+      return
+    }
+
     const [wasPublished, error] = await coursesAPI.publishCourse(id)
 
     if (!wasPublished || error) {
