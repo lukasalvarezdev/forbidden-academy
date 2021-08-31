@@ -1,14 +1,14 @@
 import { useCourseForm } from 'hooks/useCourseForm'
-import { CourseForm } from 'layouts/CourseForm'
+import { CourseDetailsForm } from 'layouts/CourseDetailsForm'
 import styled from 'styled-components'
 
 export const CreateCourse = () => {
-  const { course, handleSubmit, handleChange, message, handlePublish } = useCourseForm()
+  const { course, handleSubmit, handleChange, message } = useCourseForm()
 
   return (
     <StyledCreateCourse className="container">
-      <CourseForm
-        {...{ course, handleSubmit, handleChange, message, handlePublish }}
+      <CourseDetailsForm
+        {...{ course, handleSubmit, handleChange, message }}
         title="Set the course details"
       />
       {/* side options here */}

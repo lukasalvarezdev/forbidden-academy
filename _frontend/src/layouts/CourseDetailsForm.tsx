@@ -5,17 +5,18 @@ interface CourseFormProps {
   course: UseCourseFormReturnProps['course']
   handleSubmit: UseCourseFormReturnProps['handleSubmit']
   handleChange: UseCourseFormReturnProps['handleChange']
-  handlePublish: UseCourseFormReturnProps['handlePublish']
+  handlePublish?: UseCourseFormReturnProps['handlePublish']
   message: UseCourseFormReturnProps['message']
   title: string
 }
 
-export const CourseForm = ({
+export const CourseDetailsForm = ({
   course,
   handleSubmit,
   handleChange,
   message,
   title,
+  handlePublish,
 }: CourseFormProps) => {
   return (
     <div>
@@ -29,7 +30,7 @@ export const CourseForm = ({
             id="name"
             name="name"
             onChange={handleChange}
-            value={course.name}
+            value={course.name || ''}
             placeholder="Course name"
           />
         </div>
@@ -38,7 +39,7 @@ export const CourseForm = ({
           <textarea
             id="description"
             name="description"
-            value={course.description}
+            value={course.description || ''}
             onChange={handleChange}
             placeholder="Course description"
           ></textarea>
@@ -51,7 +52,7 @@ export const CourseForm = ({
             id="short_description"
             name="short_description"
             onChange={handleChange}
-            value={course.short_description}
+            value={course.short_description || ''}
             placeholder="Course short description"
           />
         </div>
@@ -92,14 +93,21 @@ export const CourseForm = ({
             id="price"
             name="price"
             onChange={handleChange}
-            value={course.price}
+            value={course.price || ''}
             placeholder="Course price"
           />
         </div>
 
-        <button data-testid="create-btn" onClick={handleSubmit}>
-          Create
-        </button>
+        <div className="flex">
+          <button data-testid="create-btn" onClick={handleSubmit}>
+            Create
+          </button>
+          {handlePublish ? (
+            <button data-testid="publish-btn" onClick={handlePublish} className="ml-20 invert">
+              Publish
+            </button>
+          ) : null}
+        </div>
       </Form>
 
       {message ? (
@@ -128,5 +136,11 @@ const Form = styled.form`
     border-radius: 3px;
     padding: 0 70px;
     font-size: 14px;
+
+    &.invert {
+      color: var(--purple);
+      background-color: #fff;
+      border: 2px solid var(--purple);
+    }
   }
 `

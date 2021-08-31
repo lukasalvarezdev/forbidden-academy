@@ -1,46 +1,25 @@
 import * as React from 'react'
 import { useCourse } from 'context/course.context'
+import styled from 'styled-components'
+import { CourseDetailsForm } from 'layouts/CourseDetailsForm'
 
 export const ManageCourse = () => {
   const { course, handleSubmit, handleChange, message, handlePublish } = useCourse()
 
   return (
-    <div>
-      <form>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            onChange={handleChange}
-            value={course.name}
-          />
-        </div>
-        <div>
-          <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            id="description"
-            name="description"
-            value={course.description}
-            onChange={handleChange}
-          />
-        </div>
-
-        <button data-testid="update-btn" onClick={handleSubmit}>
-          Edit
-        </button>
-        <button data-testid="publish-btn" onClick={handlePublish}>
-          Publish
-        </button>
-      </form>
-
-      {message ? (
-        <div role="alert">
-          <p>{message}</p>
-        </div>
-      ) : null}
-    </div>
+    <StyledManageCourse className="container">
+      <CourseDetailsForm
+        {...{ course, handleSubmit, handleChange, message, handlePublish }}
+        title="Manage the course details"
+      />
+      {/* side options here */}
+      <div className="normal-shadow border-radius-primary bg-white">Some content</div>
+    </StyledManageCourse>
   )
 }
+
+const StyledManageCourse = styled.div`
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-gap: 30px;
+`
