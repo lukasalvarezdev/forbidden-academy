@@ -1,21 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "/*"
-      ],
-      "src/*": [
-        "src/*"
-      ],
-      "@/components/*": [
-        "src/components/*"
-      ],
-      "@/entities/*": [
-        "src/entities/*"
-      ]
-    },
-    "target": "es5",
+    "baseUrl": "./src",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -30,5 +16,14 @@
     "jsx": "preserve"
   },
   "exclude": ["node_modules", ".next", "out"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"]
+  "include": [
+    "./pages/",
+    "./pages/**/*.ts",
+    "./pages/**/*.tsx",
+    "./src/",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "jest.config.js",
+    "globals.d.ts"
+  ],
 }

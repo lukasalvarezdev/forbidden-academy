@@ -1,11 +1,11 @@
-import Header from '@/components/Header'
-import CourseCard from '@/entities/course/components/CourseCard'
-import { coursesAPI, Course } from '@/entities/course/services'
+// import Header from '@/components/Header'
+// import CourseCard from '@/entities/course/components/CourseCard'
+// import { coursesAPI, Course } from '@/entities/course/services'
 
-export const HomePage = ({ courses }: { courses: Course[] }) => {
+export const HomePage = () => {
   return (
     <div>
-      <Header />
+      {/* <Header />
 
       <div
         className="container d-g"
@@ -18,7 +18,7 @@ export const HomePage = ({ courses }: { courses: Course[] }) => {
         {courses.map(course => (
           <CourseCard course={course} key={course.id} />
         ))}
-      </div>
+      </div> */}
     </div>
   )
 }
@@ -26,9 +26,8 @@ export const HomePage = ({ courses }: { courses: Course[] }) => {
 export default HomePage
 
 export async function getServerSideProps() {
-  const [courses] = await coursesAPI.getAllCourses()
-
+  // const [courses] = await coursesAPI.getAllCourses()
   return {
-    props: { courses },
+    props: {},
   }
 }
