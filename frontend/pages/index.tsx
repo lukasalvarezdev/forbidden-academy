@@ -1,10 +1,11 @@
-import Header from 'src/layouts/Header'
-import CourseCard from 'src/entities/course/ui/CourseCard'
+// import Header from '@/components/Header'
+// import CourseCard from '@/entities/course/components/CourseCard'
+// import { coursesAPI, Course } from '@/entities/course/services'
 
-export default function Home() {
+export const HomePage = () => {
   return (
-    <>
-      <Header />
+    <div>
+      {/* <Header />
 
       <div
         className="container d-g"
@@ -14,25 +15,18 @@ export default function Home() {
           padding: '30px 0',
         }}
       >
-        {Array.from(Array(13)).map((_, index) => (
-          <CourseCard course={courseExample} key={index} />
+        {courses.map(course => (
+          <CourseCard course={course} key={course.id} />
         ))}
-      </div>
-    </>
+      </div> */}
+    </div>
   )
 }
 
-const courseExample = {
-  name: 'The complete guide NodeJS course ',
-  description:
-    'In this learning journey, you will find out how to be more digital and how to digitize your current skills.',
-  author: 'Lukas Alvarez',
-  rating: 4,
-  id: '12334',
-  price: 122,
-}
+export default HomePage
 
 export async function getServerSideProps() {
+  // const [courses] = await coursesAPI.getAllCourses()
   return {
     props: {},
   }
