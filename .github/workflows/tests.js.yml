@@ -7,11 +7,11 @@ on:
   push:
     branches: [dev]
     paths:
-      - "_frontend/**"
+      - "frontend/**"
   pull_request:
     branches: [dev]
     paths:
-      - "_frontend/**"
+      - "frontend/**"
 
 jobs:
   build:
@@ -28,6 +28,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: cd _frontend && npm install --legacy-peer-deps
-      - run: cd _frontend && npm run type-check
-      - run: cd _frontend && npm run test
+      - run: cd frontend && npm install --legacy-peer-deps
+      - run: cd frontend && npm run type-check
+      - run: cd frontend && npm run test
