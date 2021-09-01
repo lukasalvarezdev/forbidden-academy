@@ -98,7 +98,7 @@ export const CourseDetailsForm = ({
             id="price"
             name="price"
             onChange={handleChange}
-            value={course.price || ''}
+            value={course.price ?? ''}
             placeholder="Course price"
           />
         </div>
