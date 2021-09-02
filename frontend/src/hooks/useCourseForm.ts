@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useRouter } from 'next/router'
 import * as coursesAPI from 'api/courses'
 import { Course } from 'models/Course'
+import { useFetch } from './useFetch'
 
 export function useCourseForm(id?: string) {
   const { push } = useRouter()
@@ -10,6 +11,7 @@ export function useCourseForm(id?: string) {
     description: '',
   } as Course)
   const [message, setMessage] = React.useState('')
+  const { alerts, removeAlert, fetchData, addAlert } = useFetch()
 
   const getCourse = React.useCallback(async (id: string) => {
     const [course, error] = await coursesAPI.getCourse(id)
@@ -39,53 +41,53 @@ export function useCourseForm(id?: string) {
       !course.short_description ||
       !course.skill_level
     ) {
-      setMessage('All fields are mandatory')
+      addAlert({
+        type: 'error',
+        title: 'Oops, there was an error',
+        message: 'All fields are mandatory',
+      })
       return
     }
 
-    const [wasPublished, error] = await coursesAPI.publishCourse(id)
-
-    if (!wasPublished || error) {
-      setMessage('There was an error')
-      return
-    }
-
-    setMessage('published')
-    setTimeout(() => {
-      setMessage('')
-    }, 3000)
-    setCourse(course => ({ ...course, published: true }))
+    fetchData(coursesAPI.publishCourse(id), {
+      onSuccess: () => {
+        setCourse(course => ({ ...course, published: true }))
+      },
+      successMessage: 'The course has been published!',
+    })
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLButtonElement>) {
     e.preventDefault()
 
     if (course.name === '' || course.description === '') {
-      setMessage('All fields are mandatory')
+      addAlert({
+        type: 'error',
+        title: 'Oops, there was an error',
+        message: 'All fields are mandatory',
+      })
       return
     }
 
-    const [createdCourse, error] = await (id
-      ? coursesAPI.updateCourse(id, course)
-      : coursesAPI.createCourse(course))
-
-    if (!createdCourse || error) {
-      setMessage('There was an error')
-      return
-    }
-
-    if (id) {
-      setMessage('saved')
-      setTimeout(() => {
-        setMessage('')
-      }, 3000)
-    } else {
-      setMessage('')
-    }
-    !id && push('/courses/' + (createdCourse as Course).id)
+    fetchData(id ? coursesAPI.updateCourse(id, course) : coursesAPI.createCourse(course), {
+      onSuccess: createdCourse => {
+        !id && push('/courses/' + (createdCourse as Course).id)
+      },
+      successMessage: id ? 'The course has been saved' : 'Course created!',
+    })
   }
 
-  return { course, message, handleChange, handleSubmit, setCourse, getCourse, handlePublish }
+  return {
+    course,
+    message,
+    handleChange,
+    handleSubmit,
+    setCourse,
+    getCourse,
+    handlePublish,
+    alerts,
+    removeAlert,
+  }
 }
 
 export type UseCourseFormReturnProps = ReturnType<typeof useCourseForm>

@@ -45,7 +45,7 @@ test('should fail if the course is not fully filled', async () => {
 
 test('should put course as published', async () => {
   ;(coursesAPI.getCourse as jest.Mock).mockReturnValue([completeCourseExample, null])
-  ;(coursesAPI.publishCourse as jest.Mock).mockReturnValue([true, null])
+  ;(coursesAPI.publishCourse as jest.Mock).mockImplementation(async () => [true, null])
   let result: ReturnType<typeof useCourseForm>
   function TestComponent() {
     result = useCourseForm()
@@ -57,14 +57,16 @@ test('should put course as published', async () => {
   await act(() => result.getCourse(''))
   await act(() => result.handlePublish({ preventDefault: () => {} } as any))
 
-  await waitFor(() => expect(result.course.published).toBeTruthy())
+  await waitFor(() => {
+    expect(result.course.published).toBeTruthy()
+  })
 })
 
 test('should show saved alert', async () => {
   ;(coursesAPI.getCourse as jest.Mock).mockImplementation((id: string) =>
     id === 'complete-id' ? [completeCourseExample, null] : [incompleteCourseExample, null],
   )
-  ;(coursesAPI.publishCourse as jest.Mock).mockReturnValue([true, null])
+  ;(coursesAPI.publishCourse as jest.Mock).mockImplementation(async () => [true, null])
 
   let rerender: any
   await act(async () => {
@@ -80,9 +82,7 @@ test('should show saved alert', async () => {
     rerender = jestRerender
   })
   act(() => userEvent.click(screen.getByTestId('publish-btn')))
-  await waitFor(() =>
-    expect(screen.getByRole('alert')).toHaveTextContent(/all fields are mandatory/i),
-  )
+  await waitFor(() => expect(screen.getByText(/all fields are mandatory/i)).toBeInTheDocument())
 
   rerender &&
     (await act(async () => {
@@ -97,5 +97,7 @@ test('should show saved alert', async () => {
     }))
   act(() => userEvent.click(screen.getByTestId('publish-btn')))
 
-  await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/published/i))
+  await waitFor(() =>
+    expect(screen.getByText(/the course has been published/i)).toBeInTheDocument(),
+  )
 })

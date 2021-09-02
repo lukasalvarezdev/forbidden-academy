@@ -1,9 +1,10 @@
+import { Alerts } from 'components/Alerts'
 import { useCourseForm } from 'hooks/useCourseForm'
 import { CourseDetailsForm } from 'layouts/CourseDetailsForm'
 import styled from 'styled-components'
 
 export const CreateCourse = () => {
-  const { course, handleSubmit, handleChange, message } = useCourseForm()
+  const { course, handleSubmit, handleChange, message, alerts, removeAlert } = useCourseForm()
 
   return (
     <StyledCreateCourse className="container">
@@ -13,6 +14,7 @@ export const CreateCourse = () => {
       />
       {/* side options here */}
       <div className="normal-shadow border-radius-primary bg-white">Some content</div>
+      <Alerts alerts={alerts} removeAlert={removeAlert} />
     </StyledCreateCourse>
   )
 }
