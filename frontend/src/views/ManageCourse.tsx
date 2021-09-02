@@ -2,9 +2,11 @@ import * as React from 'react'
 import { useCourse } from 'context/course.context'
 import styled from 'styled-components'
 import { CourseDetailsForm } from 'layouts/CourseDetailsForm'
+import { Alerts } from 'components/Alerts'
 
 export const ManageCourse = () => {
-  const { course, handleSubmit, handleChange, message, handlePublish } = useCourse()
+  const { course, handleSubmit, handleChange, message, handlePublish, alerts, removeAlert } =
+    useCourse()
 
   return (
     <StyledManageCourse className="container">
@@ -14,6 +16,7 @@ export const ManageCourse = () => {
       />
       {/* side options here */}
       <div className="normal-shadow border-radius-primary bg-white">Some content</div>
+      <Alerts alerts={alerts} removeAlert={removeAlert} />
     </StyledManageCourse>
   )
 }

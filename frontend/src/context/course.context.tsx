@@ -6,8 +6,16 @@ export const CourseProvider: React.FC = ({ children }) => {
   const {
     query: { courseId },
   } = useRouter()
-  const { course, handleSubmit, handleChange, message, getCourse, handlePublish } =
-    useCourseForm(courseId as string)
+  const {
+    course,
+    handleSubmit,
+    handleChange,
+    message,
+    getCourse,
+    handlePublish,
+    alerts,
+    removeAlert,
+  } = useCourseForm(courseId as string)
 
   React.useEffect(() => {
     getCourse(courseId as string)
@@ -15,7 +23,15 @@ export const CourseProvider: React.FC = ({ children }) => {
 
   return (
     <courseContext.Provider
-      value={{ course, handleSubmit, handleChange, message, handlePublish }}
+      value={{
+        course,
+        handleSubmit,
+        handleChange,
+        message,
+        handlePublish,
+        alerts,
+        removeAlert,
+      }}
     >
       {children}
     </courseContext.Provider>
@@ -35,4 +51,6 @@ interface CourseContextProps {
   handleChange: UseCourseFormReturnProps['handleChange']
   handlePublish: UseCourseFormReturnProps['handlePublish']
   message: UseCourseFormReturnProps['message']
+  alerts: UseCourseFormReturnProps['alerts']
+  removeAlert: UseCourseFormReturnProps['removeAlert']
 }

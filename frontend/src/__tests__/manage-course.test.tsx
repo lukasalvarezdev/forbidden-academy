@@ -41,7 +41,7 @@ test('course state should have values from API', async () => {
 
 test('should show saved alert', async () => {
   ;(coursesAPI.getCourse as jest.Mock).mockReturnValue([{ name: 'e', description: 'e' }, null])
-  ;(coursesAPI.updateCourse as jest.Mock).mockReturnValue([true, null])
+  ;(coursesAPI.updateCourse as jest.Mock).mockImplementation(async () => [true, null])
   await act(async () => {
     render(
       withTestRouter(
@@ -55,5 +55,7 @@ test('should show saved alert', async () => {
 
   act(() => userEvent.click(screen.getByTestId('update-btn')))
 
-  await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent(/saved/i))
+  await waitFor(() =>
+    expect(screen.getByText(/the course has been saved/i)).toBeInTheDocument(),
+  )
 })

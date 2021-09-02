@@ -20,12 +20,14 @@ describe('Create course', () => {
     ;(useRouter as jest.Mock).mockReturnValue({ push: () => {} })
     render(<CreateCourse />)
     userEvent.click(screen.getByTestId('create-btn'))
-    expect(screen.getByRole('alert')).toBeInTheDocument()
-    expect(screen.getByRole('alert')).toHaveTextContent(/all fields are mandatory/i)
+    expect(screen.getByText(/all fields are mandatory/i)).toBeInTheDocument()
   })
 
   test('should redirect to created course id', async () => {
-    ;(coursesAPI.createCourse as jest.Mock).mockReturnValue([{ id: 'name-example' }, null])
+    ;(coursesAPI.createCourse as jest.Mock).mockImplementation(async () => [
+      { id: 'name-example' },
+      null,
+    ])
 
     const mockRouter = {
       push: jest.fn(),

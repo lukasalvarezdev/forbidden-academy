@@ -26,14 +26,22 @@ export function useFetch() {
     async <Res>(promise: RequestRes<Res, string>, opts: FetchDataOpts) => {
       const { onFailure, onSuccess, preventAlert, successMessage } = opts || {}
       if (!promise || !promise.then) {
-        dispatch({ error: 'There was an error.', status: 'rejected' })
-        addAlert({ message: 'There was an error.', type: 'error' })
+        dispatch({ error: 'Internal server error.', status: 'rejected' })
+        addAlert({
+          title: 'Oops, there was an error',
+          message: 'Internal server error.',
+          type: 'error',
+        })
         return
       }
       dispatch({ status: 'pending' })
       let loadingAlertId
       if (!opts.preventLoadingAlert) {
-        loadingAlertId = addAlert({ message: 'Loading...', type: 'loading' })
+        loadingAlertId = addAlert({
+          title: 'Loading',
+          message: 'We are sending your information...',
+          type: 'loading',
+        })
       }
 
       const [data, promiseError] = await promise
@@ -44,10 +52,14 @@ export function useFetch() {
 
       if (!data || promiseError) {
         dispatch({
-          error: promiseError || 'There was an error.',
+          error: promiseError || 'Internal server error.',
           status: 'rejected',
         })
-        addAlert({ message: promiseError || 'There was an error.', type: 'error' })
+        addAlert({
+          title: 'Oops, there was an error',
+          message: promiseError || 'Internal server error.',
+          type: 'error',
+        })
         onFailure?.(promiseError)
         return
       }
@@ -55,7 +67,12 @@ export function useFetch() {
       onSuccess?.(data)
       dispatch({ status: 'resolved' })
       if (!preventAlert) {
-        addAlert({ message: successMessage || 'Success.', type: 'success', hideTime: 3000 })
+        addAlert({
+          title: 'Yay!, everything worked!',
+          message: successMessage || 'Congratulations, everything is ok.',
+          type: 'success',
+          hideTime: 3000,
+        })
       }
 
       return data
